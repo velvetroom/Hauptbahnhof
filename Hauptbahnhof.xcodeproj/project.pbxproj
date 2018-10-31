@@ -7,8 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DAD7E0F7218A350F0085F449 /* Hauptbahnhof.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7E0F6218A350F0085F449 /* Hauptbahnhof.swift */; };
+		DAD7E12C218A3B480085F449 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DAD7E129218A3B480085F449 /* Localizable.strings */; };
+		DAD7E12D218A3B480085F449 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAD7E12B218A3B480085F449 /* LaunchScreen.storyboard */; };
+		DAD7E131218A3B530085F449 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7E130218A3B530085F449 /* Application.swift */; };
+		DAD7E134218A3B5C0085F449 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7E133218A3B5B0085F449 /* Tests.swift */; };
+		DAD7E137218A3B630085F449 /* Hauptbahnhof.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7E136218A3B620085F449 /* Hauptbahnhof.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DAD7E107218A355F0085F449 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DAD7E0EB218A350F0085F449 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DAD7E0F2218A350F0085F449;
+			remoteInfo = Hauptbahnhof;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		DAD7E0F1218A350F0085F449 /* CopyFiles */ = {
@@ -23,12 +37,32 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		DAD7E0F3218A350F0085F449 /* libHauptbahnhof.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHauptbahnhof.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		DAD7E0F6218A350F0085F449 /* Hauptbahnhof.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hauptbahnhof.swift; sourceTree = "<group>"; };
+		DAD7E122218A39660085F449 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAD7E123218A3A690085F449 /* libHauptbahnhof.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHauptbahnhof.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAD7E124218A3A690085F449 /* Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Application.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAD7E12A218A3B480085F449 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DAD7E12B218A3B480085F449 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DAD7E130218A3B530085F449 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		DAD7E133218A3B5B0085F449 /* Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		DAD7E136218A3B620085F449 /* Hauptbahnhof.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hauptbahnhof.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		DAD7E0F0218A350F0085F449 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAD7E0FE218A355F0085F449 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAD7E10D218A35750085F449 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,25 +75,55 @@
 		DAD7E0EA218A350F0085F449 = {
 			isa = PBXGroup;
 			children = (
-				DAD7E0F5218A350F0085F449 /* Hauptbahnhof */,
-				DAD7E0F4218A350F0085F449 /* Products */,
+				DAD7E135218A3B620085F449 /* Source */,
+				DAD7E132218A3B5B0085F449 /* Tests */,
+				DAD7E12E218A3B530085F449 /* Application */,
+				DAD7E128218A3B480085F449 /* Resources */,
+				DAD7E122218A39660085F449 /* Tests.xctest */,
+				DAD7E123218A3A690085F449 /* libHauptbahnhof.a */,
+				DAD7E124218A3A690085F449 /* Application.app */,
 			);
 			sourceTree = "<group>";
 		};
-		DAD7E0F4218A350F0085F449 /* Products */ = {
+		DAD7E128218A3B480085F449 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DAD7E0F3218A350F0085F449 /* libHauptbahnhof.a */,
+				DAD7E129218A3B480085F449 /* Localizable.strings */,
+				DAD7E12B218A3B480085F449 /* LaunchScreen.storyboard */,
 			);
-			name = Products;
+			path = Resources;
 			sourceTree = "<group>";
 		};
-		DAD7E0F5218A350F0085F449 /* Hauptbahnhof */ = {
+		DAD7E12E218A3B530085F449 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				DAD7E0F6218A350F0085F449 /* Hauptbahnhof.swift */,
+				DAD7E12F218A3B530085F449 /* Shared */,
 			);
-			path = Hauptbahnhof;
+			path = Application;
+			sourceTree = "<group>";
+		};
+		DAD7E12F218A3B530085F449 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				DAD7E130218A3B530085F449 /* Application.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		DAD7E132218A3B5B0085F449 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				DAD7E133218A3B5B0085F449 /* Tests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		DAD7E135218A3B620085F449 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				DAD7E136218A3B620085F449 /* Hauptbahnhof.swift */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -79,8 +143,43 @@
 			);
 			name = Hauptbahnhof;
 			productName = Hauptbahnhof;
-			productReference = DAD7E0F3218A350F0085F449 /* libHauptbahnhof.a */;
+			productReference = DAD7E123218A3A690085F449 /* libHauptbahnhof.a */;
 			productType = "com.apple.product-type.library.static";
+		};
+		DAD7E100218A355F0085F449 /* Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAD7E109218A355F0085F449 /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildPhases = (
+				DAD7E0FD218A355F0085F449 /* Sources */,
+				DAD7E0FE218A355F0085F449 /* Frameworks */,
+				DAD7E0FF218A355F0085F449 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DAD7E108218A355F0085F449 /* PBXTargetDependency */,
+			);
+			name = Tests;
+			productName = Tests;
+			productReference = DAD7E122218A39660085F449 /* Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DAD7E10F218A35750085F449 /* Application */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAD7E11F218A35760085F449 /* Build configuration list for PBXNativeTarget "Application" */;
+			buildPhases = (
+				DAD7E10C218A35750085F449 /* Sources */,
+				DAD7E10D218A35750085F449 /* Frameworks */,
+				DAD7E10E218A35750085F449 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Application;
+			productName = Application;
+			productReference = DAD7E124218A3A690085F449 /* Application.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -95,6 +194,12 @@
 					DAD7E0F2218A350F0085F449 = {
 						CreatedOnToolsVersion = 10.0;
 					};
+					DAD7E100218A355F0085F449 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					DAD7E10F218A35750085F449 = {
+						CreatedOnToolsVersion = 10.0;
+					};
 				};
 			};
 			buildConfigurationList = DAD7E0EE218A350F0085F449 /* Build configuration list for PBXProject "Hauptbahnhof" */;
@@ -105,25 +210,81 @@
 				en,
 			);
 			mainGroup = DAD7E0EA218A350F0085F449;
-			productRefGroup = DAD7E0F4218A350F0085F449 /* Products */;
+			productRefGroup = DAD7E0EA218A350F0085F449;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				DAD7E0F2218A350F0085F449 /* Hauptbahnhof */,
+				DAD7E100218A355F0085F449 /* Tests */,
+				DAD7E10F218A35750085F449 /* Application */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DAD7E0FF218A355F0085F449 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAD7E10E218A35750085F449 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD7E12C218A3B480085F449 /* Localizable.strings in Resources */,
+				DAD7E12D218A3B480085F449 /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DAD7E0EF218A350F0085F449 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAD7E0F7218A350F0085F449 /* Hauptbahnhof.swift in Sources */,
+				DAD7E137218A3B630085F449 /* Hauptbahnhof.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAD7E0FD218A355F0085F449 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD7E134218A3B5C0085F449 /* Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAD7E10C218A35750085F449 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAD7E131218A3B530085F449 /* Application.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DAD7E108218A355F0085F449 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DAD7E0F2218A350F0085F449 /* Hauptbahnhof */;
+			targetProxy = DAD7E107218A355F0085F449 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DAD7E129218A3B480085F449 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DAD7E12A218A3B480085F449 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		DAD7E0F8218A350F0085F449 /* Debug */ = {
@@ -177,7 +338,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -232,7 +393,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -268,6 +429,80 @@
 			};
 			name = Release;
 		};
+		DAD7E10A218A355F0085F449 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7AMWG3RLHN;
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = iturbide.Hauptbahnhof.Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DAD7E10B218A355F0085F449 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7AMWG3RLHN;
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = iturbide.Hauptbahnhof.Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DAD7E120218A35760085F449 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7AMWG3RLHN;
+				INFOPLIST_FILE = Application/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = iturbide.Hauptbahnhof.Application;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DAD7E121218A35760085F449 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7AMWG3RLHN;
+				INFOPLIST_FILE = Application/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = iturbide.Hauptbahnhof.Application;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -285,6 +520,24 @@
 			buildConfigurations = (
 				DAD7E0FB218A350F0085F449 /* Debug */,
 				DAD7E0FC218A350F0085F449 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DAD7E109218A355F0085F449 /* Build configuration list for PBXNativeTarget "Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAD7E10A218A355F0085F449 /* Debug */,
+				DAD7E10B218A355F0085F449 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DAD7E11F218A35760085F449 /* Build configuration list for PBXNativeTarget "Application" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAD7E120218A35760085F449 /* Debug */,
+				DAD7E121218A35760085F449 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
