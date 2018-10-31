@@ -1,10 +1,8 @@
 import UIKit
-import Argonaut
-import Firebase
 
 @UIApplicationMain class Application:UIResponder, UIApplicationDelegate {
     var window:UIWindow?
-    static let navigation = Navigation()
+    static let navigation = UINavigationController(rootViewController:UIViewController())
     
     func application(_:UIApplication, didFinishLaunchingWithOptions:[UIApplication.LaunchOptionsKey:Any]?) -> Bool {
         makeWindow()

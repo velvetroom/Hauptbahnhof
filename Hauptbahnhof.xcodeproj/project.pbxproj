@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38D505BA45CC16724631C727 /* libPods-Application.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D059CFF090ED42DC2B24425B /* libPods-Application.a */; };
+		DA397BDE218A3E1200C54971 /* libHauptbahnhof.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD7E123218A3A690085F449 /* libHauptbahnhof.a */; };
 		DAD7E12C218A3B480085F449 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DAD7E129218A3B480085F449 /* Localizable.strings */; };
 		DAD7E12D218A3B480085F449 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAD7E12B218A3B480085F449 /* LaunchScreen.storyboard */; };
 		DAD7E131218A3B530085F449 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7E130218A3B530085F449 /* Application.swift */; };
@@ -37,6 +39,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AC986C45890ECEFA63F3AF3F /* Pods-Application.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Application.release.xcconfig"; path = "Target Support Files/Pods-Application/Pods-Application.release.xcconfig"; sourceTree = "<group>"; };
+		B42174B0A947B9ED86D7EFFA /* Pods-Application.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Application.debug.xcconfig"; path = "Target Support Files/Pods-Application/Pods-Application.debug.xcconfig"; sourceTree = "<group>"; };
+		D059CFF090ED42DC2B24425B /* libPods-Application.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Application.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAD7E122218A39660085F449 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAD7E123218A3A690085F449 /* libHauptbahnhof.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHauptbahnhof.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAD7E124218A3A690085F449 /* Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Application.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,12 +71,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA397BDE218A3E1200C54971 /* libHauptbahnhof.a in Frameworks */,
+				38D505BA45CC16724631C727 /* libPods-Application.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		727E2B92E135BBF7790969D5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B42174B0A947B9ED86D7EFFA /* Pods-Application.debug.xcconfig */,
+				AC986C45890ECEFA63F3AF3F /* Pods-Application.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C452628FC769EC38F803EC4E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D059CFF090ED42DC2B24425B /* libPods-Application.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DAD7E0EA218A350F0085F449 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +103,8 @@
 				DAD7E132218A3B5B0085F449 /* Tests */,
 				DAD7E12E218A3B530085F449 /* Application */,
 				DAD7E128218A3B480085F449 /* Resources */,
+				727E2B92E135BBF7790969D5 /* Pods */,
+				C452628FC769EC38F803EC4E /* Frameworks */,
 				DAD7E122218A39660085F449 /* Tests.xctest */,
 				DAD7E123218A3A690085F449 /* libHauptbahnhof.a */,
 				DAD7E124218A3A690085F449 /* Application.app */,
@@ -168,6 +194,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DAD7E11F218A35760085F449 /* Build configuration list for PBXNativeTarget "Application" */;
 			buildPhases = (
+				B6DB7FBCB67D5B95B634686B /* [CP] Check Pods Manifest.lock */,
 				DAD7E10C218A35750085F449 /* Sources */,
 				DAD7E10D218A35750085F449 /* Frameworks */,
 				DAD7E10E218A35750085F449 /* Resources */,
@@ -240,6 +267,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B6DB7FBCB67D5B95B634686B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Application-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DAD7E0EF218A350F0085F449 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -295,7 +347,6 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -344,7 +395,9 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -356,7 +409,6 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -382,7 +434,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -398,7 +450,9 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -411,7 +465,6 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -424,7 +477,6 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -435,7 +487,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
-				INFOPLIST_FILE = Tests/Info.plist;
+				INFOPLIST_FILE = Configuration/tests.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -443,7 +495,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = iturbide.Hauptbahnhof.Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -454,7 +505,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
-				INFOPLIST_FILE = Tests/Info.plist;
+				INFOPLIST_FILE = Configuration/tests.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -462,43 +513,40 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = iturbide.Hauptbahnhof.Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 		DAD7E120218A35760085F449 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B42174B0A947B9ED86D7EFFA /* Pods-Application.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
-				INFOPLIST_FILE = Application/Info.plist;
+				INFOPLIST_FILE = Configuration/application.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = iturbide.Hauptbahnhof.Application;
+				PRODUCT_BUNDLE_IDENTIFIER = iturbide.Hauptbahnhof;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		DAD7E121218A35760085F449 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC986C45890ECEFA63F3AF3F /* Pods-Application.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
-				INFOPLIST_FILE = Application/Info.plist;
+				INFOPLIST_FILE = Configuration/application.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = iturbide.Hauptbahnhof.Application;
+				PRODUCT_BUNDLE_IDENTIFIER = iturbide.Hauptbahnhof;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

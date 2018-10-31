@@ -5,6 +5,9 @@
       location = "group:Hauptbahnhof.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Configuration">
    </FileRef>
    <FileRef
@@ -18,6 +21,9 @@
    </FileRef>
    <FileRef
       location = "group:Podfile">
+   </FileRef>
+   <FileRef
+      location = "group:Podfile.lock">
    </FileRef>
    <FileRef
       location = "group:.gitignore">
