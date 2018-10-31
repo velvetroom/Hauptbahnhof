@@ -10,6 +10,16 @@
 		38D505BA45CC16724631C727 /* libPods-Application.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D059CFF090ED42DC2B24425B /* libPods-Application.a */; };
 		DA397BDE218A3E1200C54971 /* libHauptbahnhof.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD7E123218A3A690085F449 /* libHauptbahnhof.a */; };
 		DAD5B58F218A4ABC00E1DDA9 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B58E218A4ABC00E1DDA9 /* Navigation.swift */; };
+		DAD5B592218A509300E1DDA9 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B591218A509300E1DDA9 /* HomePresenter.swift */; };
+		DAD5B594218A50A600E1DDA9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B593218A50A600E1DDA9 /* HomeView.swift */; };
+		DAD5B596218A50FF00E1DDA9 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B595218A50FF00E1DDA9 /* String.swift */; };
+		DAD5B598218A513000E1DDA9 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B597218A513000E1DDA9 /* UIColor.swift */; };
+		DAD5B59A218A51C700E1DDA9 /* ButtonText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B599218A51C700E1DDA9 /* ButtonText.swift */; };
+		DAD5B59D218A52D100E1DDA9 /* GamePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B59C218A52D100E1DDA9 /* GamePresenter.swift */; };
+		DAD5B59F218A52E700E1DDA9 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B59E218A52E700E1DDA9 /* GameView.swift */; };
+		DAD5B5A1218A6CD400E1DDA9 /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAD5B5A0218A6CD400E1DDA9 /* assets.xcassets */; };
+		DAD5B5A3218A6D3500E1DDA9 /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B5A2218A6D3500E1DDA9 /* Bar.swift */; };
+		DAD5B5A5218A6D5400E1DDA9 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B5A4218A6D5400E1DDA9 /* Button.swift */; };
 		DAD7E12C218A3B480085F449 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DAD7E129218A3B480085F449 /* Localizable.strings */; };
 		DAD7E12D218A3B480085F449 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAD7E12B218A3B480085F449 /* LaunchScreen.storyboard */; };
 		DAD7E131218A3B530085F449 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7E130218A3B530085F449 /* Application.swift */; };
@@ -44,6 +54,16 @@
 		B42174B0A947B9ED86D7EFFA /* Pods-Application.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Application.debug.xcconfig"; path = "Target Support Files/Pods-Application/Pods-Application.debug.xcconfig"; sourceTree = "<group>"; };
 		D059CFF090ED42DC2B24425B /* libPods-Application.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Application.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAD5B58E218A4ABC00E1DDA9 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
+		DAD5B591218A509300E1DDA9 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		DAD5B593218A50A600E1DDA9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		DAD5B595218A50FF00E1DDA9 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		DAD5B597218A513000E1DDA9 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		DAD5B599218A51C700E1DDA9 /* ButtonText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonText.swift; sourceTree = "<group>"; };
+		DAD5B59C218A52D100E1DDA9 /* GamePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePresenter.swift; sourceTree = "<group>"; };
+		DAD5B59E218A52E700E1DDA9 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		DAD5B5A0218A6CD400E1DDA9 /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
+		DAD5B5A2218A6D3500E1DDA9 /* Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
+		DAD5B5A4218A6D5400E1DDA9 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		DAD7E122218A39660085F449 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAD7E123218A3A690085F449 /* libHauptbahnhof.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHauptbahnhof.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAD7E124218A3A690085F449 /* Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Application.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,6 +118,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DAD5B590218A506200E1DDA9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DAD5B591218A509300E1DDA9 /* HomePresenter.swift */,
+				DAD5B593218A50A600E1DDA9 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		DAD5B59B218A52BE00E1DDA9 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				DAD5B59C218A52D100E1DDA9 /* GamePresenter.swift */,
+				DAD5B59E218A52E700E1DDA9 /* GameView.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
 		DAD7E0EA218A350F0085F449 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +156,7 @@
 			children = (
 				DAD7E129218A3B480085F449 /* Localizable.strings */,
 				DAD7E12B218A3B480085F449 /* LaunchScreen.storyboard */,
+				DAD5B5A0218A6CD400E1DDA9 /* assets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -126,6 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				DAD7E12F218A3B530085F449 /* Shared */,
+				DAD5B590218A506200E1DDA9 /* Home */,
+				DAD5B59B218A52BE00E1DDA9 /* Game */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -135,6 +176,11 @@
 			children = (
 				DAD7E130218A3B530085F449 /* Application.swift */,
 				DAD5B58E218A4ABC00E1DDA9 /* Navigation.swift */,
+				DAD5B595218A50FF00E1DDA9 /* String.swift */,
+				DAD5B597218A513000E1DDA9 /* UIColor.swift */,
+				DAD5B5A2218A6D3500E1DDA9 /* Bar.swift */,
+				DAD5B5A4218A6D5400E1DDA9 /* Button.swift */,
+				DAD5B599218A51C700E1DDA9 /* ButtonText.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -265,6 +311,7 @@
 			files = (
 				DAD7E12C218A3B480085F449 /* Localizable.strings in Resources */,
 				DAD7E12D218A3B480085F449 /* LaunchScreen.storyboard in Resources */,
+				DAD5B5A1218A6CD400E1DDA9 /* assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,8 +363,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAD5B59D218A52D100E1DDA9 /* GamePresenter.swift in Sources */,
+				DAD5B59A218A51C700E1DDA9 /* ButtonText.swift in Sources */,
+				DAD5B592218A509300E1DDA9 /* HomePresenter.swift in Sources */,
+				DAD5B598218A513000E1DDA9 /* UIColor.swift in Sources */,
+				DAD5B59F218A52E700E1DDA9 /* GameView.swift in Sources */,
+				DAD5B5A3218A6D3500E1DDA9 /* Bar.swift in Sources */,
+				DAD5B594218A50A600E1DDA9 /* HomeView.swift in Sources */,
+				DAD5B596218A50FF00E1DDA9 /* String.swift in Sources */,
 				DAD7E131218A3B530085F449 /* Application.swift in Sources */,
 				DAD5B58F218A4ABC00E1DDA9 /* Navigation.swift in Sources */,
+				DAD5B5A5218A6D5400E1DDA9 /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
