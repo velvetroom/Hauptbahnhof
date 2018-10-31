@@ -1,8 +1,8 @@
 import UIKit
 
 @UIApplicationMain class Application:UIResponder, UIApplicationDelegate {
+    static let navigation = Navigation()
     var window:UIWindow?
-    static let navigation = UINavigationController(rootViewController:UIViewController())
     
     func application(_:UIApplication, didFinishLaunchingWithOptions:[UIApplication.LaunchOptionsKey:Any]?) -> Bool {
         makeWindow()
