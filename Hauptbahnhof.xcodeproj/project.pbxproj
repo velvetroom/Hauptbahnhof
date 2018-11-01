@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		38D505BA45CC16724631C727 /* libPods-Application.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D059CFF090ED42DC2B24425B /* libPods-Application.a */; };
 		DA397BDE218A3E1200C54971 /* libHauptbahnhof.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD7E123218A3A690085F449 /* libHauptbahnhof.a */; };
+		DAA7FBCC218BB1C200F1C0E8 /* TestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7FBCB218BB1C200F1C0E8 /* TestFactory.swift */; };
 		DAB55EF8218B970C00A9F02A /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB55EF7218B970C00A9F02A /* Option.swift */; };
 		DAB55EFA218B98F400A9F02A /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB55EF9218B98F400A9F02A /* Effect.swift */; };
 		DAB55EFC218B9C5300A9F02A /* TestStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB55EFB218B9C5300A9F02A /* TestStorage.swift */; };
@@ -67,6 +68,7 @@
 		AC986C45890ECEFA63F3AF3F /* Pods-Application.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Application.release.xcconfig"; path = "Target Support Files/Pods-Application/Pods-Application.release.xcconfig"; sourceTree = "<group>"; };
 		B42174B0A947B9ED86D7EFFA /* Pods-Application.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Application.debug.xcconfig"; path = "Target Support Files/Pods-Application/Pods-Application.debug.xcconfig"; sourceTree = "<group>"; };
 		D059CFF090ED42DC2B24425B /* libPods-Application.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Application.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAA7FBCB218BB1C200F1C0E8 /* TestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFactory.swift; sourceTree = "<group>"; };
 		DAB55EF7218B970C00A9F02A /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		DAB55EF9218B98F400A9F02A /* Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
 		DAB55EFB218B9C5300A9F02A /* TestStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStorage.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			children = (
 				DAD7E133218A3B5B0085F449 /* TestParsing.swift */,
 				DAB55EFB218B9C5300A9F02A /* TestStorage.swift */,
+				DAA7FBCB218BB1C200F1C0E8 /* TestFactory.swift */,
 				DAB55F04218BA13300A9F02A /* MockStorage.swift */,
 			);
 			path = Shared;
@@ -435,6 +438,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAA7FBCC218BB1C200F1C0E8 /* TestFactory.swift in Sources */,
 				DAB55F05218BA13300A9F02A /* MockStorage.swift in Sources */,
 				DAD7E134218A3B5C0085F449 /* TestParsing.swift in Sources */,
 				DAB55EFC218B9C5300A9F02A /* TestStorage.swift in Sources */,

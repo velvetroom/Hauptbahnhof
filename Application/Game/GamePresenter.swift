@@ -3,9 +3,8 @@ import MarkdownHero
 import Hauptbahnhof
 
 class GamePresenter:Presenter {
-    var chapter = "One"
     private let hero = Hero()
-    private let master = GameMaster()
+    private let master = Factory.makeMaster()
     
     required init() {
         hero.font = .systemFont(ofSize:20, weight:.light)
@@ -16,12 +15,8 @@ class GamePresenter:Presenter {
     }
     
     override func didLoad() {
-        let chapter = self.chapter
-        DispatchQueue.global(qos:.background).async { [weak self] in
-            self?.master.load(try! Data(contentsOf:Bundle.main.url(forResource:chapter, withExtension:"json")!))
-            self?.update()
-            if let title = self?.master.game.title { self?.update(viewModel:title) }
-        }
+        update(viewModel:master.game.title)
+        update()
     }
     
     private func update() {
