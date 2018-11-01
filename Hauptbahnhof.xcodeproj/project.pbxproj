@@ -16,6 +16,7 @@
 		DAB55F01218B9D4800A9F02A /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB55F00218B9D4800A9F02A /* Player.swift */; };
 		DAB55F03218B9E1900A9F02A /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB55F02218B9E1900A9F02A /* Factory.swift */; };
 		DAB55F05218BA13300A9F02A /* MockStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB55F04218BA13300A9F02A /* MockStorage.swift */; };
+		DAB55F07218BAF9300A9F02A /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB55F06218BAF9300A9F02A /* Session.swift */; };
 		DAD5B58F218A4ABC00E1DDA9 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B58E218A4ABC00E1DDA9 /* Navigation.swift */; };
 		DAD5B592218A509300E1DDA9 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B591218A509300E1DDA9 /* HomePresenter.swift */; };
 		DAD5B594218A50A600E1DDA9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B593218A50A600E1DDA9 /* HomeView.swift */; };
@@ -73,6 +74,7 @@
 		DAB55F00218B9D4800A9F02A /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		DAB55F02218B9E1900A9F02A /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		DAB55F04218BA13300A9F02A /* MockStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStorage.swift; sourceTree = "<group>"; };
+		DAB55F06218BAF9300A9F02A /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		DAD5B58E218A4ABC00E1DDA9 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		DAD5B591218A509300E1DDA9 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		DAD5B593218A50A600E1DDA9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				DAD5B5A2218A6D3500E1DDA9 /* Bar.swift */,
 				DAD5B5A4218A6D5400E1DDA9 /* Button.swift */,
 				DAD5B599218A51C700E1DDA9 /* ButtonText.swift */,
+				DAB55F06218BAF9300A9F02A /* Session.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				DAD5B59F218A52E700E1DDA9 /* GameView.swift in Sources */,
 				DAD5B5A3218A6D3500E1DDA9 /* Bar.swift in Sources */,
 				DAD5B594218A50A600E1DDA9 /* HomeView.swift in Sources */,
+				DAB55F07218BAF9300A9F02A /* Session.swift in Sources */,
 				DAD5B596218A50FF00E1DDA9 /* String.swift in Sources */,
 				DAD7E131218A3B530085F449 /* Application.swift in Sources */,
 				DAD5B58F218A4ABC00E1DDA9 /* Navigation.swift in Sources */,
