@@ -1,17 +1,15 @@
 import CleanArchitecture
 
 class GameView:View<GamePresenter> {
+    private weak var bar:Bar!
     private weak var text:UITextView!
-    private weak var caret:UIView!
-    private weak var caretLeft:NSLayoutConstraint!
-    private weak var caretTop:NSLayoutConstraint!
-    private weak var caretHeight:NSLayoutConstraint!
+    private weak var caret:GameCaretView!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .black
         makeOutlets()
         viewModel()
+        super.viewDidLoad()
+        view.backgroundColor = .black
     }
     
     private func makeOutlets() {
@@ -20,8 +18,9 @@ class GameView:View<GamePresenter> {
         
         let profile = Button(#imageLiteral(resourceName: "profile.pdf"))
         
-        let bar = Bar("Chapter One", buttons:[profile, home])
+        let bar = Bar([profile, home])
         view.addSubview(bar)
+        self.bar = bar
         
         let text = UITextView()
         text.translatesAutoresizingMaskIntoConstraints = false
@@ -32,10 +31,7 @@ class GameView:View<GamePresenter> {
         view.addSubview(text)
         self.text = text
         
-        let caret = UIView()
-        caret.translatesAutoresizingMaskIntoConstraints = false
-        caret.isUserInteractionEnabled = false
-        caret.backgroundColor = .spreeBlue
+        let caret = GameCaretView()
         view.addSubview(caret)
         self.caret = caret
         
@@ -46,13 +42,9 @@ class GameView:View<GamePresenter> {
         text.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
         text.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
         
-        caretTop = caret.topAnchor.constraint(equalTo:text.topAnchor)
-        caretLeft = caret.leftAnchor.constraint(equalTo:text.leftAnchor)
-        caretHeight = caret.heightAnchor.constraint(equalToConstant:0)
-        caret.widthAnchor.constraint(equalToConstant:8).isActive = true
-        caretTop.isActive = true
-        caretLeft.isActive = true
-        caretHeight.isActive = true
+        caret.top = caret.topAnchor.constraint(equalTo:text.topAnchor)
+        caret.left = caret.leftAnchor.constraint(equalTo:text.leftAnchor)
+        caret.height = caret.heightAnchor.constraint(equalToConstant:0)
         
         text.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true
         if #available(iOS 11.0, *) {
@@ -64,15 +56,13 @@ class GameView:View<GamePresenter> {
     }
     
     private func viewModel() {
+        presenter.viewModel { [weak self] (title:String) in self?.bar.label.text = title }
         presenter.viewModel { [weak self] (message:NSAttributedString) in self?.update(message:message) }
     }
     
     private func update(message:NSAttributedString) {
         text.attributedText = message
         text.textColor = .white
-        let rect = text.caretRect(for:text.endOfDocument)
-        caretTop.constant = rect.minY
-        caretLeft.constant = rect.minX + 5
-        caretHeight.constant = rect.height
+        caret.update(rect:text.caretRect(for:text.endOfDocument))
     }
 }

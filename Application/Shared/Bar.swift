@@ -1,7 +1,9 @@
 import UIKit
 
 class Bar:UIView {
-    init(_ title:String, buttons:[Button]) {
+    private(set) weak var label:UILabel!
+    
+    init(_ buttons:[Button]) {
         super.init(frame:.zero)
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -9,9 +11,9 @@ class Bar:UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.isUserInteractionEnabled = false
         label.textColor = .white
-        label.font = .systemFont(ofSize:18, weight:.bold)
-        label.text = title
+        label.font = .systemFont(ofSize:20, weight:.bold)
         addSubview(label)
+        self.label = label
         
         label.leftAnchor.constraint(equalTo:leftAnchor, constant:20).isActive = true
         label.centerYAnchor.constraint(equalTo:centerYAnchor).isActive = true
