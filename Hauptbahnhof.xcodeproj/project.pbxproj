@@ -10,6 +10,8 @@
 		38D505BA45CC16724631C727 /* libPods-Application.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D059CFF090ED42DC2B24425B /* libPods-Application.a */; };
 		DA397BDE218A3E1200C54971 /* libHauptbahnhof.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD7E123218A3A690085F449 /* libHauptbahnhof.a */; };
 		DAA7FBCC218BB1C200F1C0E8 /* TestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7FBCB218BB1C200F1C0E8 /* TestFactory.swift */; };
+		DAA7FBCF218BB29000F1C0E8 /* SplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7FBCE218BB29000F1C0E8 /* SplashPresenter.swift */; };
+		DAA7FBD1218BB37000F1C0E8 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7FBD0218BB37000F1C0E8 /* SplashView.swift */; };
 		DAB55EF8218B970C00A9F02A /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB55EF7218B970C00A9F02A /* Option.swift */; };
 		DAB55EFA218B98F400A9F02A /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB55EF9218B98F400A9F02A /* Effect.swift */; };
 		DAB55EFC218B9C5300A9F02A /* TestStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB55EFB218B9C5300A9F02A /* TestStorage.swift */; };
@@ -69,6 +71,8 @@
 		B42174B0A947B9ED86D7EFFA /* Pods-Application.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Application.debug.xcconfig"; path = "Target Support Files/Pods-Application/Pods-Application.debug.xcconfig"; sourceTree = "<group>"; };
 		D059CFF090ED42DC2B24425B /* libPods-Application.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Application.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAA7FBCB218BB1C200F1C0E8 /* TestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFactory.swift; sourceTree = "<group>"; };
+		DAA7FBCE218BB29000F1C0E8 /* SplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
+		DAA7FBD0218BB37000F1C0E8 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		DAB55EF7218B970C00A9F02A /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		DAB55EF9218B98F400A9F02A /* Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
 		DAB55EFB218B9C5300A9F02A /* TestStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStorage.swift; sourceTree = "<group>"; };
@@ -145,6 +149,15 @@
 				D059CFF090ED42DC2B24425B /* libPods-Application.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DAA7FBCD218BB27A00F1C0E8 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				DAA7FBCE218BB29000F1C0E8 /* SplashPresenter.swift */,
+				DAA7FBD0218BB37000F1C0E8 /* SplashView.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 		DAB55EFD218B9D0100A9F02A /* Shared */ = {
@@ -236,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				DAD7E12F218A3B530085F449 /* Shared */,
+				DAA7FBCD218BB27A00F1C0E8 /* Splash */,
 				DAD5B590218A506200E1DDA9 /* Home */,
 				DAD5B59B218A52BE00E1DDA9 /* Game */,
 			);
@@ -450,6 +464,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAD5B59D218A52D100E1DDA9 /* GamePresenter.swift in Sources */,
+				DAA7FBCF218BB29000F1C0E8 /* SplashPresenter.swift in Sources */,
+				DAA7FBD1218BB37000F1C0E8 /* SplashView.swift in Sources */,
 				DAD5B59A218A51C700E1DDA9 /* ButtonText.swift in Sources */,
 				DAD5B592218A509300E1DDA9 /* HomePresenter.swift in Sources */,
 				DAD5B598218A513000E1DDA9 /* UIColor.swift in Sources */,
