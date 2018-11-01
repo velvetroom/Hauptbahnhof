@@ -1,5 +1,6 @@
 import Foundation
 
 public struct Message:Decodable {
-    public private(set) var text = String()
+    public let text:String
+    public let options:[Option]
 }

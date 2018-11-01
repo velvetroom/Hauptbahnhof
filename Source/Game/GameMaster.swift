@@ -1,7 +1,7 @@
 import Foundation
 
 public class GameMaster {
-    public private(set) var game = Game()
+    public private(set) var game:Game!
     
     public init() { }
     

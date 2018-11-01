@@ -9,12 +9,14 @@ class TestParsing:XCTestCase {
     }
     
     func testLoadSource() {
-        XCTAssertTrue(master.game.title.isEmpty)
         master.load(try! Data(contentsOf:Bundle(for:TestParsing.self).url(forResource:"One", withExtension:"json")!))
         XCTAssertFalse(master.game.title.isEmpty)
         XCTAssertFalse(master.game.messages.isEmpty)
         XCTAssertFalse(master.game.state.isEmpty)
-        XCTAssertEqual(master.game.messages["welcome"]!.text, master.message.text)
+        XCTAssertEqual(master.game.messages["initial"]!.text, master.message.text)
         XCTAssertFalse(master.message.text.isEmpty)
+        XCTAssertFalse(master.message.options.isEmpty)
+        XCTAssertFalse(master.message.options.first!.text.isEmpty)
+        XCTAssertNotNil(master.message.options.first!.effects)
     }
 }

@@ -8,7 +8,7 @@ class GamePresenter:Presenter {
     private let master = GameMaster()
     
     required init() {
-        hero.font = .systemFont(ofSize:18, weight:.light)
+        hero.font = .systemFont(ofSize:20, weight:.light)
     }
     
     @objc func home() {
