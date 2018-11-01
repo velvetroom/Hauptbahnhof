@@ -6,6 +6,7 @@ class TestStorage:XCTestCase {
     
     override func setUp() {
         Factory.storage = MockStorage.self
+        Factory.bundle = Bundle(for:TestParsing.self)
         master = GameMaster()
     }
     

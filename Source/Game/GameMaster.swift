@@ -9,11 +9,13 @@ public class GameMaster {
         if let player = try? storage.load() {
             self.player = player
         }
+        loadGame()
     }
     
-    public func load(_ data:Data) {
+    public var message:Message { return game.messages[player.state]! }
+    
+    private func loadGame() {
+        let data = try! Data(contentsOf:Factory.bundle.url(forResource:player.chapter, withExtension:"json")!)
         game = try! JSONDecoder().decode(Game.self, from:data)
     }
-    
-    public var message:Message { return game.messages[game.state]! }
 }

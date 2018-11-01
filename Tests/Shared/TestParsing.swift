@@ -6,19 +6,22 @@ class TestParsing:XCTestCase {
     
     override func setUp() {
         Factory.storage = MockStorage.self
+        Factory.bundle = Bundle(for:TestParsing.self)
         master = GameMaster()
     }
     
-    func testLoadSource() {
-        XCTAssertTrue(master.game.title.isEmpty)
-        master.load(try! Data(contentsOf:Bundle(for:TestParsing.self).url(forResource:"One", withExtension:"json")!))
+    func testLoadGame() {
         XCTAssertFalse(master.game.title.isEmpty)
         XCTAssertFalse(master.game.messages.isEmpty)
-        XCTAssertFalse(master.game.state.isEmpty)
         XCTAssertEqual(master.game.messages["initial"]!.text, master.message.text)
         XCTAssertFalse(master.message.text.isEmpty)
         XCTAssertFalse(master.message.options.isEmpty)
         XCTAssertFalse(master.message.options.first!.text.isEmpty)
         XCTAssertNotNil(master.message.options.first!.effects)
+    }
+    
+    func testPlayer() {
+        XCTAssertFalse(master.player.chapter.isEmpty)
+        XCTAssertFalse(master.player.state.isEmpty)
     }
 }
