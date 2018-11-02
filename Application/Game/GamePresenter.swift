@@ -21,5 +21,6 @@ class GamePresenter:Presenter {
     
     private func update() {
         update(viewModel:hero.parse(string:master.message.text))
+        update(viewModel:master.message.options.map { hero.parse(string:$0.text) })
     }
 }
