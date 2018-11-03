@@ -58,11 +58,18 @@ class GameView:View<GamePresenter> {
     private func viewModel() {
         presenter.viewModel { [weak self] (title:String) in self?.bar.label.text = title }
         presenter.viewModel { [weak self] (message:NSAttributedString) in self?.update(message:message) }
+        presenter.viewModel { [weak self] (options:[NSAttributedString]) in self?.update(options:options) }
     }
     
     private func update(message:NSAttributedString) {
         text.attributedText = message
         text.textColor = .white
         caret.update(rect:text.caretRect(for:text.endOfDocument))
+    }
+    
+    private func update(options:[NSAttributedString]) {
+        options.forEach { option in
+            
+        }
     }
 }
