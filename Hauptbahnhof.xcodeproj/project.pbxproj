@@ -42,6 +42,7 @@
 		DAD7E131218A3B530085F449 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7E130218A3B530085F449 /* Application.swift */; };
 		DAD7E134218A3B5C0085F449 /* TestParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7E133218A3B5B0085F449 /* TestParsing.swift */; };
 		DAD7E137218A3B630085F449 /* GameMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7E136218A3B620085F449 /* GameMaster.swift */; };
+		DAE6AA8A218F3B2D00E7BBC1 /* GameOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE6AA89218F3B2D00E7BBC1 /* GameOptionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		DAD7E130218A3B530085F449 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		DAD7E133218A3B5B0085F449 /* TestParsing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestParsing.swift; sourceTree = "<group>"; };
 		DAD7E136218A3B620085F449 /* GameMaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMaster.swift; sourceTree = "<group>"; };
+		DAE6AA89218F3B2D00E7BBC1 /* GameOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOptionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 				DAD5B59C218A52D100E1DDA9 /* GamePresenter.swift */,
 				DAD5B59E218A52E700E1DDA9 /* GameView.swift */,
 				DAD5B5B2218B234700E1DDA9 /* GameCaretView.swift */,
+				DAE6AA89218F3B2D00E7BBC1 /* GameOptionView.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				DAD5B596218A50FF00E1DDA9 /* String.swift in Sources */,
 				DAD7E131218A3B530085F449 /* Application.swift in Sources */,
 				DAD5B58F218A4ABC00E1DDA9 /* Navigation.swift in Sources */,
+				DAE6AA8A218F3B2D00E7BBC1 /* GameOptionView.swift in Sources */,
 				DAD5B5B3218B234700E1DDA9 /* GameCaretView.swift in Sources */,
 				DAD5B5A5218A6D5400E1DDA9 /* Button.swift in Sources */,
 			);
