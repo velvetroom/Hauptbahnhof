@@ -1,6 +1,7 @@
 import UIKit
 
 class GameOptionView:UIControl {
+    var viewModel:NSAttributedString? { didSet { label.attributedText = viewModel } }
     private weak var label:UILabel!
     
     init() {
