@@ -6,18 +6,22 @@
             "options": [
                 {
                     "text": "Go to the kitchen and get yourself another coffee",
+                    "next": " ",
                     "effects": []
                 },
                 {
                     "text": "Get up and approach Olga",
+                    "next": " ",
                     "effects": []
                 },
                 {
                     "text": "Pretend you are still busy",
+                    "next": " ",
                     "effects": []
                 },
                 {
                     "text": "Do nothing",
+                    "next": " ",
                     "effects": []
                 },
             ]

@@ -17,6 +17,7 @@ class TestParsing:XCTestCase {
         XCTAssertFalse(master.message.text.isEmpty)
         XCTAssertFalse(master.message.options.isEmpty)
         XCTAssertFalse(master.message.options.first!.text.isEmpty)
+        XCTAssertFalse(master.message.options.first!.next.isEmpty)
         XCTAssertNotNil(master.message.options.first!.effects)
     }
     
