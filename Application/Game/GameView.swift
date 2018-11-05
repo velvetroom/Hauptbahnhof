@@ -71,9 +71,9 @@ class GameView:View<GamePresenter> {
     }
     
     private func viewModel() {
-        presenter.viewModel { [weak self] (title:String) in self?.bar.label.text = title }
-        presenter.viewModel { [weak self] (message:NSAttributedString) in self?.update(message:message) }
-        presenter.viewModel { [weak self] (options:[NSAttributedString]) in self?.update(options:options) }
+        presenter.viewModel { [weak self] in self?.bar.label.text = $0 }
+        presenter.viewModel { [weak self] in self?.update(message:$0) }
+        presenter.viewModel { [weak self] in self?.update(options:$0) }
     }
     
     private func update(message:NSAttributedString) {
@@ -81,18 +81,26 @@ class GameView:View<GamePresenter> {
         text.textColor = .white
     }
     
-    private func update(options:[NSAttributedString]) {
+    private func update(options:[(Int, String)]) {
         var top = menu.topAnchor
         options.forEach { option in
             let view = GameOptionView()
             view.viewModel = option
+            view.addTarget(self, action:#selector(select(option:)), for:.touchUpInside)
             menu.addSubview(view)
             
-            view.topAnchor.constraint(equalTo:top, constant:10).isActive = true
-            view.leftAnchor.constraint(equalTo:menu.leftAnchor, constant:10).isActive = true
+            view.topAnchor.constraint(equalTo:top, constant:5).isActive = true
+            view.leftAnchor.constraint(equalTo:menu.leftAnchor, constant:5).isActive = true
             view.rightAnchor.constraint(equalTo:menu.rightAnchor, constant:20).isActive = true
             top = view.bottomAnchor
         }
-        menu.bottomAnchor.constraint(equalTo:top, constant:10).isActive = true
+        menu.bottomAnchor.constraint(equalTo:top, constant:5).isActive = true
+        menu.isUserInteractionEnabled = true
+    }
+    
+    @objc private func select(option:GameOptionView) {
+        menu.isUserInteractionEnabled = false
+        option.isSelected = true
+        presenter.select(option:option.viewModel!.0)
     }
 }

@@ -3,11 +3,16 @@ import MarkdownHero
 import Hauptbahnhof
 
 class GamePresenter:Presenter {
-    private let hero = Hero()
+    private let parser = Hero()
+    private let optionParser = Hero()
     private let master = Factory.makeMaster()
     
+    func select(option:Int) {
+        
+    }
+    
     required init() {
-        hero.font = .systemFont(ofSize:20, weight:.light)
+        parser.font = .systemFont(ofSize:20, weight:.light)
     }
     
     @objc func home() {
@@ -20,7 +25,7 @@ class GamePresenter:Presenter {
     }
     
     private func update() {
-        update(viewModel:hero.parse(string:master.message.text))
-        update(viewModel:master.message.options.map { hero.parse(string:$0.text) })
+        update(viewModel:parser.parse(string:master.message.text))
+        update(viewModel:master.message.options.enumerated().map { ($0, $1.text) })
     }
 }
