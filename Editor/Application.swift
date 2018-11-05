@@ -1,20 +1,26 @@
 import Cocoa
 
 @NSApplicationMain class Application:NSApplication, NSApplicationDelegate {
-    weak var window:NSWindow!
-
     override init() {
         super.init()
         delegate = self
     }
     
     required init?(coder:NSCoder) { fatalError() }
+    func applicationShouldTerminateAfterLastWindowClosed(_:NSApplication) -> Bool { return true }
     
     func applicationDidFinishLaunching(_ aNotification:Notification) {
+        let menu = NSMenu()
+        let submenu = NSMenu()
+        submenu.addItem(withTitle:.local("Application.quit"), action:#selector(quit), keyEquivalent:"q")
+        menu.addItem(withTitle:String(), action:nil, keyEquivalent:String()).submenu = submenu
+        self.mainMenu = menu
+        
         let window = NSWindow(contentRect:NSScreen.main!.frame, styleMask:[.titled, .resizable, .closable, .miniaturizable], backing:.buffered, defer:false)
         window.makeKeyAndOrderFront(nil)
-        window.contentViewController = NSViewController(nibName:nil, bundle:nil)
+        window.contentViewController = View()
         window.backgroundColor = .white
-        self.window = window
     }
+    
+    @objc private func quit() { terminate(nil) }
 }
