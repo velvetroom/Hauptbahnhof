@@ -13,6 +13,10 @@ class GameView:View<GamePresenter> {
         view.backgroundColor = .black
     }
     
+    override func viewDidLayoutSubviews() {
+        caret.update(rect:text.caretRect(for:text.endOfDocument))
+    }
+    
     private func makeOutlets() {
         let home = Button(#imageLiteral(resourceName: "home.pdf"))
         home.addTarget(presenter, action:#selector(presenter.home), for:.touchUpInside)
@@ -23,10 +27,6 @@ class GameView:View<GamePresenter> {
         view.addSubview(bar)
         self.bar = bar
         
-        let caret = GameCaretView()
-        view.addSubview(caret)
-        self.caret = caret
-        
         let text = UITextView()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.backgroundColor = .clear
@@ -35,6 +35,10 @@ class GameView:View<GamePresenter> {
         text.isEditable = false
         view.addSubview(text)
         self.text = text
+        
+        let caret = GameCaretView()
+        text.addSubview(caret)
+        self.caret = caret
         
         let menu = UIView()
         menu.translatesAutoresizingMaskIntoConstraints = false
@@ -49,10 +53,10 @@ class GameView:View<GamePresenter> {
         caret.height = caret.heightAnchor.constraint(equalToConstant:0)
         
         text.topAnchor.constraint(equalTo:bar.bottomAnchor).isActive = true
+        text.bottomAnchor.constraint(equalTo:menu.topAnchor).isActive = true
         text.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
         text.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
         
-        menu.topAnchor.constraint(equalTo:text.bottomAnchor).isActive = true
         menu.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
         menu.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
         
@@ -75,7 +79,6 @@ class GameView:View<GamePresenter> {
     private func update(message:NSAttributedString) {
         text.attributedText = message
         text.textColor = .white
-        caret.update(rect:text.caretRect(for:text.endOfDocument))
     }
     
     private func update(options:[NSAttributedString]) {
@@ -85,10 +88,11 @@ class GameView:View<GamePresenter> {
             view.viewModel = option
             menu.addSubview(view)
             
-            view.topAnchor.constraint(equalTo:top, constant:20).isActive = true
-            view.leftAnchor.constraint(equalTo:menu.leftAnchor, constant:20).isActive = true
+            view.topAnchor.constraint(equalTo:top, constant:10).isActive = true
+            view.leftAnchor.constraint(equalTo:menu.leftAnchor, constant:10).isActive = true
             view.rightAnchor.constraint(equalTo:menu.rightAnchor, constant:20).isActive = true
             top = view.bottomAnchor
         }
+        menu.bottomAnchor.constraint(equalTo:top, constant:10).isActive = true
     }
 }
