@@ -1,4 +1,5 @@
 import Cocoa
+import Editor
 
 class View:NSView {
     override init(frame:NSRect) {
