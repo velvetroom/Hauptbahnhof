@@ -49,6 +49,11 @@
 		DAD7E134218A3B5C0085F449 /* TestParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7E133218A3B5B0085F449 /* TestParsing.swift */; };
 		DAD7E137218A3B630085F449 /* GameMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7E136218A3B620085F449 /* GameMaster.swift */; };
 		DAE6AA8A218F3B2D00E7BBC1 /* GameOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE6AA89218F3B2D00E7BBC1 /* GameOptionView.swift */; };
+		DAE9719A2191C20000436E93 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B5AD218B090600E1DDA9 /* Game.swift */; };
+		DAE9719B2191C20000436E93 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B5B0218B0A5C00E1DDA9 /* Message.swift */; };
+		DAE9719C2191C20000436E93 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB55EF7218B970C00A9F02A /* Option.swift */; };
+		DAE9719D2191C20000436E93 /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB55EF9218B98F400A9F02A /* Effect.swift */; };
+		DAE9719E2191C20000436E93 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB55F00218B9D4800A9F02A /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -527,8 +532,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DACF07BD219070D600F907AB /* View.swift in Sources */,
+				DAE9719D2191C20000436E93 /* Effect.swift in Sources */,
 				DACF07D021907A3C00F907AB /* String.swift in Sources */,
+				DAE9719B2191C20000436E93 /* Message.swift in Sources */,
+				DAE9719E2191C20000436E93 /* Player.swift in Sources */,
 				DA24FEF32190638100031D57 /* Application.swift in Sources */,
+				DAE9719C2191C20000436E93 /* Option.swift in Sources */,
+				DAE9719A2191C20000436E93 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

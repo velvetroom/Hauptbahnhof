@@ -16,9 +16,12 @@ import Cocoa
         menu.addItem(withTitle:String(), action:nil, keyEquivalent:String()).submenu = submenu
         self.mainMenu = menu
         
-        let window = NSWindow(contentRect:NSScreen.main!.frame, styleMask:[.titled, .resizable, .closable, .miniaturizable], backing:.buffered, defer:false)
+        let rect = NSRect(x:(NSScreen.main!.frame.width - 800) / 2, y:
+            (NSScreen.main!.frame.height - 800) / 2, width:800, height:800)
+        let window = NSWindow(contentRect:rect, styleMask:
+            [.titled, .resizable, .closable, .miniaturizable], backing:.buffered, defer:false)
         window.makeKeyAndOrderFront(nil)
-        window.contentViewController = View()
+        window.contentView = View()
         window.backgroundColor = .white
     }
     
