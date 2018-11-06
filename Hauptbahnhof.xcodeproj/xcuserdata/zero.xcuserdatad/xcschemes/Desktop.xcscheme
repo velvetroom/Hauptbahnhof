@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DA24FDFF219061C500031D57"
-               BuildableName = "Editor.app"
-               BlueprintName = "Editor"
+               BuildableName = "Desktop.app"
+               BlueprintName = "Desktop"
                ReferencedContainer = "container:Hauptbahnhof.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DA24FDFF219061C500031D57"
-            BuildableName = "Editor.app"
-            BlueprintName = "Editor"
+            BuildableName = "Desktop.app"
+            BlueprintName = "Desktop"
             ReferencedContainer = "container:Hauptbahnhof.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -56,8 +56,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DA24FDFF219061C500031D57"
-            BuildableName = "Editor.app"
-            BlueprintName = "Editor"
+            BuildableName = "Desktop.app"
+            BlueprintName = "Desktop"
             ReferencedContainer = "container:Hauptbahnhof.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -75,8 +75,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DA24FDFF219061C500031D57"
-            BuildableName = "Editor.app"
-            BlueprintName = "Editor"
+            BuildableName = "Desktop.app"
+            BlueprintName = "Desktop"
             ReferencedContainer = "container:Hauptbahnhof.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

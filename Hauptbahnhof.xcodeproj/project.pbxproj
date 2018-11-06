@@ -83,7 +83,7 @@
 		B42174B0A947B9ED86D7EFFA /* Pods-Application.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Application.debug.xcconfig"; path = "Target Support Files/Pods-Application/Pods-Application.debug.xcconfig"; sourceTree = "<group>"; };
 		D059CFF090ED42DC2B24425B /* libPods-Application.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Application.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA24FDFA21905E5F00031D57 /* TestSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSelection.swift; sourceTree = "<group>"; };
-		DA24FE00219061C500031D57 /* Editor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Editor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA24FE00219061C500031D57 /* Desktop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Desktop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA24FEF22190638100031D57 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		DAA7FBCB218BB1C200F1C0E8 /* TestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFactory.swift; sourceTree = "<group>"; };
 		DAA7FBCE218BB29000F1C0E8 /* SplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
@@ -293,7 +293,7 @@
 				DAD7E122218A39660085F449 /* Tests.xctest */,
 				DAD7E123218A3A690085F449 /* libHauptbahnhof.a */,
 				DAD7E124218A3A690085F449 /* Application.app */,
-				DA24FE00219061C500031D57 /* Editor.app */,
+				DA24FE00219061C500031D57 /* Desktop.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -355,9 +355,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DA24FDFF219061C500031D57 /* Editor */ = {
+		DA24FDFF219061C500031D57 /* Desktop */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DA24FE0B219061C700031D57 /* Build configuration list for PBXNativeTarget "Editor" */;
+			buildConfigurationList = DA24FE0B219061C700031D57 /* Build configuration list for PBXNativeTarget "Desktop" */;
 			buildPhases = (
 				DA24FDFC219061C500031D57 /* Sources */,
 				DA24FDFD219061C500031D57 /* Frameworks */,
@@ -367,9 +367,9 @@
 			);
 			dependencies = (
 			);
-			name = Editor;
+			name = Desktop;
 			productName = Editor;
-			productReference = DA24FE00219061C500031D57 /* Editor.app */;
+			productReference = DA24FE00219061C500031D57 /* Desktop.app */;
 			productType = "com.apple.product-type.application";
 		};
 		DAD7E0F2218A350F0085F449 /* Hauptbahnhof */ = {
@@ -465,7 +465,7 @@
 				DAD7E0F2218A350F0085F449 /* Hauptbahnhof */,
 				DAD7E100218A355F0085F449 /* Tests */,
 				DAD7E10F218A35750085F449 /* Application */,
-				DA24FDFF219061C500031D57 /* Editor */,
+				DA24FDFF219061C500031D57 /* Desktop */,
 			);
 		};
 /* End PBXProject section */
@@ -625,12 +625,12 @@
 		DA24FE0C219061C700031D57 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = Configuration/Editor.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Configuration/Desktop.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
-				INFOPLIST_FILE = Configuration/editor.plist;
+				INFOPLIST_FILE = Configuration/Desktop.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -645,12 +645,12 @@
 		DA24FE0D219061C700031D57 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = Configuration/Editor.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Configuration/Desktop.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
-				INFOPLIST_FILE = Configuration/editor.plist;
+				INFOPLIST_FILE = Configuration/Desktop.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -810,7 +810,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
-				INFOPLIST_FILE = Configuration/tests.plist;
+				INFOPLIST_FILE = Configuration/Tests.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -828,7 +828,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
-				INFOPLIST_FILE = Configuration/tests.plist;
+				INFOPLIST_FILE = Configuration/Tests.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -845,7 +845,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
-				INFOPLIST_FILE = Configuration/application.plist;
+				INFOPLIST_FILE = Configuration/Application.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -861,7 +861,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
-				INFOPLIST_FILE = Configuration/application.plist;
+				INFOPLIST_FILE = Configuration/Application.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -875,7 +875,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DA24FE0B219061C700031D57 /* Build configuration list for PBXNativeTarget "Editor" */ = {
+		DA24FE0B219061C700031D57 /* Build configuration list for PBXNativeTarget "Desktop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DA24FE0C219061C700031D57 /* Debug */,
