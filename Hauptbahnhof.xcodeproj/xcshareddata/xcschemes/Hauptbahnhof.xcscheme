@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DACF84DA219223B4005B741C"
-               BuildableName = "libEditor.a"
-               BlueprintName = "Editor"
+               BlueprintIdentifier = "DAD7E0F2218A350F0085F449"
+               BuildableName = "libHauptbahnhof.a"
+               BlueprintName = "Hauptbahnhof"
                ReferencedContainer = "container:Hauptbahnhof.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,7 +33,7 @@
             testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DA7DEF5C2192ED9800909D9D"
+               BlueprintIdentifier = "DA48003721930FF600A72514"
                BuildableName = "Tests.xctest"
                BlueprintName = "Tests"
                ReferencedContainer = "container:Hauptbahnhof.xcodeproj">
@@ -43,9 +43,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DACF84DA219223B4005B741C"
-            BuildableName = "libEditor.a"
-            BlueprintName = "Editor"
+            BlueprintIdentifier = "DAD7E0F2218A350F0085F449"
+            BuildableName = "libHauptbahnhof.a"
+            BlueprintName = "Hauptbahnhof"
             ReferencedContainer = "container:Hauptbahnhof.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,9 +65,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DACF84DA219223B4005B741C"
-            BuildableName = "libEditor.a"
-            BlueprintName = "Editor"
+            BlueprintIdentifier = "DAD7E0F2218A350F0085F449"
+            BuildableName = "libHauptbahnhof.a"
+            BlueprintName = "Hauptbahnhof"
             ReferencedContainer = "container:Hauptbahnhof.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -83,9 +83,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DACF84DA219223B4005B741C"
-            BuildableName = "libEditor.a"
-            BlueprintName = "Editor"
+            BlueprintIdentifier = "DAD7E0F2218A350F0085F449"
+            BuildableName = "libHauptbahnhof.a"
+            BlueprintName = "Hauptbahnhof"
             ReferencedContainer = "container:Hauptbahnhof.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
