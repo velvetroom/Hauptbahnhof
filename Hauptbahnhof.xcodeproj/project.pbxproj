@@ -16,6 +16,7 @@
 		DA48004E2193103600A72514 /* TestStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4800482193103600A72514 /* TestStorage.swift */; };
 		DA48004F2193103600A72514 /* TestSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA48004A2193103600A72514 /* TestSelection.swift */; };
 		DA51A266219313A000F7C804 /* One.json in Resources */ = {isa = PBXBuildFile; fileRef = DACF07C6219079CA00F907AB /* One.json */; };
+		DA51A268219328F500F7C804 /* DocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA51A267219328F500F7C804 /* DocumentView.swift */; };
 		DA7DEF472192EB7900909D9D /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7DEF412192EB7900909D9D /* Game.swift */; };
 		DA7DEF482192EB7900909D9D /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7DEF412192EB7900909D9D /* Game.swift */; };
 		DA7DEF492192EB7900909D9D /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7DEF422192EB7900909D9D /* Option.swift */; };
@@ -59,7 +60,7 @@
 		DAD7E137218A3B630085F449 /* GameMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7E136218A3B620085F449 /* GameMaster.swift */; };
 		DAE6AA8A218F3B2D00E7BBC1 /* GameOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE6AA89218F3B2D00E7BBC1 /* GameOptionView.swift */; };
 		DAFEC3372192411F00DAA671 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFEC3362192411F00DAA671 /* Presenter.swift */; };
-		DAFEC33D2192499100DAA671 /* MessageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFEC33C2192499100DAA671 /* MessageCellView.swift */; };
+		DAFEC33D2192499100DAA671 /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFEC33C2192499100DAA671 /* ListItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		DA4800472193103600A72514 /* MockStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockStorage.swift; sourceTree = "<group>"; };
 		DA4800482193103600A72514 /* TestStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestStorage.swift; sourceTree = "<group>"; };
 		DA48004A2193103600A72514 /* TestSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSelection.swift; sourceTree = "<group>"; };
+		DA51A267219328F500F7C804 /* DocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentView.swift; sourceTree = "<group>"; };
 		DA7DEF412192EB7900909D9D /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		DA7DEF422192EB7900909D9D /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		DA7DEF432192EB7900909D9D /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -130,7 +132,7 @@
 		DAD7E136218A3B620085F449 /* GameMaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMaster.swift; sourceTree = "<group>"; };
 		DAE6AA89218F3B2D00E7BBC1 /* GameOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOptionView.swift; sourceTree = "<group>"; };
 		DAFEC3362192411F00DAA671 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
-		DAFEC33C2192499100DAA671 /* MessageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellView.swift; sourceTree = "<group>"; };
+		DAFEC33C2192499100DAA671 /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,7 +283,8 @@
 				DACF84F92192270E005B741C /* Application.swift */,
 				DAFEC3362192411F00DAA671 /* Presenter.swift */,
 				DACF84F82192270E005B741C /* View.swift */,
-				DAFEC33C2192499100DAA671 /* MessageCellView.swift */,
+				DAFEC33C2192499100DAA671 /* ListItemView.swift */,
+				DA51A267219328F500F7C804 /* DocumentView.swift */,
 			);
 			path = Desktop;
 			sourceTree = "<group>";
@@ -591,7 +594,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DACF84FB2192270E005B741C /* Application.swift in Sources */,
-				DAFEC33D2192499100DAA671 /* MessageCellView.swift in Sources */,
+				DA51A268219328F500F7C804 /* DocumentView.swift in Sources */,
+				DAFEC33D2192499100DAA671 /* ListItemView.swift in Sources */,
 				DA7DEF572192EBEB00909D9D /* String.swift in Sources */,
 				DACF84FA2192270E005B741C /* View.swift in Sources */,
 				DAFEC3372192411F00DAA671 /* Presenter.swift in Sources */,
