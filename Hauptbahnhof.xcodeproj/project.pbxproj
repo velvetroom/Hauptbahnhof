@@ -30,7 +30,7 @@
 		DACF84EB219223D9005B741C /* TestsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACF84EA219223D9005B741C /* TestsEditor.swift */; };
 		DACF84ED219223D9005B741C /* libEditor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DACF84DB219223B4005B741C /* libEditor.a */; };
 		DACF84F621922703005B741C /* TestsEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACF84F521922703005B741C /* TestsEditor.swift */; };
-		DACF84FA2192270E005B741C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACF84F82192270E005B741C /* HomeView.swift */; };
+		DACF84FA2192270E005B741C /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACF84F82192270E005B741C /* View.swift */; };
 		DACF84FB2192270E005B741C /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACF84F92192270E005B741C /* Application.swift */; };
 		DACF85012192273F005B741C /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B5AD218B090600E1DDA9 /* Game.swift */; };
 		DACF85022192273F005B741C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B5B0218B0A5C00E1DDA9 /* Message.swift */; };
@@ -59,10 +59,8 @@
 		DAD7E134218A3B5C0085F449 /* TestParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7E133218A3B5B0085F449 /* TestParsing.swift */; };
 		DAD7E137218A3B630085F449 /* GameMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7E136218A3B620085F449 /* GameMaster.swift */; };
 		DAE6AA8A218F3B2D00E7BBC1 /* GameOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE6AA89218F3B2D00E7BBC1 /* GameOptionView.swift */; };
-		DAFEC3372192411F00DAA671 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFEC3362192411F00DAA671 /* HomePresenter.swift */; };
-		DAFEC3392192417400DAA671 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFEC3382192417400DAA671 /* Home.swift */; };
-		DAFEC33B2192429500DAA671 /* HomeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFEC33A2192429500DAA671 /* HomeItem.swift */; };
-		DAFEC33D2192499100DAA671 /* HomeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFEC33C2192499100DAA671 /* HomeCellView.swift */; };
+		DAFEC3372192411F00DAA671 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFEC3362192411F00DAA671 /* Presenter.swift */; };
+		DAFEC33D2192499100DAA671 /* MessageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFEC33C2192499100DAA671 /* MessageCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,7 +120,7 @@
 		DACF84EA219223D9005B741C /* TestsEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsEditor.swift; sourceTree = "<group>"; };
 		DACF84EC219223D9005B741C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DACF84F521922703005B741C /* TestsEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestsEditor.swift; sourceTree = "<group>"; };
-		DACF84F82192270E005B741C /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		DACF84F82192270E005B741C /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		DACF84F92192270E005B741C /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		DAD5B58E218A4ABC00E1DDA9 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		DAD5B591218A509300E1DDA9 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
@@ -144,10 +142,8 @@
 		DAD7E133218A3B5B0085F449 /* TestParsing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestParsing.swift; sourceTree = "<group>"; };
 		DAD7E136218A3B620085F449 /* GameMaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMaster.swift; sourceTree = "<group>"; };
 		DAE6AA89218F3B2D00E7BBC1 /* GameOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOptionView.swift; sourceTree = "<group>"; };
-		DAFEC3362192411F00DAA671 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
-		DAFEC3382192417400DAA671 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
-		DAFEC33A2192429500DAA671 /* HomeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeItem.swift; sourceTree = "<group>"; };
-		DAFEC33C2192499100DAA671 /* HomeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellView.swift; sourceTree = "<group>"; };
+		DAFEC3362192411F00DAA671 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		DAFEC33C2192499100DAA671 /* MessageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,8 +289,10 @@
 		DACF84F72192270E005B741C /* Desktop */ = {
 			isa = PBXGroup;
 			children = (
-				DAFEC334219240D200DAA671 /* Shared */,
-				DAFEC335219240DE00DAA671 /* Home */,
+				DACF84F92192270E005B741C /* Application.swift */,
+				DAFEC3362192411F00DAA671 /* Presenter.swift */,
+				DACF84F82192270E005B741C /* View.swift */,
+				DAFEC33C2192499100DAA671 /* MessageCellView.swift */,
 			);
 			path = Desktop;
 			sourceTree = "<group>";
@@ -414,26 +412,6 @@
 				DAD5B5AB218B07F800E1DDA9 /* Game */,
 			);
 			path = Source;
-			sourceTree = "<group>";
-		};
-		DAFEC334219240D200DAA671 /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				DACF84F92192270E005B741C /* Application.swift */,
-			);
-			path = Shared;
-			sourceTree = "<group>";
-		};
-		DAFEC335219240DE00DAA671 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				DAFEC3362192411F00DAA671 /* HomePresenter.swift */,
-				DACF84F82192270E005B741C /* HomeView.swift */,
-				DAFEC33C2192499100DAA671 /* HomeCellView.swift */,
-				DAFEC3382192417400DAA671 /* Home.swift */,
-				DAFEC33A2192429500DAA671 /* HomeItem.swift */,
-			);
-			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -676,12 +654,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DACF84FB2192270E005B741C /* Application.swift in Sources */,
-				DAFEC33B2192429500DAA671 /* HomeItem.swift in Sources */,
 				DACF07D021907A3C00F907AB /* String.swift in Sources */,
-				DAFEC3392192417400DAA671 /* Home.swift in Sources */,
-				DAFEC33D2192499100DAA671 /* HomeCellView.swift in Sources */,
-				DACF84FA2192270E005B741C /* HomeView.swift in Sources */,
-				DAFEC3372192411F00DAA671 /* HomePresenter.swift in Sources */,
+				DAFEC33D2192499100DAA671 /* MessageCellView.swift in Sources */,
+				DACF84FA2192270E005B741C /* View.swift in Sources */,
+				DAFEC3372192411F00DAA671 /* Presenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

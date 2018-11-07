@@ -21,8 +21,7 @@ import Cocoa
         let window = NSWindow(contentRect:rect, styleMask:
             [.titled, .resizable, .closable, .miniaturizable, .texturedBackground], backing:.buffered, defer:false)
         window.makeKeyAndOrderFront(nil)
-        window.contentView = HomeView()
-        window.backgroundColor = .white
+        window.contentView = View()
         window.toggleToolbarShown(self)
         window.titleVisibility = .hidden
     }
