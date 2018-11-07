@@ -3,6 +3,7 @@ import Editor
 
 class View:NSView, NSTextViewDelegate {
     private weak var list:NSScrollView!
+    private weak var options:NSScrollView!
     private weak var text:NSTextView!
     private weak var chapter:NSTextView!
     private var messages = [String:Message]() { didSet { reloadList() } }
@@ -61,6 +62,7 @@ class View:NSView, NSTextViewDelegate {
         list.translatesAutoresizingMaskIntoConstraints = false
         list.hasVerticalScroller = true
         list.documentView = DocumentView()
+        (list.documentView! as! DocumentView).autoLayout()
         addSubview(list)
         self.list = list
         
@@ -73,7 +75,7 @@ class View:NSView, NSTextViewDelegate {
         let scrollText = NSScrollView(frame:.zero)
         scrollText.translatesAutoresizingMaskIntoConstraints = false
         scrollText.hasVerticalScroller = true
-        addSubview(scrollText)
+        editionArea.addSubview(scrollText)
         
         let text = NSTextView(frame:.zero)
         text.textContainerInset = NSSize(width:10, height:10)
@@ -86,14 +88,19 @@ class View:NSView, NSTextViewDelegate {
         scrollText.documentView = text
         self.text = text
         
+        let options = NSScrollView(frame:.zero)
+        options.drawsBackground = false
+        options.translatesAutoresizingMaskIntoConstraints = false
+        options.hasVerticalScroller = true
+        options.documentView = DocumentView()
+        (options.documentView! as! DocumentView).autoLayout()
+        editionArea.addSubview(options)
+        self.options = options
+        
         list.topAnchor.constraint(equalTo:chapter.bottomAnchor).isActive = true
         list.leftAnchor.constraint(equalTo:leftAnchor).isActive = true
         list.bottomAnchor.constraint(equalTo:bottomAnchor).isActive = true
         list.widthAnchor.constraint(equalToConstant:200).isActive = true
-        
-        list.documentView!.topAnchor.constraint(equalTo:list.contentView.topAnchor).isActive = true
-        list.documentView!.leftAnchor.constraint(equalTo:list.contentView.leftAnchor).isActive = true
-        list.documentView!.rightAnchor.constraint(equalTo:list.contentView.rightAnchor).isActive = true
         
         scrollChapter.topAnchor.constraint(equalTo:topAnchor).isActive = true
         scrollChapter.leftAnchor.constraint(equalTo:leftAnchor).isActive = true
@@ -109,6 +116,11 @@ class View:NSView, NSTextViewDelegate {
         scrollText.leftAnchor.constraint(equalTo:editionArea.leftAnchor).isActive = true
         scrollText.rightAnchor.constraint(equalTo:editionArea.rightAnchor).isActive = true
         scrollText.heightAnchor.constraint(equalToConstant:200).isActive = true
+        
+        options.topAnchor.constraint(equalTo:scrollText.bottomAnchor).isActive = true
+        options.leftAnchor.constraint(equalTo:editionArea.leftAnchor).isActive = true
+        options.rightAnchor.constraint(equalTo:editionArea.rightAnchor).isActive = true
+        options.bottomAnchor.constraint(equalTo:editionArea.bottomAnchor).isActive = true
     }
     
     private func stopEditing() { DispatchQueue.main.async { [weak self] in self?.window?.makeFirstResponder(nil) } }
@@ -117,7 +129,7 @@ class View:NSView, NSTextViewDelegate {
         list.documentView!.subviews.forEach { $0.removeFromSuperview() }
         var top = list.documentView!.topAnchor
         messages.forEach { id, message in
-            let item = ListItemView(message:id, options:message.options.count)
+            let item = ItemView(id, options:message.options.count)
             item.target = self
             item.action = #selector(select(item:))
             list.documentView!.addSubview(item)
@@ -129,8 +141,24 @@ class View:NSView, NSTextViewDelegate {
         list.documentView!.bottomAnchor.constraint(equalTo:top).isActive = true
     }
     
-    @objc private func select(item:ListItemView) {
-        list.documentView!.subviews.forEach { ($0 as! ListItemView).selected = $0 === item }
+    private func reloadOption(items:[Option]) {
+        options.documentView!.subviews.forEach { $0.removeFromSuperview() }
+        var top = options.documentView!.topAnchor
+        items.forEach { item in
+            let option = OptionView(item)
+            options.documentView!.addSubview(option)
+            
+            option.topAnchor.constraint(equalTo:top).isActive = true
+            option.leftAnchor.constraint(equalTo:options.leftAnchor).isActive = true
+            option.rightAnchor.constraint(equalTo:options.rightAnchor).isActive = true
+            top = option.bottomAnchor
+        }
+        options.documentView!.bottomAnchor.constraint(equalTo:top).isActive = true
+    }
+    
+    @objc private func select(item:ItemView) {
+        list.documentView!.subviews.forEach { ($0 as! ItemView).selected = $0 === item }
         text.string = messages[item.message]!.text
+        reloadOption(items:messages[item.message]!.options)
     }
 }

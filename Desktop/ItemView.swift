@@ -1,6 +1,6 @@
 import Cocoa
 
-class ListItemView:NSControl {
+class ItemView:NSControl {
     let message:String
     override var intrinsicContentSize:NSSize { return NSSize(width:200, height:50) }
     var selected = false { didSet {
@@ -15,7 +15,7 @@ class ListItemView:NSControl {
         sendAction(action, to:target)
     }
     
-    init(message:String, options:Int) {
+    init(_ message:String, options:Int) {
         self.message = message
         super.init(frame:.zero)
         translatesAutoresizingMaskIntoConstraints = false

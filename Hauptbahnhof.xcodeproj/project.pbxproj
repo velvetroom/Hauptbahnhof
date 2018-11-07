@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		38D505BA45CC16724631C727 /* libPods-Application.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D059CFF090ED42DC2B24425B /* libPods-Application.a */; };
+		DA25F365219331CB0049843E /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA25F364219331CB0049843E /* OptionView.swift */; };
 		DA397BDE218A3E1200C54971 /* libHauptbahnhof.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD7E123218A3A690085F449 /* libHauptbahnhof.a */; };
 		DA48003D21930FF600A72514 /* libHauptbahnhof.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD7E123218A3A690085F449 /* libHauptbahnhof.a */; };
 		DA48004B2193103600A72514 /* TestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4800452193103600A72514 /* TestFactory.swift */; };
@@ -60,7 +61,7 @@
 		DAD7E137218A3B630085F449 /* GameMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7E136218A3B620085F449 /* GameMaster.swift */; };
 		DAE6AA8A218F3B2D00E7BBC1 /* GameOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE6AA89218F3B2D00E7BBC1 /* GameOptionView.swift */; };
 		DAFEC3372192411F00DAA671 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFEC3362192411F00DAA671 /* Presenter.swift */; };
-		DAFEC33D2192499100DAA671 /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFEC33C2192499100DAA671 /* ListItemView.swift */; };
+		DAFEC33D2192499100DAA671 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFEC33C2192499100DAA671 /* ItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		B42174B0A947B9ED86D7EFFA /* Pods-Application.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Application.debug.xcconfig"; path = "Target Support Files/Pods-Application/Pods-Application.debug.xcconfig"; sourceTree = "<group>"; };
 		D059CFF090ED42DC2B24425B /* libPods-Application.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Application.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA24FE00219061C500031D57 /* Desktop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Desktop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA25F364219331CB0049843E /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
 		DA48003821930FF600A72514 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA4800452193103600A72514 /* TestFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFactory.swift; sourceTree = "<group>"; };
 		DA4800462193103600A72514 /* TestParsing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestParsing.swift; sourceTree = "<group>"; };
@@ -132,7 +134,7 @@
 		DAD7E136218A3B620085F449 /* GameMaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMaster.swift; sourceTree = "<group>"; };
 		DAE6AA89218F3B2D00E7BBC1 /* GameOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOptionView.swift; sourceTree = "<group>"; };
 		DAFEC3362192411F00DAA671 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
-		DAFEC33C2192499100DAA671 /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
+		DAFEC33C2192499100DAA671 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,7 +285,8 @@
 				DACF84F92192270E005B741C /* Application.swift */,
 				DAFEC3362192411F00DAA671 /* Presenter.swift */,
 				DACF84F82192270E005B741C /* View.swift */,
-				DAFEC33C2192499100DAA671 /* ListItemView.swift */,
+				DAFEC33C2192499100DAA671 /* ItemView.swift */,
+				DA25F364219331CB0049843E /* OptionView.swift */,
 				DA51A267219328F500F7C804 /* DocumentView.swift */,
 			);
 			path = Desktop;
@@ -593,9 +596,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA25F365219331CB0049843E /* OptionView.swift in Sources */,
 				DACF84FB2192270E005B741C /* Application.swift in Sources */,
 				DA51A268219328F500F7C804 /* DocumentView.swift in Sources */,
-				DAFEC33D2192499100DAA671 /* ListItemView.swift in Sources */,
+				DAFEC33D2192499100DAA671 /* ItemView.swift in Sources */,
 				DA7DEF572192EBEB00909D9D /* String.swift in Sources */,
 				DACF84FA2192270E005B741C /* View.swift in Sources */,
 				DAFEC3372192411F00DAA671 /* Presenter.swift in Sources */,
