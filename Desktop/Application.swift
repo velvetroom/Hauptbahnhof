@@ -22,7 +22,6 @@ import Cocoa
             [.titled, .resizable, .closable, .miniaturizable, .texturedBackground], backing:.buffered, defer:false)
         window.makeKeyAndOrderFront(nil)
         window.contentView = View()
-        window.toggleToolbarShown(self)
         window.titleVisibility = .hidden
     }
     
