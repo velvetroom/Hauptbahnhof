@@ -1,5 +1,5 @@
 import XCTest
-@testable import Editor
+@testable import Hauptbahnhof
 
 class TestFactory:XCTestCase {
     override func setUp() {
