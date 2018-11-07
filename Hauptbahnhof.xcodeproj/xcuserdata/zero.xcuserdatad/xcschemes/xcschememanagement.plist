@@ -7,17 +7,17 @@
 		<key>Application.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
 		<key>Desktop.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>1</integer>
 		</dict>
 		<key>Hauptbahnhof.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 		<key>Tests.xcscheme</key>
 		<dict>
@@ -28,6 +28,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>DA24FDFF219061C500031D57</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DA7DEF5C2192ED9800909D9D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

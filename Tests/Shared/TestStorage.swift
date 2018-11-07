@@ -1,5 +1,5 @@
 import XCTest
-@testable import Hauptbahnhof
+@testable import Editor
 
 class TestStorage:XCTestCase {
     private var master:GameMaster!

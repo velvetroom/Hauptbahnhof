@@ -1,5 +1,5 @@
 import Foundation
-@testable import Hauptbahnhof
+@testable import Editor
 
 class MockStorage:Storage {
     static var profile = Player()

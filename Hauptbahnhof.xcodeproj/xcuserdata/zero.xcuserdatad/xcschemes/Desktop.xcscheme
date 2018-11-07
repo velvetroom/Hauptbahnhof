@@ -33,9 +33,9 @@
             testExecutionOrdering = "random">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DACF84E7219223D9005B741C"
-               BuildableName = "TestsEditor.xctest"
-               BlueprintName = "TestsEditor"
+               BlueprintIdentifier = "DA7DEF5C2192ED9800909D9D"
+               BuildableName = "Tests.xctest"
+               BlueprintName = "Tests"
                ReferencedContainer = "container:Hauptbahnhof.xcodeproj">
             </BuildableReference>
          </TestableReference>
