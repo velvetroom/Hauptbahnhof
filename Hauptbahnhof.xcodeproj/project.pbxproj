@@ -219,7 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				DA7DEF692192EDFD00909D9D /* Shared */,
-				DA7DEF6E2192EDFD00909D9D /* GameMaster */,
+				DA7DEF6E2192EDFD00909D9D /* Game */,
 				DA7DEF702192EDFD00909D9D /* Editor */,
 			);
 			path = Tests;
@@ -236,12 +236,12 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		DA7DEF6E2192EDFD00909D9D /* GameMaster */ = {
+		DA7DEF6E2192EDFD00909D9D /* Game */ = {
 			isa = PBXGroup;
 			children = (
 				DA7DEF6F2192EDFD00909D9D /* TestSelection.swift */,
 			);
-			path = GameMaster;
+			path = Game;
 			sourceTree = "<group>";
 		};
 		DA7DEF702192EDFD00909D9D /* Editor */ = {
