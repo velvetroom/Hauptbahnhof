@@ -2,10 +2,9 @@ import Cocoa
 import Editor
 
 class OptionView:NSView {
-    private weak var text:NSText!
     override var intrinsicContentSize:NSSize { return NSSize(width:NSView.noIntrinsicMetric, height:150) }
     
-    init(_ option:Option) {
+    init(_ option:Option, messages:[String]) {
         super.init(frame:.zero)
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -25,12 +24,33 @@ class OptionView:NSView {
         text.font = NSFont.systemFont(ofSize:16, weight:.light)
         text.string = option.text
         scrollText.documentView = text
-        self.text = text
+        
+        let nextTitle = NSTextField()
+        nextTitle.translatesAutoresizingMaskIntoConstraints = false
+        nextTitle.font = .systemFont(ofSize:12, weight:.medium)
+        nextTitle.backgroundColor = .clear
+        nextTitle.lineBreakMode = .byTruncatingTail
+        nextTitle.isBezeled = false
+        nextTitle.isEditable = false
+        nextTitle.stringValue = .local("OptionView.next")
+        addSubview(nextTitle)
+        
+        let next = NSPopUpButton(frame:.zero)
+        next.translatesAutoresizingMaskIntoConstraints = false
+        next.addItems(withTitles:messages)
+        next.selectItem(withTitle:option.next)
+        addSubview(next)
 
         scrollText.topAnchor.constraint(equalTo:topAnchor, constant:6).isActive = true
         scrollText.leftAnchor.constraint(equalTo:leftAnchor, constant:-10).isActive = true
         scrollText.rightAnchor.constraint(equalTo:rightAnchor, constant:-140).isActive = true
         scrollText.heightAnchor.constraint(equalToConstant:60).isActive = true
+        
+        nextTitle.centerYAnchor.constraint(equalTo:next.centerYAnchor).isActive = true
+        nextTitle.leftAnchor.constraint(equalTo:leftAnchor, constant:10).isActive = true
+        
+        next.topAnchor.constraint(equalTo:scrollText.bottomAnchor, constant:10).isActive = true
+        next.leftAnchor.constraint(equalTo:nextTitle.rightAnchor, constant:10).isActive = true
     }
     
     required init?(coder:NSCoder) { return nil }

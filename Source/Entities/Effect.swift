@@ -1,5 +1,5 @@
 import Foundation
 
-struct Effect:Decodable {
+public struct Effect:Decodable {
     
 }

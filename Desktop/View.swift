@@ -145,7 +145,7 @@ class View:NSView, NSTextViewDelegate {
         options.documentView!.subviews.forEach { $0.removeFromSuperview() }
         var top = options.documentView!.topAnchor
         items.forEach { item in
-            let option = OptionView(item)
+            let option = OptionView(item, messages:Array(messages.keys))
             options.documentView!.addSubview(option)
             
             option.topAnchor.constraint(equalTo:top).isActive = true
