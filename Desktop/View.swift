@@ -11,7 +11,6 @@ class View:NSView, NSTextViewDelegate {
 
     override func cancelOperation(_:Any?) { stopEditing() }
     override func mouseDown(with:NSEvent) { stopEditing() }
-    override var mouseDownCanMoveWindow:Bool { return false }
     
     func textView(_:NSTextView, doCommandBy selector:Selector) -> Bool {
         if (selector == #selector(NSResponder.insertNewline(_:))) {
@@ -30,15 +29,21 @@ class View:NSView, NSTextViewDelegate {
     }
     
     private func makeOutlets() {
+        let bar = NSView()
+        bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.wantsLayer = true
+        bar.layer!.backgroundColor = NSColor.windowBackgroundColor.cgColor
+        addSubview(bar)
+        
         let scrollChapter = NSScrollView(frame:.zero)
         scrollChapter.drawsBackground = false
         scrollChapter.translatesAutoresizingMaskIntoConstraints = false
         scrollChapter.hasHorizontalScroller = true
-        addSubview(scrollChapter)
+        bar.addSubview(scrollChapter)
         
         let chapter = NSTextView(frame:.zero)
         chapter.drawsBackground = false
-        chapter.textContainerInset = NSSize(width:10, height:20)
+        chapter.textContainerInset = NSSize(width:10, height:10)
         chapter.isHorizontallyResizable = true
         chapter.isVerticallyResizable = true
         chapter.isContinuousSpellCheckingEnabled = true
@@ -97,17 +102,22 @@ class View:NSView, NSTextViewDelegate {
         editionArea.addSubview(options)
         self.options = options
         
-        list.topAnchor.constraint(equalTo:chapter.bottomAnchor).isActive = true
+        bar.topAnchor.constraint(equalTo:topAnchor).isActive = true
+        bar.leftAnchor.constraint(equalTo:leftAnchor).isActive = true
+        bar.rightAnchor.constraint(equalTo:rightAnchor).isActive = true
+        bar.heightAnchor.constraint(equalToConstant:60).isActive = true
+        
+        list.topAnchor.constraint(equalTo:bar.bottomAnchor).isActive = true
         list.leftAnchor.constraint(equalTo:leftAnchor).isActive = true
         list.bottomAnchor.constraint(equalTo:bottomAnchor).isActive = true
         list.widthAnchor.constraint(equalToConstant:200).isActive = true
         
-        scrollChapter.topAnchor.constraint(equalTo:topAnchor).isActive = true
-        scrollChapter.leftAnchor.constraint(equalTo:leftAnchor).isActive = true
-        scrollChapter.rightAnchor.constraint(equalTo:rightAnchor).isActive = true
-        scrollChapter.heightAnchor.constraint(equalToConstant:52).isActive = true
+        scrollChapter.topAnchor.constraint(equalTo:bar.topAnchor, constant:20).isActive = true
+        scrollChapter.leftAnchor.constraint(equalTo:bar.leftAnchor).isActive = true
+        scrollChapter.bottomAnchor.constraint(equalTo:bar.bottomAnchor).isActive = true
+        scrollChapter.widthAnchor.constraint(equalToConstant:220).isActive = true
         
-        editionArea.topAnchor.constraint(equalTo:chapter.bottomAnchor).isActive = true
+        editionArea.topAnchor.constraint(equalTo:bar.bottomAnchor).isActive = true
         editionArea.leftAnchor.constraint(equalTo:list.rightAnchor).isActive = true
         editionArea.rightAnchor.constraint(equalTo:rightAnchor).isActive = true
         editionArea.bottomAnchor.constraint(equalTo:bottomAnchor).isActive = true

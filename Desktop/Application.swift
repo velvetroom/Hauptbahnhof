@@ -19,10 +19,14 @@ import Cocoa
         let rect = NSRect(x:(NSScreen.main!.frame.width - 800) / 2, y:
             (NSScreen.main!.frame.height - 800) / 2, width:800, height:800)
         let window = NSWindow(contentRect:rect, styleMask:
-            [.titled, .resizable, .closable, .miniaturizable, .texturedBackground], backing:.buffered, defer:false)
+            [.titled, .resizable, .closable, .miniaturizable, .fullSizeContentView], backing:.buffered, defer:false)
         window.makeKeyAndOrderFront(nil)
-        window.contentView = View()
+        window.isOpaque = false
+        window.titlebarAppearsTransparent = true
+        window.backgroundColor = NSColor.windowBackgroundColor.withAlphaComponent(0.9)
+        window.titlebarAppearsTransparent = true
         window.titleVisibility = .hidden
+        window.contentView = View()
     }
     
     @objc private func quit() { terminate(nil) }
