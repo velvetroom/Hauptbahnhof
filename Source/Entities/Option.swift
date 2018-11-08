@@ -1,7 +1,9 @@
 import Foundation
 
-public struct Option:Decodable {
-    public let text:String
-    public let next:String
-    public let effects:[Effect]
+public class Option:Decodable {
+    public var text = String()
+    public var next = String()
+    public var effects = [Effect]()
+    
+    public init() { }
 }

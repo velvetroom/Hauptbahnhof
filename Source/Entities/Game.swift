@@ -1,8 +1,8 @@
 import Foundation
 
 public struct Game:Decodable {
-    public private(set) var title = String()
-    public private(set) var messages = [String:Message]()
+    public var title = String()
+    public var messages = [String:Message]()
     
     public init() { }
 }
