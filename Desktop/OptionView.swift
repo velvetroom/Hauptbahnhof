@@ -2,6 +2,7 @@ import Cocoa
 import Editor
 
 class OptionView:NSView {
+    private weak var list:NSScrollView!
     override var intrinsicContentSize:NSSize { return NSSize(width:NSView.noIntrinsicMetric, height:150) }
     
     init(_ option:Option, messages:[String]) {
@@ -35,6 +36,19 @@ class OptionView:NSView {
         next.addItems(withTitles:messages)
         next.selectItem(withTitle:option.next)
         addSubview(next)
+        
+        let list = NSScrollView(frame:.zero)
+        list.translatesAutoresizingMaskIntoConstraints = false
+        list.hasVerticalScroller = true
+        list.wantsLayer = true
+        list.layer!.cornerRadius = 12
+        list.documentView = DocumentView()
+        (list.documentView! as! DocumentView).autoLayout()
+        addSubview(list)
+        self.list = list
+        
+        let buttonAdd = Button("add")
+        addSubview(buttonAdd)
 
         text.topAnchor.constraint(equalTo:topAnchor, constant:6).isActive = true
         text.leftAnchor.constraint(equalTo:leftAnchor, constant:-10).isActive = true
@@ -46,6 +60,14 @@ class OptionView:NSView {
         
         next.topAnchor.constraint(equalTo:text.bottomAnchor, constant:10).isActive = true
         next.leftAnchor.constraint(equalTo:nextTitle.rightAnchor, constant:10).isActive = true
+        
+        list.topAnchor.constraint(equalTo:text.topAnchor).isActive = true
+        list.leftAnchor.constraint(equalTo:text.rightAnchor, constant:10).isActive = true
+        list.widthAnchor.constraint(equalToConstant:300).isActive = true
+        list.heightAnchor.constraint(equalToConstant:90).isActive = true
+        
+        buttonAdd.topAnchor.constraint(equalTo:list.topAnchor).isActive = true
+        buttonAdd.leftAnchor.constraint(equalTo:list.rightAnchor, constant:10).isActive = true
     }
     
     required init?(coder:NSCoder) { return nil }

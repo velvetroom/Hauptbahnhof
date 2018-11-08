@@ -12,6 +12,10 @@ class View:NSView, NSTextViewDelegate {
     override func cancelOperation(_:Any?) { stopEditing() }
     override func mouseDown(with:NSEvent) { stopEditing() }
     
+    deinit {
+        chapter.delegate = nil
+    }
+    
     override func viewDidEndLiveResize() {
         super.viewDidEndLiveResize()
         updateTextSize()
@@ -52,6 +56,13 @@ class View:NSView, NSTextViewDelegate {
         addSubview(chapter)
         self.chapter = chapter
         
+        let status = NSImageView(image:NSImage(named:"loading")!)
+        status.image!.isTemplate = true
+        status.imageScaling = .scaleNone
+        status.contentTintColor = .selectedMenuItemColor
+        status.translatesAutoresizingMaskIntoConstraints = false
+        bar.addSubview(status)
+        
         let list = NSScrollView(frame:.zero)
         list.drawsBackground = false
         list.translatesAutoresizingMaskIntoConstraints = false
@@ -64,7 +75,7 @@ class View:NSView, NSTextViewDelegate {
         let editionArea = NSView()
         editionArea.translatesAutoresizingMaskIntoConstraints = false
         editionArea.wantsLayer = true
-        editionArea.layer!.backgroundColor = NSColor.underPageBackgroundColor.cgColor
+        editionArea.layer!.backgroundColor = NSColor.windowBackgroundColor.cgColor
         addSubview(editionArea)
         
         let scrollText = NSScrollView(frame:.zero)
@@ -104,6 +115,9 @@ class View:NSView, NSTextViewDelegate {
         chapter.leftAnchor.constraint(equalTo:bar.leftAnchor).isActive = true
         chapter.bottomAnchor.constraint(equalTo:bar.bottomAnchor).isActive = true
         chapter.widthAnchor.constraint(equalToConstant:220).isActive = true
+        
+        status.centerYAnchor.constraint(equalTo:chapter.centerYAnchor).isActive = true
+        status.rightAnchor.constraint(equalTo:bar.rightAnchor, constant:-6).isActive = true
         
         editionArea.topAnchor.constraint(equalTo:bar.bottomAnchor).isActive = true
         editionArea.leftAnchor.constraint(equalTo:list.rightAnchor).isActive = true

@@ -1,2 +1,3 @@
 Application.quit="Quit";
+View.validate="Validate";
 OptionView.next="Next";
