@@ -52,14 +52,6 @@ class View:NSView, NSTextViewDelegate {
         addSubview(chapter)
         self.chapter = chapter
         
-        let flow = NSCollectionViewGridLayout()
-        flow.maximumNumberOfColumns = 1
-        flow.minimumInteritemSpacing = 2
-        flow.minimumLineSpacing = 2
-        flow.margins = NSEdgeInsets(top:2, left:0, bottom:2, right:2)
-        flow.minimumItemSize = NSSize(width:0, height:50)
-        flow.maximumItemSize = NSSize(width:0, height:50)
-        
         let list = NSScrollView(frame:.zero)
         list.drawsBackground = false
         list.translatesAutoresizingMaskIntoConstraints = false
