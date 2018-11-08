@@ -8,22 +8,17 @@ class OptionView:NSView {
         super.init(frame:.zero)
         translatesAutoresizingMaskIntoConstraints = false
         
-        let scrollText = NSScrollView(frame:.zero)
-        scrollText.translatesAutoresizingMaskIntoConstraints = false
-        scrollText.wantsLayer = true
-        scrollText.layer?.cornerRadius = 12
-        addSubview(scrollText)
-        
         let text = NSTextView(frame:.zero)
+        text.translatesAutoresizingMaskIntoConstraints = false
+        text.wantsLayer = true
+        text.layer!.cornerRadius = 12
         text.textContainerInset = NSSize(width:20, height:10)
-        text.isVerticallyResizable = true
-        text.isHorizontallyResizable = true
         text.isContinuousSpellCheckingEnabled = true
-        text.textContainer!.widthTracksTextView = true
-        text.textContainer!.heightTracksTextView = true
+        text.textContainer!.size = NSSize(width:350, height:52)
+        text.textContainer!.lineBreakMode = .byTruncatingTail
         text.font = NSFont.systemFont(ofSize:16, weight:.light)
         text.string = option.text
-        scrollText.documentView = text
+        addSubview(text)
         
         let nextTitle = NSTextField()
         nextTitle.translatesAutoresizingMaskIntoConstraints = false
@@ -41,15 +36,15 @@ class OptionView:NSView {
         next.selectItem(withTitle:option.next)
         addSubview(next)
 
-        scrollText.topAnchor.constraint(equalTo:topAnchor, constant:6).isActive = true
-        scrollText.leftAnchor.constraint(equalTo:leftAnchor, constant:-10).isActive = true
-        scrollText.widthAnchor.constraint(equalToConstant:350).isActive = true
-        scrollText.heightAnchor.constraint(equalToConstant:60).isActive = true
+        text.topAnchor.constraint(equalTo:topAnchor, constant:6).isActive = true
+        text.leftAnchor.constraint(equalTo:leftAnchor, constant:-10).isActive = true
+        text.widthAnchor.constraint(equalToConstant:350).isActive = true
+        text.heightAnchor.constraint(equalToConstant:52).isActive = true
         
         nextTitle.centerYAnchor.constraint(equalTo:next.centerYAnchor).isActive = true
         nextTitle.leftAnchor.constraint(equalTo:leftAnchor, constant:10).isActive = true
         
-        next.topAnchor.constraint(equalTo:scrollText.bottomAnchor, constant:10).isActive = true
+        next.topAnchor.constraint(equalTo:text.bottomAnchor, constant:10).isActive = true
         next.leftAnchor.constraint(equalTo:nextTitle.rightAnchor, constant:10).isActive = true
     }
     

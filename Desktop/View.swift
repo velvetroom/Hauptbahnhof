@@ -40,23 +40,16 @@ class View:NSView, NSTextViewDelegate {
         bar.layer!.backgroundColor = NSColor.windowBackgroundColor.cgColor
         addSubview(bar)
         
-        let scrollChapter = NSScrollView(frame:.zero)
-        scrollChapter.drawsBackground = false
-        scrollChapter.translatesAutoresizingMaskIntoConstraints = false
-        scrollChapter.hasHorizontalScroller = true
-        bar.addSubview(scrollChapter)
-        
         let chapter = NSTextView(frame:.zero)
+        chapter.translatesAutoresizingMaskIntoConstraints = false
         chapter.drawsBackground = false
+        chapter.textContainer!.lineBreakMode = .byTruncatingHead
         chapter.textContainerInset = NSSize(width:10, height:10)
-        chapter.isHorizontallyResizable = true
-        chapter.isVerticallyResizable = true
         chapter.isContinuousSpellCheckingEnabled = true
-        chapter.textContainer!.widthTracksTextView = true
-        chapter.textContainer!.heightTracksTextView = true
+        chapter.textContainer!.size = NSSize(width:600, height:30)
         chapter.font = NSFont.systemFont(ofSize:14, weight:.light)
         chapter.delegate = self
-        scrollChapter.documentView = chapter
+        addSubview(chapter)
         self.chapter = chapter
         
         let flow = NSCollectionViewGridLayout()
@@ -92,8 +85,6 @@ class View:NSView, NSTextViewDelegate {
         text.isVerticallyResizable = true
         text.isHorizontallyResizable = true
         text.isContinuousSpellCheckingEnabled = true
-        text.textContainer!.heightTracksTextView = false
-        text.textContainer!.widthTracksTextView = false
         text.font = NSFont.systemFont(ofSize:16, weight:.light)
         scrollText.documentView = text
         self.text = text
@@ -117,10 +108,10 @@ class View:NSView, NSTextViewDelegate {
         list.bottomAnchor.constraint(equalTo:bottomAnchor).isActive = true
         list.widthAnchor.constraint(equalToConstant:200).isActive = true
         
-        scrollChapter.topAnchor.constraint(equalTo:bar.topAnchor, constant:20).isActive = true
-        scrollChapter.leftAnchor.constraint(equalTo:bar.leftAnchor).isActive = true
-        scrollChapter.bottomAnchor.constraint(equalTo:bar.bottomAnchor).isActive = true
-        scrollChapter.widthAnchor.constraint(equalToConstant:220).isActive = true
+        chapter.topAnchor.constraint(equalTo:bar.topAnchor, constant:20).isActive = true
+        chapter.leftAnchor.constraint(equalTo:bar.leftAnchor).isActive = true
+        chapter.bottomAnchor.constraint(equalTo:bar.bottomAnchor).isActive = true
+        chapter.widthAnchor.constraint(equalToConstant:220).isActive = true
         
         editionArea.topAnchor.constraint(equalTo:bar.bottomAnchor).isActive = true
         editionArea.leftAnchor.constraint(equalTo:list.rightAnchor).isActive = true
