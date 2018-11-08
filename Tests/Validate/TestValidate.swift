@@ -11,7 +11,11 @@ class TestValidate:XCTestCase {
         game.title = "Lorem ipsum"
         let message = Message()
         message.text = "hello world"
-        message.options = [Option(), Option()]
+        let optionA = Option()
+        optionA.next = "initial"
+        let optionB = Option()
+        optionB.next = "initial"
+        message.options = [optionA, optionB]
         game.messages["initial"] = message
     }
     
@@ -41,6 +45,11 @@ class TestValidate:XCTestCase {
     
     func testOptionsLessThanTwo() {
         game.messages["initial"]!.options = [game.messages["initial"]!.options.first!]
+        XCTAssertThrowsError(try validator.validate(game))
+    }
+    
+    func testNextInvalid() {
+        game.messages["initial"]!.options.first!.next = "some weirdness"
         XCTAssertThrowsError(try validator.validate(game))
     }
 }

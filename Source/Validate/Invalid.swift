@@ -6,4 +6,5 @@ enum Invalid:Error {
     case textEmpty
     case optionsEmpty
     case optionsLessThanTwo
+    case nextInvalid
 }

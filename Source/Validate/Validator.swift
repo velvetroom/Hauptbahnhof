@@ -2,7 +2,7 @@ import Foundation
 
 public class Validator {
     private let validations:[((Validator) -> (Game) throws -> Void)] = [titleEmpty, messagesEmpty, textEmpty,
-                                                                        optionsEmpty, optionsLessThanTwo]
+                                                                        optionsEmpty, optionsLessThanTwo, nextInvalid]
     
     public init() { }
     
@@ -28,5 +28,11 @@ public class Validator {
     
     private func optionsLessThanTwo(_ game:Game) throws {
         try game.messages.values.forEach { if $0.options.count < 2 { throw Invalid.optionsLessThanTwo } }
+    }
+    
+    private func nextInvalid(_ game:Game) throws {
+        try game.messages.values.forEach { try $0.options.forEach { option in
+            if game.messages[option.next] == nil { throw Invalid.nextInvalid }
+        } }
     }
 }
