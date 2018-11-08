@@ -16,8 +16,8 @@ import Cocoa
         menu.addItem(withTitle:String(), action:nil, keyEquivalent:String()).submenu = submenu
         self.mainMenu = menu
         
-        let rect = NSRect(x:(NSScreen.main!.frame.width - 800) / 2, y:
-            (NSScreen.main!.frame.height - 800) / 2, width:800, height:800)
+        let rect = NSRect(x:(NSScreen.main!.frame.width - 1000) / 2, y:
+            (NSScreen.main!.frame.height - 800) / 2, width:1000, height:800)
         let window = NSWindow(contentRect:rect, styleMask:
             [.titled, .resizable, .closable, .miniaturizable, .fullSizeContentView], backing:.buffered, defer:false)
         window.makeKeyAndOrderFront(nil)

@@ -20,7 +20,7 @@ class OptionView:NSView {
         text.isHorizontallyResizable = true
         text.isContinuousSpellCheckingEnabled = true
         text.textContainer!.widthTracksTextView = true
-        text.textContainer!.heightTracksTextView = false
+        text.textContainer!.heightTracksTextView = true
         text.font = NSFont.systemFont(ofSize:16, weight:.light)
         text.string = option.text
         scrollText.documentView = text
@@ -43,7 +43,7 @@ class OptionView:NSView {
 
         scrollText.topAnchor.constraint(equalTo:topAnchor, constant:6).isActive = true
         scrollText.leftAnchor.constraint(equalTo:leftAnchor, constant:-10).isActive = true
-        scrollText.rightAnchor.constraint(equalTo:rightAnchor, constant:-140).isActive = true
+        scrollText.widthAnchor.constraint(equalToConstant:350).isActive = true
         scrollText.heightAnchor.constraint(equalToConstant:60).isActive = true
         
         nextTitle.centerYAnchor.constraint(equalTo:next.centerYAnchor).isActive = true

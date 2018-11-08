@@ -12,6 +12,11 @@ class View:NSView, NSTextViewDelegate {
     override func cancelOperation(_:Any?) { stopEditing() }
     override func mouseDown(with:NSEvent) { stopEditing() }
     
+    override func viewDidEndLiveResize() {
+        super.viewDidEndLiveResize()
+        updateTextSize()
+    }
+    
     func textView(_:NSTextView, doCommandBy selector:Selector) -> Bool {
         if (selector == #selector(NSResponder.insertNewline(_:))) {
             stopEditing()
@@ -87,8 +92,8 @@ class View:NSView, NSTextViewDelegate {
         text.isVerticallyResizable = true
         text.isHorizontallyResizable = true
         text.isContinuousSpellCheckingEnabled = true
-        text.textContainer!.widthTracksTextView = true
         text.textContainer!.heightTracksTextView = false
+        text.textContainer!.widthTracksTextView = false
         text.font = NSFont.systemFont(ofSize:16, weight:.light)
         scrollText.documentView = text
         self.text = text
@@ -166,9 +171,14 @@ class View:NSView, NSTextViewDelegate {
         options.documentView!.bottomAnchor.constraint(equalTo:top).isActive = true
     }
     
+    private func updateTextSize() {
+        text.textContainer!.size = NSSize(width:options.bounds.width - 20, height:CGFloat.greatestFiniteMagnitude)
+    }
+    
     @objc private func select(item:ItemView) {
         list.documentView!.subviews.forEach { ($0 as! ItemView).selected = $0 === item }
         text.string = messages[item.message]!.text
+        updateTextSize()
         reloadOption(items:messages[item.message]!.options)
     }
 }
