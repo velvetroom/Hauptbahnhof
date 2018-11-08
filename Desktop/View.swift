@@ -6,6 +6,8 @@ class View:NSView, NSTextViewDelegate {
     private weak var options:NSScrollView!
     private weak var text:NSTextView!
     private weak var chapter:NSTextView!
+    private weak var status:NSImageView!
+    private weak var statusText:NSTextField!
     private var messages = [String:Message]() { didSet { reloadList() } }
     private let presenter = Presenter()
 
@@ -62,6 +64,17 @@ class View:NSView, NSTextViewDelegate {
         status.contentTintColor = .selectedMenuItemColor
         status.translatesAutoresizingMaskIntoConstraints = false
         bar.addSubview(status)
+        self.status = status
+        
+        let statusText = NSTextField()
+        statusText.translatesAutoresizingMaskIntoConstraints = false
+        statusText.font = .systemFont(ofSize:12, weight:.light)
+        statusText.backgroundColor = .clear
+        statusText.alignment = .right
+        statusText.isBezeled = false
+        statusText.isEditable = false
+        bar.addSubview(statusText)
+        self.statusText = statusText
         
         let list = NSScrollView(frame:.zero)
         list.drawsBackground = false
@@ -118,6 +131,9 @@ class View:NSView, NSTextViewDelegate {
         
         status.centerYAnchor.constraint(equalTo:chapter.centerYAnchor).isActive = true
         status.rightAnchor.constraint(equalTo:bar.rightAnchor, constant:-6).isActive = true
+        
+        statusText.centerYAnchor.constraint(equalTo:status.centerYAnchor).isActive = true
+        statusText.rightAnchor.constraint(equalTo:status.leftAnchor, constant:-2).isActive = true
         
         editionArea.topAnchor.constraint(equalTo:bar.bottomAnchor).isActive = true
         editionArea.leftAnchor.constraint(equalTo:list.rightAnchor).isActive = true
