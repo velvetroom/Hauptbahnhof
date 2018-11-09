@@ -4,6 +4,7 @@ struct Invalid:LocalizedError {
     enum Exception {
         case titleEmpty
         case messagesEmpty
+        case idEmpty
         case textEmpty
         case optionsEmpty
         case optionsLessThanTwo

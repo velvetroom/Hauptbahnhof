@@ -35,6 +35,11 @@ class TestValidate:XCTestCase {
         XCTAssertThrowsError(try validator.validate(game))
     }
     
+    func testIdEmpty() {
+        game.messages[""] = game.messages["initial"]
+        XCTAssertThrowsError(try validator.validate(game))
+    }
+    
     func testTextEmpty() {
         game.messages["initial"]!.text = ""
         XCTAssertThrowsError(try validator.validate(game))

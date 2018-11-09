@@ -2,7 +2,7 @@ import Foundation
 
 public class Validator {
     private let validations:[((Validator) -> (Game) throws -> Void)] = [
-        titleEmpty, messagesEmpty, textEmpty, optionsEmpty, optionsLessThanTwo, nextInvalid, optionTextEmpty]
+        titleEmpty, messagesEmpty, idEmpty, textEmpty, optionsEmpty, optionsLessThanTwo, nextInvalid, optionTextEmpty]
     
     public init() { }
     
@@ -16,6 +16,10 @@ public class Validator {
     
     private func messagesEmpty(_ game:Game) throws {
         if game.messages.isEmpty { throw Invalid(.messagesEmpty) }
+    }
+    
+    private func idEmpty(_ game:Game) throws {
+        try game.messages.keys.forEach { if $0.isEmpty { throw Invalid(.idEmpty) } }
     }
     
     private func textEmpty(_ game:Game) throws {
