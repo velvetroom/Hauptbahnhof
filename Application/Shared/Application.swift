@@ -12,7 +12,6 @@ import Hauptbahnhof
     }
     
     private func injection() {
-        Factory.bundle = .main
         Factory.storage = Session.self
     }
     

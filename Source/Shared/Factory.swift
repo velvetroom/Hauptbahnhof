@@ -2,7 +2,6 @@ import Foundation
 
 public class Factory {
     public static var storage:Storage.Type!
-    public static var bundle:Bundle!
     private static var master:GameMaster!
     
     public class func makeMaster() -> GameMaster {

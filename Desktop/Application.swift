@@ -36,7 +36,6 @@ import Editor
     }
     
     private func injection() {
-        Factory.bundle = .main
         Factory.storage = Session.self
     }
     

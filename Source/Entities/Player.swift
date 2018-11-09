@@ -1,6 +1,6 @@
 import Foundation
 
 public class Player:Codable {
-    var chapter = "One"
+    var chapter = Chapter.One
     var state = "initial"
 }
