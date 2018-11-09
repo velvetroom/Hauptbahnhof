@@ -2,7 +2,13 @@ import Cocoa
 import Editor
 
 class Session:Storage {
-    required init() { }
+    private var bookmarks = [String:Data]()
+    
+    required init() {
+        loadBookmarks()
+        missingBookmarks()
+    }
+    
     func loadPlayer() throws -> Player { throw Exception.unknown }
     func save(player:Player) { }
     
@@ -14,12 +20,23 @@ class Session:Storage {
     func save(game:Game) {
         let chapter = game.chapter
         let data = try! JSONEncoder().encode(game)
-        do {
-            try save(chapter:chapter, data:data)
-        } catch {
-            showPanel(chapter:chapter) { [weak self] in
-                try? self?.save(chapter:chapter, data:data)
-            }
+        try! save(chapter:chapter, data:data)
+    }
+    
+    private func loadBookmarks() {
+        if let bookmarks = UserDefaults.standard.value(forKey:"bookmarks") as? [String:Data] {
+            self.bookmarks = bookmarks
+        }
+        bookmarks.forEach { chapter, data in
+            var stale = false
+            let url = try! URL(resolvingBookmarkData:data, options:.withSecurityScope, bookmarkDataIsStale:&stale)
+            let _ = url.startAccessingSecurityScopedResource()
+        }
+    }
+    
+    private func missingBookmarks() {
+        if bookmarks[Chapter.One.rawValue] == nil {
+            showPanel(chapter:.One)
         }
     }
     
@@ -28,16 +45,22 @@ class Session:Storage {
         try data.write(to:url)
     }
     
-    private func showPanel(chapter:Chapter, completion:@escaping(() -> Void)) {
+    private func showPanel(chapter:Chapter) {
         DispatchQueue.main.async {
-            let panel = NSSavePanel()
+            let panel = NSOpenPanel()
             panel.allowedFileTypes = ["json"]
             panel.nameFieldStringValue = chapter.rawValue
-            panel.begin { response in
+            panel.begin { [weak self] response in
                 if response == .OK {
-                    completion()
+                    let data = try! panel.url!.bookmarkData(options:.withSecurityScope)
+                    self?.addBookmark(chapter:chapter, data:data)
                 }
             }
         }
+    }
+    
+    private func addBookmark(chapter:Chapter, data:Data) {
+        bookmarks[chapter.rawValue] = data
+        UserDefaults.standard.set(bookmarks, forKey:"bookmarks")
     }
 }
