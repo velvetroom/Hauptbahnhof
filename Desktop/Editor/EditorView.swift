@@ -9,6 +9,7 @@ class EditorView:NSView, NSTextViewDelegate {
     private weak var status:NSImageView!
     private weak var statusText:NSTextField!
     private weak var rename:NSButton!
+    private weak var delete:NSButton!
     private var messages = [String:Message]() { didSet { reloadList() } }
     private let presenter = EditorPresenter()
 
@@ -38,6 +39,7 @@ class EditorView:NSView, NSTextViewDelegate {
         presenter.viewModelTitle = { [weak self] in self?.chapter.string = $0 }
         presenter.viewModelMessages = { [weak self] in self?.messages = $0 }
         presenter.viewModelSelected = { [weak self] in self?.select(id:$0) }
+        presenter.viewModelClearSelection = { [weak self] in self?.clearSelection() }
         presenter.viewModelStatus = { [weak self] status in
             self?.status.image = status.image
             self?.statusText.stringValue = status.message
@@ -74,6 +76,12 @@ class EditorView:NSView, NSTextViewDelegate {
         rename.isEnabled = false
         bar.addSubview(rename)
         self.rename = rename
+        
+        let delete = NSButton(title:.local("EditorView.delete"), target:presenter, action:#selector(presenter.delete))
+        delete.translatesAutoresizingMaskIntoConstraints = false
+        delete.isEnabled = false
+        bar.addSubview(delete)
+        self.delete = delete
         
         let status = NSImageView(frame:.zero)
         status.isEnabled = false
@@ -152,6 +160,9 @@ class EditorView:NSView, NSTextViewDelegate {
         rename.centerYAnchor.constraint(equalTo:chapter.centerYAnchor).isActive = true
         rename.leftAnchor.constraint(equalTo:addMessage.rightAnchor, constant:10).isActive = true
         
+        delete.centerYAnchor.constraint(equalTo:chapter.centerYAnchor).isActive = true
+        delete.leftAnchor.constraint(equalTo:rename.rightAnchor, constant:10).isActive = true
+        
         status.centerYAnchor.constraint(equalTo:chapter.centerYAnchor).isActive = true
         status.rightAnchor.constraint(equalTo:bar.rightAnchor, constant:-6).isActive = true
         
@@ -217,9 +228,18 @@ class EditorView:NSView, NSTextViewDelegate {
         presenter.selected = id
         showSelection(id:id)
         text.string = messages[id]!.text
-        updateTextSize()
         reloadOption(items:messages[id]!.options)
         rename.isEnabled = true
+        delete.isEnabled = true
+    }
+    
+    private func clearSelection() {
+        presenter.selected = String()
+        text.string = String()
+        reloadOption(items:[])
+        rename.isEnabled = false
+        delete.isEnabled = false
+        list.documentView!.subviews.forEach { ($0 as! EditorItemView).selected = false }
     }
     
     private func showSelection(id:String) {

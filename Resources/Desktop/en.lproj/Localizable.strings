@@ -1,7 +1,11 @@
 Application.quit="Quit";
 EditorView.addMessage="Add Message";
 EditorView.rename="Rename";
+EditorView.delete="Delete";
 RenameView.title="Rename Message";
 RenameView.cancel="Cancel";
 RenameView.save="Save";
+DeleteView.title="Delete Message?";
+DeleteView.cancel="Cancel";
+DeleteView.delete="Delete";
 EditorOptionView.next="Next";

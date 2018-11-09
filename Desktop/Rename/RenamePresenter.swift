@@ -12,7 +12,7 @@ class RenamePresenter {
     }
     
     func save(name:String) {
-        DispatchQueue.global(qos:.background).async { [weak self] in self?.backgroundRename(name:name) }
+        DispatchQueue.global(qos:.background).async { [weak self] in self?.backgroundSave(name:name) }
     }
     
     func validate(name:String) {
@@ -32,7 +32,7 @@ class RenamePresenter {
         }
     }
     
-    private func backgroundRename(name:String) {
+    private func backgroundSave(name:String) {
         workshop.rename(id, to:name)
         DispatchQueue.main.async {
             Application.window.endSheet(Application.window.attachedSheet!)

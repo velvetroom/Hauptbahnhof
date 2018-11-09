@@ -42,6 +42,8 @@
 		DA9024BA21960EAD002334DF /* RenameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9024B921960EAD002334DF /* RenameView.swift */; };
 		DA9024BC219624F0002334DF /* TestRename.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9024BB219624F0002334DF /* TestRename.swift */; };
 		DA9024BE219637D8002334DF /* TestDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9024BD219637D8002334DF /* TestDelete.swift */; };
+		DA9024C1219639DC002334DF /* DeletePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9024C0219639DC002334DF /* DeletePresenter.swift */; };
+		DA9024C3219639E3002334DF /* DeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9024C2219639E3002334DF /* DeleteView.swift */; };
 		DAA7FBCF218BB29000F1C0E8 /* SplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7FBCE218BB29000F1C0E8 /* SplashPresenter.swift */; };
 		DAA7FBD1218BB37000F1C0E8 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7FBD0218BB37000F1C0E8 /* SplashView.swift */; };
 		DAB55EFF218B9D1400A9F02A /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB55EFE218B9D1400A9F02A /* Storage.swift */; };
@@ -134,6 +136,8 @@
 		DA9024B921960EAD002334DF /* RenameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenameView.swift; sourceTree = "<group>"; };
 		DA9024BB219624F0002334DF /* TestRename.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRename.swift; sourceTree = "<group>"; };
 		DA9024BD219637D8002334DF /* TestDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDelete.swift; sourceTree = "<group>"; };
+		DA9024C0219639DC002334DF /* DeletePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePresenter.swift; sourceTree = "<group>"; };
+		DA9024C2219639E3002334DF /* DeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteView.swift; sourceTree = "<group>"; };
 		DAA7FBCE218BB29000F1C0E8 /* SplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
 		DAA7FBD0218BB37000F1C0E8 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		DAB55EFE218B9D1400A9F02A /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
@@ -320,6 +324,15 @@
 			path = Rename;
 			sourceTree = "<group>";
 		};
+		DA9024BF219639CA002334DF /* Delete */ = {
+			isa = PBXGroup;
+			children = (
+				DA9024C0219639DC002334DF /* DeletePresenter.swift */,
+				DA9024C2219639E3002334DF /* DeleteView.swift */,
+			);
+			path = Delete;
+			sourceTree = "<group>";
+		};
 		DAA7FBCD218BB27A00F1C0E8 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,6 +376,7 @@
 				DA9024B421960DED002334DF /* Shared */,
 				DA9024B521960E02002334DF /* Editor */,
 				DA9024B621960E78002334DF /* Rename */,
+				DA9024BF219639CA002334DF /* Delete */,
 			);
 			path = Desktop;
 			sourceTree = "<group>";
@@ -703,12 +717,14 @@
 				DACF84FB2192270E005B741C /* Application.swift in Sources */,
 				DA9024BA21960EAD002334DF /* RenameView.swift in Sources */,
 				DA51A268219328F500F7C804 /* DocumentView.swift in Sources */,
+				DA9024C1219639DC002334DF /* DeletePresenter.swift in Sources */,
 				DA9024B821960E8F002334DF /* RenamePresenter.swift in Sources */,
 				DAFCF243219458D100BEBEEF /* EditorEffectView.swift in Sources */,
 				DAFEC33D2192499100DAA671 /* EditorItemView.swift in Sources */,
 				DA7DEF572192EBEB00909D9D /* String.swift in Sources */,
 				DADE70112195865D009ADEB7 /* Session.swift in Sources */,
 				DACF84FA2192270E005B741C /* EditorView.swift in Sources */,
+				DA9024C3219639E3002334DF /* DeleteView.swift in Sources */,
 				DABA3AE52194635C007B757E /* Button.swift in Sources */,
 				DAFEC3372192411F00DAA671 /* EditorPresenter.swift in Sources */,
 			);

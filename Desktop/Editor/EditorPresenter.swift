@@ -7,6 +7,7 @@ class EditorPresenter {
     var viewModelStatus:((Status) -> Void)?
     var viewModelMessages:(([String:Message]) -> Void)?
     var viewModelSelected:((String) -> Void)?
+    var viewModelClearSelection:(() -> Void)?
     private let workshop = Workshop()
     
     func load() {
@@ -38,6 +39,22 @@ class EditorPresenter {
         Application.window.beginSheet(window) { [weak self] _ in
             self?.updatedMessages()
             self?.validate()
+            self?.updatedClear()
+        }
+    }
+    
+    @objc func delete() {
+        let window = NSWindow(contentRect:NSRect(x:0, y:0, width:200, height:100), styleMask:.titled,
+                              backing:.buffered, defer:false)
+        let view = DeleteView()
+        view.presenter.id = selected
+        window.contentView = view
+        Application.window.beginSheet(window) { response in
+            if response == .continue {
+                DispatchQueue.global(qos:.background).async { [weak self] in
+                    self?.confirmDelete()
+                }
+            }
         }
     }
     
@@ -57,6 +74,13 @@ class EditorPresenter {
         }
     }
     
+    private func confirmDelete() {
+        workshop.deleteMessage(selected)
+        updatedMessages()
+        updatedClear()
+        validate()
+    }
+    
     private func updatedMessages() {
         let messages = workshop.game.messages
         DispatchQueue.main.async { [weak self] in self?.viewModelMessages?(messages) }
@@ -72,5 +96,9 @@ class EditorPresenter {
     
     private func updated(selected:String) {
         DispatchQueue.main.async { [weak self] in self?.viewModelSelected?(selected) }
+    }
+    
+    private func updatedClear() {
+        DispatchQueue.main.async { [weak self] in self?.viewModelClearSelection?() }
     }
 }

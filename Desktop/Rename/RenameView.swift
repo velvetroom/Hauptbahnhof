@@ -63,8 +63,7 @@ class RenameView:NSView, NSTextViewDelegate {
         addSubview(statusText)
         self.statusText = statusText
         
-        let cancel = NSButton(title:.local("RenameView.cancel"),
-                                  target:presenter, action:#selector(presenter.cancel))
+        let cancel = NSButton(title:.local("RenameView.cancel"), target:presenter, action:#selector(presenter.cancel))
         cancel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(cancel)
         
