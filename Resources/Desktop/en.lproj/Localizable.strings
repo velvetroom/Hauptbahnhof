@@ -3,4 +3,5 @@ EditorView.addMessage="Add Message";
 EditorView.rename="Rename";
 RenameView.title="Rename Message";
 RenameView.cancel="Cancel";
+RenameView.save="Save";
 EditorOptionView.next="Next";

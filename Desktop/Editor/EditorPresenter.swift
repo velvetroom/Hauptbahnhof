@@ -4,26 +4,25 @@ import Editor
 class EditorPresenter {
     var selected = String()
     var viewModelTitle:((String) -> Void)?
-    var viewModelStatus:((EditorStatus) -> Void)?
+    var viewModelStatus:((Status) -> Void)?
     var viewModelMessages:(([String:Message]) -> Void)?
     var viewModelSelected:((String) -> Void)?
     private let workshop = Workshop()
     
     func load() {
-        updated(status:statusLoading())
+        updated(status:.loading())
         DispatchQueue.global(qos:.background).async { [weak self] in self?.backgroundLoad() }
     }
     
     func validate() {
-        updated(status:statusLoading())
+        updated(status:.loading())
         DispatchQueue.global(qos:.background).async { [weak self] in self?.backgroundValidate() }
     }
     
     @objc func addMessage() {
         DispatchQueue.global(qos:.background).async { [weak self] in
             self?.workshop.addMessage()
-            guard let messages = self?.workshop.game.messages else { return }
-            self?.updated(messages:messages)
+            self?.updatedMessages()
             self?.validate()
             self?.updated(selected:String())
         }
@@ -33,29 +32,33 @@ class EditorPresenter {
         let window = NSWindow(contentRect:NSRect(x:0, y:0, width:260, height:200), styleMask:.titled,
                               backing:.buffered, defer:false)
         let view = RenameView()
+        view.presenter.workshop = workshop
         view.presenter.id = selected
         window.contentView = view
-        Application.window.beginSheet(window)
+        Application.window.beginSheet(window) { [weak self] _ in
+            self?.updatedMessages()
+            self?.validate()
+        }
     }
     
     private func backgroundLoad() {
         workshop.load(chapter:.One)
         updated(title:workshop.game.title)
-        updated(messages:workshop.game.messages)
+        updatedMessages()
         validate()
     }
     
     private func backgroundValidate() {
         do {
             try workshop.validate()
+            updated(status:.success())
         } catch let error {
-            updated(status:statusFailed(error:error))
-            return
+            updated(status:.failed(error:error))
         }
-        updated(status:statusSuccess())
     }
     
-    private func updated(messages:[String:Message]) {
+    private func updatedMessages() {
+        let messages = workshop.game.messages
         DispatchQueue.main.async { [weak self] in self?.viewModelMessages?(messages) }
     }
     
@@ -63,33 +66,11 @@ class EditorPresenter {
         DispatchQueue.main.async { [weak self] in self?.viewModelTitle?(title) }
     }
     
-    private func updated(status:EditorStatus) {
+    private func updated(status:Status) {
         DispatchQueue.main.async { [weak self] in self?.viewModelStatus?(status) }
     }
     
     private func updated(selected:String) {
         DispatchQueue.main.async { [weak self] in self?.viewModelSelected?(selected) }
-    }
-    
-    private func statusLoading() -> EditorStatus {
-        var status = EditorStatus()
-        status.image = NSImage(named:"loading")!
-        status.image.isTemplate = true
-        return status
-    }
-    
-    private func statusFailed(error:Error) -> EditorStatus {
-        var status = EditorStatus()
-        status.image = NSImage(named:"error")!
-        status.image.isTemplate = true
-        status.message = error.localizedDescription
-        return status
-    }
-    
-    private func statusSuccess() -> EditorStatus {
-        var status = EditorStatus()
-        status.image = NSImage(named:"valid")!
-        status.image.isTemplate = true
-        return status
     }
 }

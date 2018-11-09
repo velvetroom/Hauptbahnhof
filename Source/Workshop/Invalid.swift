@@ -15,6 +15,6 @@ struct Invalid:LocalizedError {
     var errorDescription:String?
     
     init(_ type:Exception, id:String = String()) {
-        errorDescription = String(describing:type) + id
+        errorDescription = String(describing:type) + ":" + id
     }
 }

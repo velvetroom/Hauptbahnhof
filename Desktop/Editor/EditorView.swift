@@ -69,8 +69,7 @@ class EditorView:NSView, NSTextViewDelegate {
         addMessage.translatesAutoresizingMaskIntoConstraints = false
         bar.addSubview(addMessage)
         
-        let rename = NSButton(title:.local("EditorView.rename"),
-                                  target:presenter, action:#selector(presenter.rename))
+        let rename = NSButton(title:.local("EditorView.rename"), target:presenter, action:#selector(presenter.rename))
         rename.translatesAutoresizingMaskIntoConstraints = false
         rename.isEnabled = false
         bar.addSubview(rename)
@@ -155,8 +154,6 @@ class EditorView:NSView, NSTextViewDelegate {
         
         status.centerYAnchor.constraint(equalTo:chapter.centerYAnchor).isActive = true
         status.rightAnchor.constraint(equalTo:bar.rightAnchor, constant:-6).isActive = true
-        status.widthAnchor.constraint(equalToConstant:30).isActive = true
-        status.heightAnchor.constraint(equalToConstant:30).isActive = true
         
         statusText.topAnchor.constraint(equalTo:bar.topAnchor, constant:5).isActive = true
         statusText.rightAnchor.constraint(equalTo:bar.rightAnchor, constant:-5).isActive = true
