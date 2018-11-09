@@ -22,7 +22,7 @@ public class Workshop {
         }
     }
     
-    public func rename(_ id:String, to:String) throws {
+    public func validRename(_ id:String, to:String) throws {
         if to.isEmpty { throw Exception.emptyName }
         let to = to.lowercased()
         try game.messages.keys.forEach { item in
@@ -30,5 +30,11 @@ public class Workshop {
                 throw Exception.nameExists
             }
         }
+    }
+    
+    public func rename(_ id:String, to:String) {
+        game.messages[to] = game.messages[id]
+        game.messages.removeValue(forKey:id)
+        storage.save(game:game)
     }
 }
