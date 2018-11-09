@@ -18,7 +18,7 @@ public class Workshop {
     public func addMessage() {
         if game.messages[String()] == nil {
             game.messages[String()] = Message()
-            storage.save(game:game)
+            save()
         }
     }
     
@@ -35,6 +35,15 @@ public class Workshop {
     public func rename(_ id:String, to:String) {
         game.messages[to] = game.messages[id]
         game.messages.removeValue(forKey:id)
+        save()
+    }
+    
+    public func deleteMessage(_ id:String) {
+        game.messages.removeValue(forKey:id)
+        save()
+    }
+    
+    private func save() {
         storage.save(game:game)
     }
 }

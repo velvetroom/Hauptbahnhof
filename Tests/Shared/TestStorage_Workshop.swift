@@ -26,4 +26,11 @@ class TestStorage_Workshop:XCTestCase {
         workshop.rename("", to:"")
         waitForExpectations(timeout:1)
     }
+    
+    func testSavesOnDelete() {
+        let expect = expectation(description:String())
+        MockStorage.onSaveGame = { expect.fulfill() }
+        workshop.deleteMessage("")
+        waitForExpectations(timeout:1)
+    }
 }
