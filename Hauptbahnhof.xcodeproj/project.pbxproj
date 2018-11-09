@@ -65,6 +65,9 @@
 		DAD7E131218A3B530085F449 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7E130218A3B530085F449 /* Application.swift */; };
 		DAD7E137218A3B630085F449 /* GameMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD7E136218A3B620085F449 /* GameMaster.swift */; };
 		DADE700F21957C6F009ADEB7 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADE700E21957C6F009ADEB7 /* Status.swift */; };
+		DADE70112195865D009ADEB7 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADE70102195865D009ADEB7 /* Session.swift */; };
+		DADE701321958736009ADEB7 /* Exception.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADE701221958736009ADEB7 /* Exception.swift */; };
+		DADE701421958736009ADEB7 /* Exception.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADE701221958736009ADEB7 /* Exception.swift */; };
 		DAE6AA8A218F3B2D00E7BBC1 /* GameOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE6AA89218F3B2D00E7BBC1 /* GameOptionView.swift */; };
 		DAFCF243219458D100BEBEEF /* EffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCF242219458D100BEBEEF /* EffectView.swift */; };
 		DAFCF24521945BBD00BEBEEF /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAFCF24421945BBD00BEBEEF /* assets.xcassets */; };
@@ -145,6 +148,8 @@
 		DAD7E130218A3B530085F449 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		DAD7E136218A3B620085F449 /* GameMaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMaster.swift; sourceTree = "<group>"; };
 		DADE700E21957C6F009ADEB7 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		DADE70102195865D009ADEB7 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		DADE701221958736009ADEB7 /* Exception.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exception.swift; sourceTree = "<group>"; };
 		DAE6AA89218F3B2D00E7BBC1 /* GameOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOptionView.swift; sourceTree = "<group>"; };
 		DAFCF242219458D100BEBEEF /* EffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectView.swift; sourceTree = "<group>"; };
 		DAFCF24421945BBD00BEBEEF /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
@@ -293,6 +298,7 @@
 			children = (
 				DAB55EFE218B9D1400A9F02A /* Storage.swift */,
 				DAB55F02218B9E1900A9F02A /* Factory.swift */,
+				DADE701221958736009ADEB7 /* Exception.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -319,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				DACF84F92192270E005B741C /* Application.swift */,
+				DADE70102195865D009ADEB7 /* Session.swift */,
 				DAFEC3362192411F00DAA671 /* Presenter.swift */,
 				DACF84F82192270E005B741C /* View.swift */,
 				DAFEC33C2192499100DAA671 /* ItemView.swift */,
@@ -643,6 +650,7 @@
 				DAFCF243219458D100BEBEEF /* EffectView.swift in Sources */,
 				DAFEC33D2192499100DAA671 /* ItemView.swift in Sources */,
 				DA7DEF572192EBEB00909D9D /* String.swift in Sources */,
+				DADE70112195865D009ADEB7 /* Session.swift in Sources */,
 				DACF84FA2192270E005B741C /* View.swift in Sources */,
 				DABA3AE52194635C007B757E /* Button.swift in Sources */,
 				DAFEC3372192411F00DAA671 /* Presenter.swift in Sources */,
@@ -673,6 +681,7 @@
 				DA7DEF4A2192EB7900909D9D /* Option.swift in Sources */,
 				DA7DEF552192EB9500909D9D /* Factory.swift in Sources */,
 				DA7DEF542192EB9100909D9D /* Storage.swift in Sources */,
+				DADE701421958736009ADEB7 /* Exception.swift in Sources */,
 				DA7AC8ED21948BEF007A7CC6 /* Invalid.swift in Sources */,
 				DA7DEF522192EB7900909D9D /* Player.swift in Sources */,
 				DA7DEF482192EB7900909D9D /* Game.swift in Sources */,
@@ -690,6 +699,7 @@
 				DA7DEF492192EB7900909D9D /* Option.swift in Sources */,
 				DA7DEF4B2192EB7900909D9D /* Message.swift in Sources */,
 				DAB55EFF218B9D1400A9F02A /* Storage.swift in Sources */,
+				DADE701321958736009ADEB7 /* Exception.swift in Sources */,
 				DA7AC8EC21948BEF007A7CC6 /* Invalid.swift in Sources */,
 				DA7DEF512192EB7900909D9D /* Player.swift in Sources */,
 				DA7DEF472192EB7900909D9D /* Game.swift in Sources */,
