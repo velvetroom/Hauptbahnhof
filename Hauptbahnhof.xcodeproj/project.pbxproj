@@ -228,8 +228,8 @@
 			children = (
 				DA4800452193103600A72514 /* TestFactory.swift */,
 				DA4800462193103600A72514 /* TestParsing.swift */,
-				DA4800472193103600A72514 /* MockStorage.swift */,
 				DA4800482193103600A72514 /* TestStorage.swift */,
+				DA4800472193103600A72514 /* MockStorage.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";

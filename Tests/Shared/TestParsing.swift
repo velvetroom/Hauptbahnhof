@@ -7,6 +7,8 @@ class TestParsing:XCTestCase {
     override func setUp() {
         Factory.storage = MockStorage.self
         Factory.bundle = Bundle(for:TestParsing.self)
+        let data = try! Data(contentsOf:Bundle(for:TestParsing.self).url(forResource:"One", withExtension:"json")!)
+        MockStorage.game = try! JSONDecoder().decode(Game.self, from:data)
         master = GameMaster()
     }
     

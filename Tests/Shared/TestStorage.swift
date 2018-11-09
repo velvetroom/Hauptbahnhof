@@ -7,17 +7,27 @@ class TestStorage:XCTestCase {
     override func setUp() {
         Factory.storage = MockStorage.self
         Factory.bundle = Bundle(for:TestParsing.self)
+        let data = try! Data(contentsOf:Bundle(for:TestStorage.self).url(forResource:"One", withExtension:"json")!)
+        MockStorage.game = try! JSONDecoder().decode(Game.self, from:data)
         master = GameMaster()
     }
     
     override func tearDown() {
-        MockStorage.onLoad = nil
-        MockStorage.onSave = nil
+        MockStorage.onLoadPlayer = nil
+        MockStorage.onSavePlayer = nil
+        MockStorage.onLoadGame = nil
     }
     
     func testMasterLoadsPlayer() {
         let expect = expectation(description:String())
-        MockStorage.onLoad = { expect.fulfill() }
+        MockStorage.onLoadPlayer = { expect.fulfill() }
+        let _ = GameMaster()
+        waitForExpectations(timeout:1)
+    }
+    
+    func testLoadsGame() {
+        let expect = expectation(description:String())
+        MockStorage.onLoadGame = { expect.fulfill() }
         let _ = GameMaster()
         waitForExpectations(timeout:1)
     }

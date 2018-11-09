@@ -1,7 +1,8 @@
 import Foundation
 
 public protocol Storage {
-    func load() throws -> Player
+    func loadPlayer() throws -> Player
+    func loadGame(chapter:String) -> Game
     func save(player:Player)
     init()
 }

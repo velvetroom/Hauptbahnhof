@@ -5,8 +5,12 @@ class Session:Storage {
     private let hero = Hero()
     required init() { }
     
-    func load() throws -> Player {
+    func loadPlayer() throws -> Player {
         return try hero.load(path:"Player.hauptbahnhof")
+    }
+    
+    func loadGame(chapter:String) -> Game {
+        return try! hero.load(bundle:Factory.bundle, path:chapter + ".json")
     }
     
     func save(player:Player) {

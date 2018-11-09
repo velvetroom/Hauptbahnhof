@@ -6,16 +6,11 @@ public class GameMaster {
     private let storage = Factory.makeStorage()
     
     public init() {
-        if let player = try? storage.load() {
+        if let player = try? storage.loadPlayer() {
             self.player = player
         }
-        loadGame()
+        game = storage.loadGame(chapter:player.chapter)
     }
     
     public var message:Message { return game.messages[player.state]! }
-    
-    private func loadGame() {
-        let data = try! Data(contentsOf:Factory.bundle.url(forResource:player.chapter, withExtension:"json")!)
-        game = try! JSONDecoder().decode(Game.self, from:data)
-    }
 }
