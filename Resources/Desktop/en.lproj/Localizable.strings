@@ -1,3 +1,4 @@
 Application.quit="Quit";
 View.addMessage="Add Message";
+View.rename="Rename";
 OptionView.next="Next";

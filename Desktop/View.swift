@@ -8,6 +8,7 @@ class View:NSView, NSTextViewDelegate {
     private weak var chapter:NSTextView!
     private weak var status:NSImageView!
     private weak var statusText:NSTextField!
+    private weak var rename:NSButton!
     private var messages = [String:Message]() { didSet { reloadList() } }
     private let presenter = Presenter()
 
@@ -36,6 +37,7 @@ class View:NSView, NSTextViewDelegate {
         makeOutlets()
         presenter.viewModelTitle = { [weak self] in self?.chapter.string = $0 }
         presenter.viewModelMessages = { [weak self] in self?.messages = $0 }
+        presenter.viewModelSelected = { [weak self] in self?.select(id:$0) }
         presenter.viewModelStatus = { [weak self] status in
             self?.status.image = status.image
             self?.statusText.stringValue = status.message
@@ -66,6 +68,13 @@ class View:NSView, NSTextViewDelegate {
                                   target:presenter, action:#selector(presenter.addMessage))
         addMessage.translatesAutoresizingMaskIntoConstraints = false
         bar.addSubview(addMessage)
+        
+        let rename = NSButton(title:.local("View.rename"),
+                                  target:presenter, action:#selector(presenter.rename))
+        rename.translatesAutoresizingMaskIntoConstraints = false
+        rename.isEnabled = false
+        bar.addSubview(rename)
+        self.rename = rename
         
         let status = NSImageView(frame:.zero)
         status.imageScaling = .scaleNone
@@ -140,6 +149,9 @@ class View:NSView, NSTextViewDelegate {
         addMessage.centerYAnchor.constraint(equalTo:chapter.centerYAnchor).isActive = true
         addMessage.leftAnchor.constraint(equalTo:chapter.rightAnchor, constant:10).isActive = true
         
+        rename.centerYAnchor.constraint(equalTo:chapter.centerYAnchor).isActive = true
+        rename.leftAnchor.constraint(equalTo:addMessage.rightAnchor, constant:10).isActive = true
+        
         status.centerYAnchor.constraint(equalTo:chapter.centerYAnchor).isActive = true
         status.rightAnchor.constraint(equalTo:bar.rightAnchor, constant:-6).isActive = true
         status.widthAnchor.constraint(equalToConstant:30).isActive = true
@@ -169,8 +181,8 @@ class View:NSView, NSTextViewDelegate {
     private func reloadList() {
         list.documentView!.subviews.forEach { $0.removeFromSuperview() }
         var top = list.documentView!.topAnchor
-        messages.forEach { id, message in
-            let item = ItemView(id, options:message.options.count)
+        messages.keys.sorted().forEach { id in
+            let item = ItemView(id, options:messages[id]!.options.count)
             item.target = self
             item.action = #selector(select(item:))
             list.documentView!.addSubview(item)
@@ -203,10 +215,22 @@ class View:NSView, NSTextViewDelegate {
         text.textContainer!.size = NSSize(width:options.bounds.width - 20, height:CGFloat.greatestFiniteMagnitude)
     }
     
-    @objc private func select(item:ItemView) {
-        list.documentView!.subviews.forEach { ($0 as! ItemView).selected = $0 === item }
-        text.string = messages[item.message]!.text
+    private func select(id:String) {
+        showSelection(id:id)
+        text.string = messages[id]!.text
         updateTextSize()
-        reloadOption(items:messages[item.message]!.options)
+        reloadOption(items:messages[id]!.options)
+        rename.isEnabled = true
+    }
+    
+    private func showSelection(id:String) {
+        list.documentView!.subviews.forEach { view in
+            let item = view as! ItemView
+            item.selected = item.message == id
+        }
+    }
+    
+    @objc private func select(item:ItemView) {
+        select(id:item.message)
     }
 }

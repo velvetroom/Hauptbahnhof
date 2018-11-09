@@ -5,6 +5,7 @@ class Presenter {
     var viewModelTitle:((String) -> Void)?
     var viewModelStatus:((Status) -> Void)?
     var viewModelMessages:(([String:Message]) -> Void)?
+    var viewModelSelected:((String) -> Void)?
     private var validator = Validator()
     private let workshop = Workshop()
     
@@ -23,7 +24,12 @@ class Presenter {
             self?.workshop.addMessage()
             guard let messages = self?.workshop.game.messages else { return }
             self?.updated(messages:messages)
+            self?.validate()
+            self?.updated(selected:String())
         }
+    }
+    
+    @objc func rename() {
     }
     
     private func backgroundLoad() {
@@ -55,6 +61,10 @@ class Presenter {
         DispatchQueue.main.async { [weak self] in self?.viewModelStatus?(status) }
     }
     
+    private func updated(selected:String) {
+        DispatchQueue.main.async { [weak self] in self?.viewModelSelected?(selected) }
+    }
+    
     private func statusLoading() -> Status {
         var status = Status()
         status.image = NSImage(named:"loading")!
@@ -66,7 +76,7 @@ class Presenter {
         var status = Status()
         status.image = NSImage(named:"error")!
         status.image.isTemplate = true
-        status.message = String(describing:error)
+        status.message = error.localizedDescription
         return status
     }
     

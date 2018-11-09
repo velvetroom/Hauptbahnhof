@@ -11,9 +11,9 @@ struct Invalid:LocalizedError {
         case optionTextEmpty
     }
     
-    let localizedDescription:String
+    var errorDescription:String?
     
     init(_ type:Exception, id:String = String()) {
-        localizedDescription = String(describing:type) + id
+        errorDescription = String(describing:type) + id
     }
 }
