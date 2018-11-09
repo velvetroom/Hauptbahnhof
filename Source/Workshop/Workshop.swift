@@ -21,4 +21,9 @@ public class Workshop {
             storage.save(game:game)
         }
     }
+    
+    public func rename(_ id:String, to:String) throws {
+        if to.isEmpty { throw Exception.emptyName }
+        try game.messages.keys.forEach { if $0 == to && $0 != id { throw Exception.nameExists } }
+    }
 }
