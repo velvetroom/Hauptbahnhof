@@ -17,7 +17,7 @@ class EditorOptionView:NSView {
         text.isContinuousSpellCheckingEnabled = true
         text.textContainer!.size = NSSize(width:350, height:52)
         text.textContainer!.lineBreakMode = .byTruncatingTail
-        text.font = NSFont.systemFont(ofSize:16, weight:.light)
+        text.font = .systemFont(ofSize:16, weight:.light)
         text.string = option.text
         addSubview(text)
         
@@ -28,7 +28,7 @@ class EditorOptionView:NSView {
         nextTitle.lineBreakMode = .byTruncatingTail
         nextTitle.isBezeled = false
         nextTitle.isEditable = false
-        nextTitle.stringValue = .local("OptionView.next")
+        nextTitle.stringValue = .local("EditorOptionView.next")
         addSubview(nextTitle)
         
         let next = NSPopUpButton(frame:.zero)

@@ -2,7 +2,7 @@ import Cocoa
 import Editor
 
 @NSApplicationMain class Application:NSApplication, NSApplicationDelegate {
-    private weak var window:NSWindow!
+    private(set) static weak var window:NSWindow!
     
     override init() {
         super.init()
@@ -24,7 +24,7 @@ import Editor
         let rect = NSRect(x:(NSScreen.main!.frame.width - 1000) / 2, y:
             (NSScreen.main!.frame.height - 800) / 2, width:1000, height:800)
         let window = NSWindow(contentRect:rect, styleMask:
-            [.titled, .resizable, .closable, .miniaturizable, .fullSizeContentView], backing:.buffered, defer:true)
+            [.titled, .resizable, .closable, .miniaturizable, .fullSizeContentView], backing:.buffered, defer:false)
         window.makeKeyAndOrderFront(nil)
         window.isOpaque = false
         window.titlebarAppearsTransparent = true
@@ -33,6 +33,7 @@ import Editor
         window.titleVisibility = .hidden
         window.contentView = EditorView()
         window.isReleasedWhenClosed = false
+        Application.window = window
     }
     
     private func injection() {

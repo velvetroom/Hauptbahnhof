@@ -59,17 +59,17 @@ class EditorView:NSView, NSTextViewDelegate {
         chapter.textContainerInset = NSSize(width:10, height:10)
         chapter.isContinuousSpellCheckingEnabled = true
         chapter.textContainer!.size = NSSize(width:600, height:30)
-        chapter.font = NSFont.systemFont(ofSize:14, weight:.light)
+        chapter.font = .systemFont(ofSize:14, weight:.light)
         chapter.delegate = self
         bar.addSubview(chapter)
         self.chapter = chapter
         
-        let addMessage = NSButton(title:.local("View.addMessage"),
+        let addMessage = NSButton(title:.local("EditorView.addMessage"),
                                   target:presenter, action:#selector(presenter.addMessage))
         addMessage.translatesAutoresizingMaskIntoConstraints = false
         bar.addSubview(addMessage)
         
-        let rename = NSButton(title:.local("View.rename"),
+        let rename = NSButton(title:.local("EditorView.rename"),
                                   target:presenter, action:#selector(presenter.rename))
         rename.translatesAutoresizingMaskIntoConstraints = false
         rename.isEnabled = false
@@ -77,6 +77,7 @@ class EditorView:NSView, NSTextViewDelegate {
         self.rename = rename
         
         let status = NSImageView(frame:.zero)
+        status.isEnabled = false
         status.imageScaling = .scaleNone
         status.contentTintColor = .selectedMenuItemColor
         status.translatesAutoresizingMaskIntoConstraints = false
@@ -85,7 +86,7 @@ class EditorView:NSView, NSTextViewDelegate {
         
         let statusText = NSTextField()
         statusText.translatesAutoresizingMaskIntoConstraints = false
-        statusText.font = .systemFont(ofSize:12, weight:.light)
+        statusText.font = .systemFont(ofSize:11, weight:.light)
         statusText.backgroundColor = .clear
         statusText.alignment = .right
         statusText.isBezeled = false
@@ -118,7 +119,7 @@ class EditorView:NSView, NSTextViewDelegate {
         text.isVerticallyResizable = true
         text.isHorizontallyResizable = true
         text.isContinuousSpellCheckingEnabled = true
-        text.font = NSFont.systemFont(ofSize:16, weight:.light)
+        text.font = .systemFont(ofSize:16, weight:.light)
         scrollText.documentView = text
         self.text = text
         
@@ -157,8 +158,8 @@ class EditorView:NSView, NSTextViewDelegate {
         status.widthAnchor.constraint(equalToConstant:30).isActive = true
         status.heightAnchor.constraint(equalToConstant:30).isActive = true
         
-        statusText.centerYAnchor.constraint(equalTo:status.centerYAnchor).isActive = true
-        statusText.rightAnchor.constraint(equalTo:status.leftAnchor, constant:-2).isActive = true
+        statusText.topAnchor.constraint(equalTo:bar.topAnchor, constant:5).isActive = true
+        statusText.rightAnchor.constraint(equalTo:bar.rightAnchor, constant:-5).isActive = true
         
         editionArea.topAnchor.constraint(equalTo:bar.bottomAnchor).isActive = true
         editionArea.leftAnchor.constraint(equalTo:list.rightAnchor).isActive = true
@@ -216,6 +217,7 @@ class EditorView:NSView, NSTextViewDelegate {
     }
     
     private func select(id:String) {
+        presenter.selected = id
         showSelection(id:id)
         text.string = messages[id]!.text
         updateTextSize()

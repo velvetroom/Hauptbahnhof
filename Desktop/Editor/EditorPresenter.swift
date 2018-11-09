@@ -2,6 +2,7 @@ import Cocoa
 import Editor
 
 class EditorPresenter {
+    var selected = String()
     var viewModelTitle:((String) -> Void)?
     var viewModelStatus:((EditorStatus) -> Void)?
     var viewModelMessages:(([String:Message]) -> Void)?
@@ -30,6 +31,12 @@ class EditorPresenter {
     }
     
     @objc func rename() {
+        let window = NSWindow(contentRect:NSRect(x:0, y:0, width:260, height:200), styleMask:.titled,
+                              backing:.buffered, defer:false)
+        let view = RenameView()
+        view.presenter.id = selected
+        window.contentView = view
+        Application.window.beginSheet(window)
     }
     
     private func backgroundLoad() {

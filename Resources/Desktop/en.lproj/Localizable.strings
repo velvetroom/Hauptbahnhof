@@ -1,4 +1,6 @@
 Application.quit="Quit";
-View.addMessage="Add Message";
-View.rename="Rename";
-OptionView.next="Next";
+EditorView.addMessage="Add Message";
+EditorView.rename="Rename";
+RenameView.title="Rename Message";
+RenameView.cancel="Cancel";
+EditorOptionView.next="Next";
