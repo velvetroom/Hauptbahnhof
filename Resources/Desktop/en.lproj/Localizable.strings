@@ -1,3 +1,3 @@
 Application.quit="Quit";
-View.validate="Validate";
+View.addMessage="Add Message";
 OptionView.next="Next";

@@ -1,6 +1,6 @@
 import Foundation
 
-public class Message:Decodable {
+public class Message:Codable {
     public var text = String()
     public var options = [Option]()
     

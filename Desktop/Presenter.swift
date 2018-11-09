@@ -5,8 +5,8 @@ class Presenter {
     var viewModelTitle:((String) -> Void)?
     var viewModelStatus:((Status) -> Void)?
     var viewModelMessages:(([String:Message]) -> Void)?
-    private var master:GameMaster!
     private var validator = Validator()
+    private let workshop = Workshop()
     
     func load() {
         updated(status:statusLoading())
@@ -18,16 +18,24 @@ class Presenter {
         DispatchQueue.global(qos:.background).async { [weak self] in self?.backgroundValidate() }
     }
     
+    @objc func addMessage() {
+        DispatchQueue.global(qos:.background).async { [weak self] in
+            self?.workshop.addMessage()
+            guard let messages = self?.workshop.game.messages else { return }
+            self?.updated(messages:messages)
+        }
+    }
+    
     private func backgroundLoad() {
-        master = GameMaster()
-        updated(title:master.game.title)
-        updated(messages:master.game.messages)
+        workshop.load(chapter:.One)
+        updated(title:workshop.game.title)
+        updated(messages:workshop.game.messages)
         validate()
     }
     
     private func backgroundValidate() {
         do {
-            try validator.validate(master.game)
+            try validator.validate(workshop.game)
         } catch let error {
             updated(status:statusFailed(error:error))
             return

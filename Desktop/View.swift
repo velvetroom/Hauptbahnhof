@@ -59,8 +59,13 @@ class View:NSView, NSTextViewDelegate {
         chapter.textContainer!.size = NSSize(width:600, height:30)
         chapter.font = NSFont.systemFont(ofSize:14, weight:.light)
         chapter.delegate = self
-        addSubview(chapter)
+        bar.addSubview(chapter)
         self.chapter = chapter
+        
+        let addMessage = NSButton(title:.local("View.addMessage"),
+                                  target:presenter, action:#selector(presenter.addMessage))
+        addMessage.translatesAutoresizingMaskIntoConstraints = false
+        bar.addSubview(addMessage)
         
         let status = NSImageView(frame:.zero)
         status.imageScaling = .scaleNone
@@ -132,6 +137,9 @@ class View:NSView, NSTextViewDelegate {
         chapter.bottomAnchor.constraint(equalTo:bar.bottomAnchor).isActive = true
         chapter.widthAnchor.constraint(equalToConstant:220).isActive = true
         
+        addMessage.centerYAnchor.constraint(equalTo:chapter.centerYAnchor).isActive = true
+        addMessage.leftAnchor.constraint(equalTo:chapter.rightAnchor, constant:10).isActive = true
+        
         status.centerYAnchor.constraint(equalTo:chapter.centerYAnchor).isActive = true
         status.rightAnchor.constraint(equalTo:bar.rightAnchor, constant:-6).isActive = true
         status.widthAnchor.constraint(equalToConstant:30).isActive = true
@@ -186,7 +194,9 @@ class View:NSView, NSTextViewDelegate {
             option.rightAnchor.constraint(equalTo:options.rightAnchor).isActive = true
             top = option.bottomAnchor
         }
-        options.documentView!.bottomAnchor.constraint(equalTo:top).isActive = true
+        if !items.isEmpty {
+            options.documentView!.bottomAnchor.constraint(equalTo:top).isActive = true
+        }
     }
     
     private func updateTextSize() {
