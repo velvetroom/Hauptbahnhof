@@ -1,4 +1,5 @@
 import Cocoa
+import Editor
 
 @NSApplicationMain class Application:NSApplication, NSApplicationDelegate {
     private weak var window:NSWindow!
@@ -6,6 +7,7 @@ import Cocoa
     override init() {
         super.init()
         delegate = self
+        injection()
     }
     
     required init?(coder:NSCoder) { fatalError() }
@@ -31,6 +33,11 @@ import Cocoa
         window.titleVisibility = .hidden
         window.contentView = View()
         window.isReleasedWhenClosed = false
+    }
+    
+    private func injection() {
+        Factory.bundle = .main
+        Factory.storage = Session.self
     }
     
     @objc private func quit() { terminate(nil) }

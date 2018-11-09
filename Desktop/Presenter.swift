@@ -5,18 +5,34 @@ class Presenter {
     var viewModelTitle:((String) -> Void)?
     var viewModelStatus:((Status) -> Void)?
     var viewModelMessages:(([String:Message]) -> Void)?
-    var game = Game()
+    private var master:GameMaster!
+    private var validator = Validator()
     
     func load() {
-        let data = try! Data(contentsOf:Bundle.main.url(forResource:"One", withExtension:"json")!)
-        game = try! JSONDecoder().decode(Game.self, from:data)
-        viewModelTitle?(game.title)
+        updated(status:statusLoading())
+        DispatchQueue.global(qos:.background).async { [weak self] in self?.backgroundLoad() }
     }
     
     func validate() {
-        DispatchQueue.global(qos:.background).async { [weak self] in
-            
+        updated(status:statusLoading())
+        DispatchQueue.global(qos:.background).async { [weak self] in self?.backgroundValidate() }
+    }
+    
+    private func backgroundLoad() {
+        master = GameMaster()
+        updated(title:master.game.title)
+        updated(messages:master.game.messages)
+        validate()
+    }
+    
+    private func backgroundValidate() {
+        do {
+            try validator.validate(master.game)
+        } catch let error {
+            updated(status:statusFailed(error:error))
+            return
         }
+        updated(status:statusSuccess())
     }
     
     private func updated(messages:[String:Message]) {
@@ -42,7 +58,7 @@ class Presenter {
         var status = Status()
         status.image = NSImage(named:"error")!
         status.image.isTemplate = true
-        status.message = error.localizedDescription
+        status.message = String(describing:error)
         return status
     }
     
