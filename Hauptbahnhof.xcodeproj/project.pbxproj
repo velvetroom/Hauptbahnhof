@@ -238,7 +238,6 @@
 				DA4800442193103600A72514 /* Shared */,
 				DA4800492193103600A72514 /* Game */,
 				DADE7015219594B3009ADEB7 /* Workshop */,
-				DA7AC8E121948950007A7CC6 /* Validate */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -261,23 +260,6 @@
 				DA48004A2193103600A72514 /* TestSelection.swift */,
 			);
 			path = Game;
-			sourceTree = "<group>";
-		};
-		DA7AC8E121948950007A7CC6 /* Validate */ = {
-			isa = PBXGroup;
-			children = (
-				DA7AC8E221948968007A7CC6 /* TestValidate.swift */,
-			);
-			path = Validate;
-			sourceTree = "<group>";
-		};
-		DA7AC8E421948A08007A7CC6 /* Validate */ = {
-			isa = PBXGroup;
-			children = (
-				DA7AC8E521948A2E007A7CC6 /* Validator.swift */,
-				DA7AC8EB21948BEF007A7CC6 /* Invalid.swift */,
-			);
-			path = Validate;
 			sourceTree = "<group>";
 		};
 		DA7DEF402192EB7900909D9D /* Entities */ = {
@@ -471,7 +453,6 @@
 				DAD5B5AB218B07F800E1DDA9 /* Game */,
 				DADE701B2195970F009ADEB7 /* Workshop */,
 				DA7DEF402192EB7900909D9D /* Entities */,
-				DA7AC8E421948A08007A7CC6 /* Validate */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -480,6 +461,7 @@
 			isa = PBXGroup;
 			children = (
 				DADE7016219594E0009ADEB7 /* TestWorkshop.swift */,
+				DA7AC8E221948968007A7CC6 /* TestValidate.swift */,
 			);
 			path = Workshop;
 			sourceTree = "<group>";
@@ -488,6 +470,8 @@
 			isa = PBXGroup;
 			children = (
 				DADE701C21959720009ADEB7 /* Workshop.swift */,
+				DA7AC8E521948A2E007A7CC6 /* Validator.swift */,
+				DA7AC8EB21948BEF007A7CC6 /* Invalid.swift */,
 			);
 			path = Workshop;
 			sourceTree = "<group>";
