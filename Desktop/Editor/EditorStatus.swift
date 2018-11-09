@@ -1,6 +1,6 @@
 import Cocoa
 
-struct Status {
+struct EditorStatus {
     var image = NSImage()
     var message = String()
 }

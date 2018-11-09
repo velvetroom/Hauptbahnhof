@@ -1,7 +1,7 @@
 import Cocoa
 import Editor
 
-class OptionView:NSView {
+class EditorOptionView:NSView {
     private weak var list:NSScrollView!
     override var intrinsicContentSize:NSSize { return NSSize(width:NSView.noIntrinsicMetric, height:150) }
     

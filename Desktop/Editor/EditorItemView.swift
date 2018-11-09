@@ -1,6 +1,6 @@
 import Cocoa
 
-class ItemView:NSControl {
+class EditorItemView:NSControl {
     let message:String
     override var intrinsicContentSize:NSSize { return NSSize(width:200, height:50) }
     var selected = false { didSet {

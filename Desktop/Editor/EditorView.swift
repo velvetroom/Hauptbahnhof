@@ -1,7 +1,7 @@
 import Cocoa
 import Editor
 
-class View:NSView, NSTextViewDelegate {
+class EditorView:NSView, NSTextViewDelegate {
     private weak var list:NSScrollView!
     private weak var options:NSScrollView!
     private weak var text:NSTextView!
@@ -10,7 +10,7 @@ class View:NSView, NSTextViewDelegate {
     private weak var statusText:NSTextField!
     private weak var rename:NSButton!
     private var messages = [String:Message]() { didSet { reloadList() } }
-    private let presenter = Presenter()
+    private let presenter = EditorPresenter()
 
     override func cancelOperation(_:Any?) { stopEditing() }
     override func mouseDown(with:NSEvent) { stopEditing() }
@@ -182,7 +182,7 @@ class View:NSView, NSTextViewDelegate {
         list.documentView!.subviews.forEach { $0.removeFromSuperview() }
         var top = list.documentView!.topAnchor
         messages.keys.sorted().forEach { id in
-            let item = ItemView(id, options:messages[id]!.options.count)
+            let item = EditorItemView(id, options:messages[id]!.options.count)
             item.target = self
             item.action = #selector(select(item:))
             list.documentView!.addSubview(item)
@@ -198,7 +198,7 @@ class View:NSView, NSTextViewDelegate {
         options.documentView!.subviews.forEach { $0.removeFromSuperview() }
         var top = options.documentView!.topAnchor
         items.forEach { item in
-            let option = OptionView(item, messages:Array(messages.keys))
+            let option = EditorOptionView(item, messages:Array(messages.keys))
             options.documentView!.addSubview(option)
             
             option.topAnchor.constraint(equalTo:top).isActive = true
@@ -225,12 +225,12 @@ class View:NSView, NSTextViewDelegate {
     
     private func showSelection(id:String) {
         list.documentView!.subviews.forEach { view in
-            let item = view as! ItemView
+            let item = view as! EditorItemView
             item.selected = item.message == id
         }
     }
     
-    @objc private func select(item:ItemView) {
+    @objc private func select(item:EditorItemView) {
         select(id:item.message)
     }
 }

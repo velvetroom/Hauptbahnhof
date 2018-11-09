@@ -1,9 +1,9 @@
 import Cocoa
 import Editor
 
-class Presenter {
+class EditorPresenter {
     var viewModelTitle:((String) -> Void)?
-    var viewModelStatus:((Status) -> Void)?
+    var viewModelStatus:((EditorStatus) -> Void)?
     var viewModelMessages:(([String:Message]) -> Void)?
     var viewModelSelected:((String) -> Void)?
     private var validator = Validator()
@@ -57,7 +57,7 @@ class Presenter {
         DispatchQueue.main.async { [weak self] in self?.viewModelTitle?(title) }
     }
     
-    private func updated(status:Status) {
+    private func updated(status:EditorStatus) {
         DispatchQueue.main.async { [weak self] in self?.viewModelStatus?(status) }
     }
     
@@ -65,23 +65,23 @@ class Presenter {
         DispatchQueue.main.async { [weak self] in self?.viewModelSelected?(selected) }
     }
     
-    private func statusLoading() -> Status {
-        var status = Status()
+    private func statusLoading() -> EditorStatus {
+        var status = EditorStatus()
         status.image = NSImage(named:"loading")!
         status.image.isTemplate = true
         return status
     }
     
-    private func statusFailed(error:Error) -> Status {
-        var status = Status()
+    private func statusFailed(error:Error) -> EditorStatus {
+        var status = EditorStatus()
         status.image = NSImage(named:"error")!
         status.image.isTemplate = true
         status.message = error.localizedDescription
         return status
     }
     
-    private func statusSuccess() -> Status {
-        var status = Status()
+    private func statusSuccess() -> EditorStatus {
+        var status = EditorStatus()
         status.image = NSImage(named:"valid")!
         status.image.isTemplate = true
         return status
