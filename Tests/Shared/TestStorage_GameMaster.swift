@@ -15,6 +15,7 @@ class TestStorage_GameMaster:XCTestCase {
         MockStorage.onLoadPlayer = nil
         MockStorage.onSavePlayer = nil
         MockStorage.onLoadGame = nil
+        MockStorage.game = Game()
     }
     
     func testLoadsPlayer() {

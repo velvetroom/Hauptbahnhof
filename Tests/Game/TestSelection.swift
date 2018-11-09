@@ -11,6 +11,10 @@ class TestSelection:XCTestCase {
         master = GameMaster()
     }
     
+    override func tearDown() {
+        MockStorage.game = Game()
+    }
+    
     func testSelectChangesState() {
         
     }

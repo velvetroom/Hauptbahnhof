@@ -11,34 +11,36 @@ public class Validator {
     }
     
     private func titleEmpty(_ game:Game) throws {
-        if game.title.isEmpty { throw Invalid.titleEmpty }
+        if game.title.isEmpty { throw Invalid(.titleEmpty) }
     }
     
     private func messagesEmpty(_ game:Game) throws {
-        if game.messages.isEmpty { throw Invalid.messagesEmpty }
+        if game.messages.isEmpty { throw Invalid(.messagesEmpty) }
     }
     
     private func textEmpty(_ game:Game) throws {
-        try game.messages.values.forEach { if $0.text.isEmpty { throw Invalid.textEmpty } }
+        try game.messages.forEach { if $0.value.text.isEmpty { throw Invalid(.textEmpty, id:$0.key) } }
     }
     
     private func optionsEmpty(_ game:Game) throws {
-        try game.messages.values.forEach { if $0.options.isEmpty { throw Invalid.optionsEmpty } }
+        try game.messages.forEach { if $0.value.options.isEmpty { throw Invalid(.optionsEmpty, id:$0.key) } }
     }
     
     private func optionsLessThanTwo(_ game:Game) throws {
-        try game.messages.values.forEach { if $0.options.count < 2 { throw Invalid.optionsLessThanTwo } }
+        try game.messages.forEach { if $0.value.options.count < 2 { throw Invalid(.optionsLessThanTwo, id:$0.key) } }
     }
     
     private func nextInvalid(_ game:Game) throws {
-        try game.messages.values.forEach { try $0.options.forEach { option in
-            if game.messages[option.next] == nil { throw Invalid.nextInvalid }
+        try game.messages.forEach { id, message in
+            try message.options.forEach { option in
+                if game.messages[option.next] == nil { throw Invalid(.nextInvalid, id:id) }
         } }
     }
     
     private func optionTextEmpty(_ game:Game) throws {
-        try game.messages.values.forEach { try $0.options.forEach { option in
-            if option.text.isEmpty { throw Invalid.optionTextEmpty }
+        try game.messages.forEach { id, message in
+            try message.options.forEach { option in
+                if option.text.isEmpty { throw Invalid(.optionTextEmpty, id:id) }
         } }
     }
 }
