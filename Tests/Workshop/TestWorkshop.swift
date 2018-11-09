@@ -15,8 +15,16 @@ class TestWorkshop:XCTestCase {
     }
     
     func testAddMessage() {
-        XCTAssertNil(workshop.game.messages[""])
+        workshop.game.messages[""] = nil
         workshop.addMessage()
         XCTAssertNotNil(workshop.game.messages[""])
+    }
+    
+    func testDoNotAddIfNewAlreadyExists() {
+        let message = Message()
+        message.text = "hello world"
+        workshop.game.messages[""] = message
+        workshop.addMessage()
+        XCTAssertEqual("hello world", workshop.game.messages[""]!.text)
     }
 }

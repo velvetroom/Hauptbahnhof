@@ -11,7 +11,9 @@ public class Workshop {
     }
     
     public func addMessage() {
-        game.messages[String()] = Message()
-        storage.save(game:game)
+        if game.messages[String()] == nil {
+            game.messages[String()] = Message()
+            storage.save(game:game)
+        }
     }
 }
