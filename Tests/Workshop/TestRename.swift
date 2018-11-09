@@ -26,4 +26,9 @@ class TestRename:XCTestCase {
     func testCurrent() {
         XCTAssertNoThrow(try workshop.rename("a", to:"a"))
     }
+    
+    func testCaseInsensitive() {
+        workshop.game.messages["b"] = Message()
+        XCTAssertThrowsError(try workshop.rename("a", to:"B"))
+    }
 }

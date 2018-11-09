@@ -24,6 +24,11 @@ public class Workshop {
     
     public func rename(_ id:String, to:String) throws {
         if to.isEmpty { throw Exception.emptyName }
-        try game.messages.keys.forEach { if $0 == to && $0 != id { throw Exception.nameExists } }
+        let to = to.lowercased()
+        try game.messages.keys.forEach { item in
+            if item.lowercased() == to && item != id {
+                throw Exception.nameExists
+            }
+        }
     }
 }
