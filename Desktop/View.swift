@@ -34,8 +34,12 @@ class View:NSView, NSTextViewDelegate {
     override func viewDidMoveToWindow() {
         super.viewDidMoveToWindow()
         makeOutlets()
-        presenter.updatedTitle = { [weak self] in self?.chapter.string = $0 }
-        presenter.updated = { [weak self] in self?.messages = $0 }
+        presenter.viewModelTitle = { [weak self] in self?.chapter.string = $0 }
+        presenter.viewModelMessages = { [weak self] in self?.messages = $0 }
+        presenter.viewModelStatus = { [weak self] status in
+            self?.status.image = status.image
+            self?.statusText.stringValue = status.message
+        }
         presenter.load()
     }
     
@@ -58,8 +62,7 @@ class View:NSView, NSTextViewDelegate {
         addSubview(chapter)
         self.chapter = chapter
         
-        let status = NSImageView(image:NSImage(named:"loading")!)
-        status.image!.isTemplate = true
+        let status = NSImageView(frame:.zero)
         status.imageScaling = .scaleNone
         status.contentTintColor = .selectedMenuItemColor
         status.translatesAutoresizingMaskIntoConstraints = false
@@ -131,6 +134,8 @@ class View:NSView, NSTextViewDelegate {
         
         status.centerYAnchor.constraint(equalTo:chapter.centerYAnchor).isActive = true
         status.rightAnchor.constraint(equalTo:bar.rightAnchor, constant:-6).isActive = true
+        status.widthAnchor.constraint(equalToConstant:30).isActive = true
+        status.heightAnchor.constraint(equalToConstant:30).isActive = true
         
         statusText.centerYAnchor.constraint(equalTo:status.centerYAnchor).isActive = true
         statusText.rightAnchor.constraint(equalTo:status.leftAnchor, constant:-2).isActive = true
