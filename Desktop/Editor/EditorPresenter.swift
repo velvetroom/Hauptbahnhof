@@ -7,7 +7,6 @@ class EditorPresenter {
     var viewModelStatus:((EditorStatus) -> Void)?
     var viewModelMessages:(([String:Message]) -> Void)?
     var viewModelSelected:((String) -> Void)?
-    private var validator = Validator()
     private let workshop = Workshop()
     
     func load() {
@@ -48,7 +47,7 @@ class EditorPresenter {
     
     private func backgroundValidate() {
         do {
-            try validator.validate(workshop.game)
+            try workshop.validate()
         } catch let error {
             updated(status:statusFailed(error:error))
             return
