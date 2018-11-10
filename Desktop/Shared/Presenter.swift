@@ -3,6 +3,7 @@ import Editor
 
 class Presenter {
     var viewModel = ViewModel()
+    private weak var timer:Timer?
     private let workshop = Workshop()
     
     func load() {
@@ -42,7 +43,19 @@ class Presenter {
         }
     }
     
+    func update(text:String) {
+        self.timer?.invalidate()
+        let id = viewModel.selected!.id
+        self.timer = Timer.scheduledTimer(withTimeInterval:3, repeats:false) {
+            guard $0.isValid else { return }
+            DispatchQueue.global(qos:.background).async {
+                self.workshop.update(id, text:text)
+            }
+        }
+    }
+    
     @objc func addMessage() {
+        timer?.fire()
         viewModel.selected = nil
         workshop.addMessage()
         messages()
@@ -52,6 +65,7 @@ class Presenter {
     }
     
     @objc func rename() {
+        timer?.fire()
         let view = RenameView(presenter:self)
         Application.window.beginSheet(view) { response in
             if response == .continue {
@@ -67,6 +81,7 @@ class Presenter {
     }
     
     @objc func delete() {
+        timer?.fire()
         Application.window.beginSheet(DeleteView()) { response in
             if response == .continue {
                 let id = self.viewModel.selected!.id

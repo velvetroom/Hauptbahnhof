@@ -21,12 +21,19 @@ class View:NSView, NSTextViewDelegate {
         text.textContainer!.size = NSSize(width:options.bounds.width - 20, height:.greatestFiniteMagnitude)
     }
     
-    func textView(_:NSTextView, doCommandBy selector:Selector) -> Bool {
-        if (selector == #selector(NSResponder.insertNewline(_:))) {
+    func textView(_ text:NSTextView, doCommandBy selector:Selector) -> Bool {
+        if text === chapter && (selector == #selector(NSResponder.insertNewline(_:))) {
             stopEditing()
             return true
         }
         return false
+    }
+    
+    func textDidChange(_ notification:Notification) {
+        let text = notification.object as! NSTextView
+        if text === self.text {
+            presenter.update(text:text.string)
+        }
     }
     
     override func viewDidMoveToWindow() {
@@ -136,6 +143,7 @@ class View:NSView, NSTextViewDelegate {
         text.isHorizontallyResizable = true
         text.isContinuousSpellCheckingEnabled = true
         text.font = .systemFont(ofSize:16, weight:.light)
+        text.delegate = self
         scrollText.documentView = text
         self.text = text
         

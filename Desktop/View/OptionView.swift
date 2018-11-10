@@ -13,7 +13,7 @@ class OptionView:NSView {
         text.translatesAutoresizingMaskIntoConstraints = false
         text.wantsLayer = true
         text.layer!.cornerRadius = 12
-        text.textContainerInset = NSSize(width:20, height:10)
+        text.textContainerInset = NSSize(width:20, height:7)
         text.isContinuousSpellCheckingEnabled = true
         text.textContainer!.size = NSSize(width:350, height:52)
         text.textContainer!.lineBreakMode = .byTruncatingTail
