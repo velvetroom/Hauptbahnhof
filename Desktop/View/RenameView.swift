@@ -7,6 +7,8 @@ class RenameView:NSWindow, NSTextViewDelegate {
     private weak var statusText:NSTextField!
     private weak var save:NSButton!
     
+    override func cancelOperation(_:Any?) { stopEditing() }
+    
     init(presenter:Presenter) {
         self.presenter = presenter
         super.init(contentRect:NSRect(x:0, y:0, width:260, height:200), styleMask:.titled, backing:.buffered,
@@ -21,6 +23,14 @@ class RenameView:NSWindow, NSTextViewDelegate {
     
     func textDidChange(_:Notification) {
         presenter.validate(name:text.string)
+    }
+    
+    func textView(_:NSTextView, doCommandBy selector:Selector) -> Bool {
+        if (selector == #selector(NSResponder.insertNewline(_:))) {
+            stopEditing()
+            return true
+        }
+        return false
     }
     
     private func makeOutlets() {
@@ -96,6 +106,8 @@ class RenameView:NSWindow, NSTextViewDelegate {
         save.bottomAnchor.constraint(equalTo:contentView!.bottomAnchor, constant:-10).isActive = true
         save.rightAnchor.constraint(equalTo:contentView!.rightAnchor, constant:-10).isActive = true
     }
+    
+    private func stopEditing() { DispatchQueue.main.async { [weak self] in self?.makeFirstResponder(nil) } }
     
     @objc private func stop() {
         Application.window.endSheet(Application.window.attachedSheet!, returnCode:.cancel)
