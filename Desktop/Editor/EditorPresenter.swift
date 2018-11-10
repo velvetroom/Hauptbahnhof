@@ -3,11 +3,11 @@ import Editor
 
 class EditorPresenter {
     var selected = String()
-    var viewModelTitle:((String) -> Void)?
-    var viewModelStatus:((Status) -> Void)?
-    var viewModelMessages:(([String:Message]) -> Void)?
-    var viewModelSelected:((String) -> Void)?
-    var viewModelClearSelection:(() -> Void)?
+    var observeTitle:((String) -> Void)?
+    var observeStatus:((Status) -> Void)?
+    var observeMessages:(([String:Message]) -> Void)?
+    var shouldSelect:((String) -> Void)?
+    var shouldClearSelection:(() -> Void)?
     private let workshop = Workshop()
     
     func load() {
@@ -82,22 +82,22 @@ class EditorPresenter {
     
     private func updatedMessages() {
         let messages = workshop.game.messages
-        DispatchQueue.main.async { [weak self] in self?.viewModelMessages?(messages) }
+        DispatchQueue.main.async { [weak self] in self?.observeMessages?(messages) }
     }
     
     private func updated(title:String) {
-        DispatchQueue.main.async { [weak self] in self?.viewModelTitle?(title) }
+        DispatchQueue.main.async { [weak self] in self?.observeTitle?(title) }
     }
     
     private func updated(status:Status) {
-        DispatchQueue.main.async { [weak self] in self?.viewModelStatus?(status) }
+        DispatchQueue.main.async { [weak self] in self?.observeStatus?(status) }
     }
     
     private func updated(selected:String) {
-        DispatchQueue.main.async { [weak self] in self?.viewModelSelected?(selected) }
+        DispatchQueue.main.async { [weak self] in self?.shouldSelect?(selected) }
     }
     
     private func updatedClear() {
-        DispatchQueue.main.async { [weak self] in self?.viewModelClearSelection?() }
+        DispatchQueue.main.async { [weak self] in self?.shouldClearSelection?() }
     }
 }

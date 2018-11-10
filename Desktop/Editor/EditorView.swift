@@ -36,11 +36,11 @@ class EditorView:NSView, NSTextViewDelegate {
     override func viewDidMoveToWindow() {
         super.viewDidMoveToWindow()
         makeOutlets()
-        presenter.viewModelTitle = { [weak self] in self?.chapter.string = $0 }
-        presenter.viewModelMessages = { [weak self] in self?.messages = $0 }
-        presenter.viewModelSelected = { [weak self] in self?.select(id:$0) }
-        presenter.viewModelClearSelection = { [weak self] in self?.clearSelection() }
-        presenter.viewModelStatus = { [weak self] status in
+        presenter.observeTitle = { [weak self] in self?.chapter.string = $0 }
+        presenter.observeMessages = { [weak self] in self?.messages = $0 }
+        presenter.shouldSelect = { [weak self] in self?.select(id:$0) }
+        presenter.shouldClearSelection = { [weak self] in self?.clearSelection() }
+        presenter.observeStatus = { [weak self] status in
             self?.status.image = status.image
             self?.statusText.stringValue = status.message
         }
