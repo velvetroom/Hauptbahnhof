@@ -39,4 +39,21 @@ class TestRename:XCTestCase {
         XCTAssertNotNil(workshop.game.messages["b"])
         XCTAssertEqual("hello world", workshop.game.messages["b"]!.text)
     }
+    
+    func testUpdateNext() {
+        workshop.game.messages["b"] = Message()
+        workshop.game.messages["c"] = Message()
+        let optionB0 = Option()
+        optionB0.next = "a"
+        let optionB1 = Option()
+        optionB1.next = "c"
+        let optionC0 = Option()
+        optionC0.next = "a"
+        workshop.game.messages["b"]!.options = [optionB0, optionB1]
+        workshop.game.messages["c"]!.options = [optionC0]
+        workshop.rename("a", to:"z")
+        XCTAssertEqual("z", optionB0.next)
+        XCTAssertEqual("c", optionB1.next)
+        XCTAssertEqual("z", optionC0.next)
+    }
 }
