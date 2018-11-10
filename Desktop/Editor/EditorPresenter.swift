@@ -47,7 +47,6 @@ class EditorPresenter {
         let window = NSWindow(contentRect:NSRect(x:0, y:0, width:200, height:100), styleMask:.titled,
                               backing:.buffered, defer:false)
         let view = DeleteView()
-        view.presenter.id = selected
         window.contentView = view
         Application.window.beginSheet(window) { response in
             if response == .continue {

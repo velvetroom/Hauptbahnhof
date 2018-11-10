@@ -1,8 +1,6 @@
 import Cocoa
 
 class DeleteView:NSView {
-    let presenter = DeletePresenter()
-    
     override func viewDidMoveToWindow() {
         super.viewDidMoveToWindow()
         makeOutlets()
@@ -19,11 +17,11 @@ class DeleteView:NSView {
         title.stringValue = .local("DeleteView.title")
         addSubview(title)
 
-        let cancel = NSButton(title:.local("DeleteView.cancel"), target:presenter, action:#selector(presenter.cancel))
+        let cancel = NSButton(title:.local("DeleteView.cancel"), target:self, action:#selector(stop))
         cancel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(cancel)
         
-        let delete = NSButton(title:.local("DeleteView.delete"), target:presenter, action:#selector(presenter.delete))
+        let delete = NSButton(title:.local("DeleteView.delete"), target:self, action:#selector(confirm))
         delete.translatesAutoresizingMaskIntoConstraints = false
         addSubview(delete)
         
@@ -35,5 +33,13 @@ class DeleteView:NSView {
         
         delete.bottomAnchor.constraint(equalTo:bottomAnchor, constant:-10).isActive = true
         delete.rightAnchor.constraint(equalTo:rightAnchor, constant:-10).isActive = true
+    }
+    
+    @objc private func stop() {
+        Application.window.endSheet(Application.window.attachedSheet!, returnCode:.cancel)
+    }
+    
+    @objc private func confirm() {
+        Application.window.endSheet(Application.window.attachedSheet!, returnCode:.continue)
     }
 }
