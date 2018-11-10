@@ -40,6 +40,14 @@ class TestValidate:XCTestCase {
         XCTAssertThrowsError(try validator.validate(game))
     }
     
+    func testNoInitial() {
+        game.messages["another"] = game.messages["initial"]
+        game.messages["another"]!.options[0].next = "another"
+        game.messages["another"]!.options[1].next = "another"
+        game.messages["initial"] = nil
+        XCTAssertThrowsError(try validator.validate(game))
+    }
+    
     func testTextEmpty() {
         game.messages["initial"]!.text = ""
         XCTAssertThrowsError(try validator.validate(game))

@@ -5,6 +5,7 @@ struct Invalid:LocalizedError {
         case titleEmpty
         case messagesEmpty
         case idEmpty
+        case noInitial
         case textEmpty
         case optionsEmpty
         case optionsLessThanTwo
