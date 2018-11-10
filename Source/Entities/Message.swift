@@ -1,8 +1,6 @@
 import Foundation
 
 public class Message:Codable {
-    public var text = String()
-    public var options = [Option]()
-    
-    public init() { }
+    public internal(set) var text = String()
+    public internal(set) var options = [Option]()
 }

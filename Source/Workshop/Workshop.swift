@@ -45,6 +45,11 @@ public class Workshop {
         save()
     }
     
+    public func update(_ id:String, text:String) {
+        game.messages[id]!.text = text
+        save()
+    }
+    
     private func save() {
         storage.save(game:game)
     }
