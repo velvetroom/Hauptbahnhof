@@ -1,8 +1,9 @@
 import Cocoa
 
-class DeleteView:NSView {
-    override func viewDidMoveToWindow() {
-        super.viewDidMoveToWindow()
+class DeleteView:NSWindow {
+    init() {
+        super.init(contentRect:NSRect(x:0, y:0, width:200, height:100), styleMask:.titled, backing:.buffered,
+                   defer:false)
         makeOutlets()
     }
     
@@ -15,24 +16,24 @@ class DeleteView:NSView {
         title.isEditable = false
         title.alignment = .center
         title.stringValue = .local("DeleteView.title")
-        addSubview(title)
+        contentView!.addSubview(title)
 
         let cancel = NSButton(title:.local("DeleteView.cancel"), target:self, action:#selector(stop))
         cancel.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(cancel)
-        
+        contentView!.addSubview(cancel)
+
         let delete = NSButton(title:.local("DeleteView.delete"), target:self, action:#selector(confirm))
         delete.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(delete)
-        
-        title.topAnchor.constraint(equalTo:topAnchor, constant:28).isActive = true
-        title.centerXAnchor.constraint(equalTo:centerXAnchor).isActive = true
-        
-        cancel.bottomAnchor.constraint(equalTo:bottomAnchor, constant:-10).isActive = true
-        cancel.leftAnchor.constraint(equalTo:leftAnchor, constant:10).isActive = true
-        
-        delete.bottomAnchor.constraint(equalTo:bottomAnchor, constant:-10).isActive = true
-        delete.rightAnchor.constraint(equalTo:rightAnchor, constant:-10).isActive = true
+        contentView!.addSubview(delete)
+
+        title.topAnchor.constraint(equalTo:contentView!.topAnchor, constant:28).isActive = true
+        title.centerXAnchor.constraint(equalTo:contentView!.centerXAnchor).isActive = true
+
+        cancel.bottomAnchor.constraint(equalTo:contentView!.bottomAnchor, constant:-10).isActive = true
+        cancel.leftAnchor.constraint(equalTo:contentView!.leftAnchor, constant:10).isActive = true
+
+        delete.bottomAnchor.constraint(equalTo:contentView!.bottomAnchor, constant:-10).isActive = true
+        delete.rightAnchor.constraint(equalTo:contentView!.rightAnchor, constant:-10).isActive = true
     }
     
     @objc private func stop() {

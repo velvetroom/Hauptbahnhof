@@ -1,24 +1,26 @@
 import Cocoa
 
-class RenameView:NSView, NSTextViewDelegate {
-    let presenter = RenamePresenter()
-    private weak var text:NSTextView!
+class RenameView:NSWindow, NSTextViewDelegate {
+    private(set) weak var text:NSTextView!
+    private weak var presenter:EditorPresenter!
     private weak var status:NSImageView!
     private weak var statusText:NSTextField!
     private weak var save:NSButton!
     
-    func textDidChange(_:Notification) {
-        presenter.validate(name:text.string)
-    }
-    
-    override func viewDidMoveToWindow() {
-        super.viewDidMoveToWindow()
+    init(presenter:EditorPresenter) {
+        self.presenter = presenter
+        super.init(contentRect:NSRect(x:0, y:0, width:260, height:200), styleMask:.titled, backing:.buffered,
+                   defer:false)
         makeOutlets()
-        presenter.viewModelSaving = { [weak self] in self?.save.isEnabled = $0 }
-        presenter.viewModelStatus = { [weak self] status in
+        presenter.observeRenameSave = { [weak self] in self?.save.isEnabled = $0 }
+        presenter.observeRenameStatus = { [weak self] status in
             self?.status.image = status.image
             self?.statusText.stringValue = status.message
         }
+    }
+    
+    func textDidChange(_:Notification) {
+        presenter.validate(name:text.string)
     }
     
     private func makeOutlets() {
@@ -29,7 +31,7 @@ class RenameView:NSView, NSTextViewDelegate {
         title.isBezeled = false
         title.isEditable = false
         title.stringValue = .local("RenameView.title")
-        addSubview(title)
+        contentView!.addSubview(title)
         
         let text = NSTextView(frame:.zero)
         text.translatesAutoresizingMaskIntoConstraints = false
@@ -41,8 +43,8 @@ class RenameView:NSView, NSTextViewDelegate {
         text.textContainer!.lineBreakMode = .byTruncatingHead
         text.font = .systemFont(ofSize:16, weight:.light)
         text.delegate = self
-        text.string = presenter.id
-        addSubview(text)
+        text.string = presenter.selected
+        contentView!.addSubview(text)
         self.text = text
         
         let status = NSImageView(frame:.zero)
@@ -50,7 +52,7 @@ class RenameView:NSView, NSTextViewDelegate {
         status.imageScaling = .scaleNone
         status.contentTintColor = .selectedMenuItemColor
         status.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(status)
+        contentView!.addSubview(status)
         self.status = status
         
         let statusText = NSTextField()
@@ -60,21 +62,21 @@ class RenameView:NSView, NSTextViewDelegate {
         statusText.alignment = .center
         statusText.isBezeled = false
         statusText.isEditable = false
-        addSubview(statusText)
+        contentView!.addSubview(statusText)
         self.statusText = statusText
         
-        let cancel = NSButton(title:.local("RenameView.cancel"), target:presenter, action:#selector(presenter.cancel))
+        let cancel = NSButton(title:.local("RenameView.cancel"), target:self, action:#selector(stop))
         cancel.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(cancel)
+        contentView!.addSubview(cancel)
         
         let save = NSButton(title:.local("RenameView.save"), target:self, action:#selector(confirm))
         save.translatesAutoresizingMaskIntoConstraints = false
         save.isEnabled = false
-        addSubview(save)
+        contentView!.addSubview(save)
         self.save = save
         
-        title.topAnchor.constraint(equalTo:topAnchor, constant:10).isActive = true
-        title.leftAnchor.constraint(equalTo:leftAnchor, constant:10).isActive = true
+        title.topAnchor.constraint(equalTo:contentView!.topAnchor, constant:10).isActive = true
+        title.leftAnchor.constraint(equalTo:contentView!.leftAnchor, constant:10).isActive = true
         
         text.topAnchor.constraint(equalTo:title.bottomAnchor, constant:10).isActive = true
         text.leftAnchor.constraint(equalTo:title.leftAnchor).isActive = true
@@ -82,20 +84,24 @@ class RenameView:NSView, NSTextViewDelegate {
         text.heightAnchor.constraint(equalToConstant:33).isActive = true
         
         status.topAnchor.constraint(equalTo:text.bottomAnchor, constant:20).isActive = true
-        status.centerXAnchor.constraint(equalTo:centerXAnchor).isActive = true
+        status.centerXAnchor.constraint(equalTo:contentView!.centerXAnchor).isActive = true
         
         statusText.topAnchor.constraint(equalTo:status.bottomAnchor, constant:10).isActive = true
-        statusText.leftAnchor.constraint(equalTo:leftAnchor, constant:10).isActive = true
-        statusText.rightAnchor.constraint(equalTo:rightAnchor, constant:-10).isActive = true
+        statusText.leftAnchor.constraint(equalTo:contentView!.leftAnchor, constant:10).isActive = true
+        statusText.rightAnchor.constraint(equalTo:contentView!.rightAnchor, constant:-10).isActive = true
         
-        cancel.bottomAnchor.constraint(equalTo:bottomAnchor, constant:-10).isActive = true
-        cancel.leftAnchor.constraint(equalTo:leftAnchor, constant:10).isActive = true
+        cancel.bottomAnchor.constraint(equalTo:contentView!.bottomAnchor, constant:-10).isActive = true
+        cancel.leftAnchor.constraint(equalTo:contentView!.leftAnchor, constant:10).isActive = true
         
-        save.bottomAnchor.constraint(equalTo:bottomAnchor, constant:-10).isActive = true
-        save.rightAnchor.constraint(equalTo:rightAnchor, constant:-10).isActive = true
+        save.bottomAnchor.constraint(equalTo:contentView!.bottomAnchor, constant:-10).isActive = true
+        save.rightAnchor.constraint(equalTo:contentView!.rightAnchor, constant:-10).isActive = true
+    }
+    
+    @objc private func stop() {
+        Application.window.endSheet(Application.window.attachedSheet!, returnCode:.cancel)
     }
     
     @objc private func confirm() {
-        presenter.save(name:text.string)
+        Application.window.endSheet(Application.window.attachedSheet!, returnCode:.continue)
     }
 }

@@ -16,10 +16,6 @@ class EditorView:NSView, NSTextViewDelegate {
     override func cancelOperation(_:Any?) { stopEditing() }
     override func mouseDown(with:NSEvent) { stopEditing() }
     
-    deinit {
-        chapter.delegate = nil
-    }
-    
     override func viewDidEndLiveResize() {
         super.viewDidEndLiveResize()
         updateTextSize()
@@ -38,7 +34,6 @@ class EditorView:NSView, NSTextViewDelegate {
         makeOutlets()
         presenter.observeTitle = { [weak self] in self?.chapter.string = $0 }
         presenter.observeMessages = { [weak self] in self?.messages = $0 }
-        presenter.shouldSelect = { [weak self] in self?.select(id:$0) }
         presenter.shouldClearSelection = { [weak self] in self?.clearSelection() }
         presenter.observeStatus = { [weak self] status in
             self?.status.image = status.image
@@ -192,6 +187,7 @@ class EditorView:NSView, NSTextViewDelegate {
         var top = list.documentView!.topAnchor
         messages.keys.sorted().forEach { id in
             let item = EditorItemView(id, options:messages[id]!.options.count)
+            item.selected = id == presenter.selected
             item.target = self
             item.action = #selector(select(item:))
             list.documentView!.addSubview(item)
@@ -221,35 +217,21 @@ class EditorView:NSView, NSTextViewDelegate {
     }
     
     private func updateTextSize() {
-        text.textContainer!.size = NSSize(width:options.bounds.width - 20, height:CGFloat.greatestFiniteMagnitude)
-    }
-    
-    private func select(id:String) {
-        presenter.selected = id
-        showSelection(id:id)
-        text.string = messages[id]!.text
-        reloadOption(items:messages[id]!.options)
-        rename.isEnabled = true
-        delete.isEnabled = true
+        text.textContainer!.size = NSSize(width:options.bounds.width - 20, height:.greatestFiniteMagnitude)
     }
     
     private func clearSelection() {
-        presenter.selected = String()
         text.string = String()
         reloadOption(items:[])
         rename.isEnabled = false
         delete.isEnabled = false
-        list.documentView!.subviews.forEach { ($0 as! EditorItemView).selected = false }
-    }
-    
-    private func showSelection(id:String) {
-        list.documentView!.subviews.forEach { view in
-            let item = view as! EditorItemView
-            item.selected = item.message == id
-        }
     }
     
     @objc private func select(item:EditorItemView) {
-        select(id:item.message)
+        presenter.selected = item.message
+        text.string = messages[item.message]!.text
+        reloadOption(items:messages[item.message]!.options)
+        rename.isEnabled = true
+        delete.isEnabled = true
     }
 }
