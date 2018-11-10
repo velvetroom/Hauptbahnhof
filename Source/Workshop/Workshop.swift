@@ -40,6 +40,7 @@ public class Workshop {
     }
     
     public func deleteMessage(_ id:String) {
+        game.messages.values.forEach { $0.options.forEach { if $0.next == id { $0.next = String() } } }
         game.messages.removeValue(forKey:id)
         save()
     }
