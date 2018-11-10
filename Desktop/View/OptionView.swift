@@ -1,11 +1,11 @@
 import Cocoa
 import Editor
 
-class EditorOptionView:NSView {
+class OptionView:NSView {
     private weak var list:NSScrollView!
     override var intrinsicContentSize:NSSize { return NSSize(width:NSView.noIntrinsicMetric, height:150) }
     
-    init(_ option:Option, messages:[String]) {
+    init(_ option:Option) {
         super.init(frame:.zero)
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -31,12 +31,6 @@ class EditorOptionView:NSView {
         nextTitle.stringValue = .local("EditorOptionView.next")
         addSubview(nextTitle)
         
-        let next = NSPopUpButton(frame:.zero)
-        next.translatesAutoresizingMaskIntoConstraints = false
-        next.addItems(withTitles:messages)
-        next.selectItem(withTitle:option.next)
-        addSubview(next)
-        
         let list = NSScrollView(frame:.zero)
         list.translatesAutoresizingMaskIntoConstraints = false
         list.hasVerticalScroller = true
@@ -47,7 +41,7 @@ class EditorOptionView:NSView {
         addSubview(list)
         self.list = list
         
-        let buttonAdd = Button("add")
+        let buttonAdd = ButtonView("add")
         addSubview(buttonAdd)
 
         text.topAnchor.constraint(equalTo:topAnchor, constant:6).isActive = true
@@ -55,11 +49,8 @@ class EditorOptionView:NSView {
         text.widthAnchor.constraint(equalToConstant:350).isActive = true
         text.heightAnchor.constraint(equalToConstant:52).isActive = true
         
-        nextTitle.centerYAnchor.constraint(equalTo:next.centerYAnchor).isActive = true
+        nextTitle.topAnchor.constraint(equalTo:text.bottomAnchor, constant:10).isActive = true
         nextTitle.leftAnchor.constraint(equalTo:leftAnchor, constant:10).isActive = true
-        
-        next.topAnchor.constraint(equalTo:text.bottomAnchor, constant:10).isActive = true
-        next.leftAnchor.constraint(equalTo:nextTitle.rightAnchor, constant:10).isActive = true
         
         list.topAnchor.constraint(equalTo:text.topAnchor).isActive = true
         list.leftAnchor.constraint(equalTo:text.rightAnchor, constant:10).isActive = true

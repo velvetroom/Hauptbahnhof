@@ -1,6 +1,6 @@
 import Cocoa
 
-class Button:NSButton {
+class ButtonView:NSButton {
     override var intrinsicContentSize:NSSize { return image!.size }
     override func mouseDown(with event:NSEvent) {
         contentTintColor = NSColor.selectedMenuItemColor

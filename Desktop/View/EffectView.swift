@@ -1,6 +1,6 @@
 import Cocoa
 
-class EditorEffectView:NSControl {
+class EffectView:NSControl {
     let effect:String
     override var intrinsicContentSize:NSSize { return NSSize(width:200, height:30) }
     var selected = false { didSet {

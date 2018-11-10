@@ -8,7 +8,7 @@ struct Status {
         return status
     }
     
-    static func failed(error:Error) -> Status {
+    static func failed(_ error:Error) -> Status {
         var status = Status()
         status.image = NSImage(named:"error")!
         status.image.isTemplate = true

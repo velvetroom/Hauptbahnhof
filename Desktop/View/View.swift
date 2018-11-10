@@ -1,7 +1,7 @@
 import Cocoa
 import Editor
 
-class EditorView:NSView, NSTextViewDelegate {
+class View:NSView, NSTextViewDelegate {
     private weak var list:NSScrollView!
     private weak var options:NSScrollView!
     private weak var text:NSTextView!
@@ -10,15 +10,15 @@ class EditorView:NSView, NSTextViewDelegate {
     private weak var statusText:NSTextField!
     private weak var rename:NSButton!
     private weak var delete:NSButton!
-    private var messages = [String:Message]() { didSet { reloadList() } }
-    private let presenter = EditorPresenter()
+    private weak var editionArea:NSView!
+    private let presenter = Presenter()
 
     override func cancelOperation(_:Any?) { stopEditing() }
     override func mouseDown(with:NSEvent) { stopEditing() }
     
     override func viewDidEndLiveResize() {
         super.viewDidEndLiveResize()
-        updateTextSize()
+        text.textContainer!.size = NSSize(width:options.bounds.width - 20, height:.greatestFiniteMagnitude)
     }
     
     func textView(_:NSTextView, doCommandBy selector:Selector) -> Bool {
@@ -32,12 +32,24 @@ class EditorView:NSView, NSTextViewDelegate {
     override func viewDidMoveToWindow() {
         super.viewDidMoveToWindow()
         makeOutlets()
-        presenter.observeTitle = { [weak self] in self?.chapter.string = $0 }
-        presenter.observeMessages = { [weak self] in self?.messages = $0 }
-        presenter.shouldClearSelection = { [weak self] in self?.clearSelection() }
-        presenter.observeStatus = { [weak self] status in
-            self?.status.image = status.image
-            self?.statusText.stringValue = status.message
+        presenter.viewModel.title = { self.chapter.string = $0 }
+        presenter.viewModel.messages = { self.reload($0) }
+        presenter.viewModel.status = {
+            self.status.image = $0.image
+            self.statusText.stringValue = $0.message
+        }
+        presenter.viewModel.item = {
+            if let item = $0 {
+                self.text.string = item.message.text
+                self.reloadOptions(item.message)
+                self.editionArea.isHidden = false
+                self.rename.isEnabled = true
+                self.delete.isEnabled = true
+            } else {
+                self.editionArea.isHidden = true
+                self.rename.isEnabled = false
+                self.delete.isEnabled = false
+            }
         }
         presenter.load()
     }
@@ -108,8 +120,10 @@ class EditorView:NSView, NSTextViewDelegate {
         let editionArea = NSView()
         editionArea.translatesAutoresizingMaskIntoConstraints = false
         editionArea.wantsLayer = true
+        editionArea.isHidden = true
         editionArea.layer!.backgroundColor = NSColor.windowBackgroundColor.cgColor
         addSubview(editionArea)
+        self.editionArea = editionArea
         
         let scrollText = NSScrollView(frame:.zero)
         scrollText.translatesAutoresizingMaskIntoConstraints = false
@@ -182,12 +196,12 @@ class EditorView:NSView, NSTextViewDelegate {
     
     private func stopEditing() { DispatchQueue.main.async { [weak self] in self?.window?.makeFirstResponder(nil) } }
     
-    private func reloadList() {
+    private func reload(_ messages:[String:Message]) {
         list.documentView!.subviews.forEach { $0.removeFromSuperview() }
         var top = list.documentView!.topAnchor
         messages.keys.sorted().forEach { id in
-            let item = EditorItemView(id, options:messages[id]!.options.count)
-            item.selected = id == presenter.selected
+            let item = ItemView(messages[id]!)
+            item.id = id
             item.target = self
             item.action = #selector(select(item:))
             list.documentView!.addSubview(item)
@@ -199,11 +213,11 @@ class EditorView:NSView, NSTextViewDelegate {
         list.documentView!.bottomAnchor.constraint(equalTo:top).isActive = true
     }
     
-    private func reloadOption(items:[Option]) {
+    private func reloadOptions(_ message:Message) {
         options.documentView!.subviews.forEach { $0.removeFromSuperview() }
         var top = options.documentView!.topAnchor
-        items.forEach { item in
-            let option = EditorOptionView(item, messages:Array(messages.keys))
+        message.options.forEach { item in
+            let option = OptionView(item)
             options.documentView!.addSubview(option)
             
             option.topAnchor.constraint(equalTo:top).isActive = true
@@ -211,27 +225,12 @@ class EditorView:NSView, NSTextViewDelegate {
             option.rightAnchor.constraint(equalTo:options.rightAnchor).isActive = true
             top = option.bottomAnchor
         }
-        if !items.isEmpty {
+        if !message.options.isEmpty {
             options.documentView!.bottomAnchor.constraint(equalTo:top).isActive = true
         }
     }
     
-    private func updateTextSize() {
-        text.textContainer!.size = NSSize(width:options.bounds.width - 20, height:.greatestFiniteMagnitude)
-    }
-    
-    private func clearSelection() {
-        text.string = String()
-        reloadOption(items:[])
-        rename.isEnabled = false
-        delete.isEnabled = false
-    }
-    
-    @objc private func select(item:EditorItemView) {
-        presenter.selected = item.message
-        text.string = messages[item.message]!.text
-        reloadOption(items:messages[item.message]!.options)
-        rename.isEnabled = true
-        delete.isEnabled = true
+    @objc private func select(item:ItemView) {
+        presenter.viewModel.selected = item
     }
 }

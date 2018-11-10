@@ -2,20 +2,20 @@ import Cocoa
 
 class RenameView:NSWindow, NSTextViewDelegate {
     private(set) weak var text:NSTextView!
-    private weak var presenter:EditorPresenter!
+    private weak var presenter:Presenter!
     private weak var status:NSImageView!
     private weak var statusText:NSTextField!
     private weak var save:NSButton!
     
-    init(presenter:EditorPresenter) {
+    init(presenter:Presenter) {
         self.presenter = presenter
         super.init(contentRect:NSRect(x:0, y:0, width:260, height:200), styleMask:.titled, backing:.buffered,
                    defer:false)
         makeOutlets()
-        presenter.observeRenameSave = { [weak self] in self?.save.isEnabled = $0 }
-        presenter.observeRenameStatus = { [weak self] status in
-            self?.status.image = status.image
-            self?.statusText.stringValue = status.message
+        presenter.viewModel.renaming = { self.save.isEnabled = $0 }
+        presenter.viewModel.renameStatus = {
+            self.status.image = $0.image
+            self.statusText.stringValue = $0.message
         }
     }
     
@@ -43,7 +43,7 @@ class RenameView:NSWindow, NSTextViewDelegate {
         text.textContainer!.lineBreakMode = .byTruncatingHead
         text.font = .systemFont(ofSize:16, weight:.light)
         text.delegate = self
-        text.string = presenter.selected
+        text.string = presenter.viewModel.selected!.id
         contentView!.addSubview(text)
         self.text = text
         

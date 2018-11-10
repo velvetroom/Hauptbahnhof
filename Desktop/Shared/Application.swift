@@ -31,7 +31,7 @@ import Editor
         window.backgroundColor = NSColor.windowBackgroundColor.withAlphaComponent(0.9)
         window.titlebarAppearsTransparent = true
         window.titleVisibility = .hidden
-        window.contentView = EditorView()
+        window.contentView = View()
         window.isReleasedWhenClosed = false
         Application.window = window
     }
