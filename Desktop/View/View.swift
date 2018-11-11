@@ -41,6 +41,7 @@ class View:NSView, NSTextViewDelegate {
         makeOutlets()
         presenter.viewModel.title = { self.chapter.string = $0 }
         presenter.viewModel.messages = { self.reload($0) }
+        presenter.viewModel.shouldSelect = { self.select(id:$0) }
         presenter.viewModel.status = {
             self.status.image = $0.image
             self.statusText.stringValue = $0.message
@@ -235,6 +236,14 @@ class View:NSView, NSTextViewDelegate {
         }
         if !message.options.isEmpty {
             options.documentView!.bottomAnchor.constraint(equalTo:top).isActive = true
+        }
+    }
+    
+    private func select(id:String) {
+        list.documentView!.subviews.forEach {
+            if ($0 as! ItemView).id == id {
+                self.select(item:($0 as! ItemView))
+            }
         }
     }
     

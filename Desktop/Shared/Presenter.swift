@@ -61,6 +61,9 @@ class Presenter {
         messages()
         DispatchQueue.global(qos:.background).async {
             self.validate()
+            DispatchQueue.main.async {
+                self.viewModel.shouldSelect(String())
+            }
         }
     }
     

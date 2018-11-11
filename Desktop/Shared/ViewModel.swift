@@ -8,6 +8,7 @@ struct ViewModel {
     var renameStatus:((Status) -> Void)!
     var messages:(([String:Message]) -> Void)!
     var item:((ItemView?) -> Void)!
+    var shouldSelect:((String) -> Void)!
     weak var selected:ItemView? { willSet {
             selected?.selected = false
         } didSet {
