@@ -50,6 +50,11 @@ public class Workshop {
         save()
     }
     
+    public func update(_ option:Option, next:String) {
+        option.next = next
+        save()
+    }
+    
     private func save() {
         storage.save(game:game)
     }

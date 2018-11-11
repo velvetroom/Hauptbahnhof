@@ -14,4 +14,12 @@ class TestUpdate:XCTestCase {
         workshop.update("a", text:"hello world")
         XCTAssertEqual("hello world", workshop.game.messages["a"]!.text)
     }
+    
+    func testNext() {
+        let option = Option()
+        workshop.game.messages["a"] = Message()
+        workshop.game.messages["a"]!.options = [option]
+        workshop.update(option, next:"b")
+        XCTAssertEqual("b", workshop.game.messages["a"]!.options.first!.next)
+    }
 }
