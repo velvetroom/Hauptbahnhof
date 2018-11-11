@@ -244,7 +244,8 @@ class View:NSView, NSTextViewDelegate {
     private func select(id:String) {
         list.documentView!.subviews.forEach {
             if ($0 as! ItemView).id == id {
-                self.select(item:($0 as! ItemView))
+                select(item:($0 as! ItemView))
+                list.contentView.scrollToVisible($0.frame)
             }
         }
     }

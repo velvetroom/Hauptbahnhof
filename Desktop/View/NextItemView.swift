@@ -11,7 +11,11 @@ class NextItemView:NSControl {
         }
     } }
     
-    override func mouseDown(with:NSEvent) { sendAction(action, to:target) }
+    override func mouseDown(with:NSEvent) {
+        if !selected {
+            sendAction(action, to:target)
+        }
+    }
     
     init(_ id:String) {
         self.id = id

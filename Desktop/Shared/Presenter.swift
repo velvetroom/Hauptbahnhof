@@ -3,6 +3,7 @@ import Editor
 
 class Presenter {
     var viewModel = ViewModel()
+    var messages:[String:Message] { return workshop.game.messages }
     private weak var timer:Timer?
     private let workshop = Workshop()
     
@@ -11,7 +12,7 @@ class Presenter {
         DispatchQueue.global(qos:.background).async {
             self.workshop.load(chapter:.One)
             self.title()
-            self.messages()
+            self.update()
             self.validate()
         }
     }
@@ -54,11 +55,17 @@ class Presenter {
         }
     }
     
+    func update(_ option:Option, next:String) {
+        DispatchQueue.global(qos:.background).async {
+            self.workshop.update(option, next:next)
+        }
+    }
+    
     @objc func addMessage() {
         timer?.fire()
         viewModel.selected = nil
         workshop.addMessage()
-        messages()
+        update()
         DispatchQueue.global(qos:.background).async {
             self.validate()
             DispatchQueue.main.async {
@@ -91,7 +98,7 @@ class Presenter {
                 self.viewModel.selected = nil
                 DispatchQueue.global(qos:.background).async {
                     self.workshop.deleteMessage(id)
-                    self.messages()
+                    self.update()
                     self.validate()
                 }
             }
@@ -99,11 +106,10 @@ class Presenter {
     }
     
     @objc func edit(next:NSButton) {
-        let option = (next.superview as! OptionView).option!
-        NSApp.runModal(for:NextView(option, workshop:workshop))
+        NSApp.runModal(for:NextView((next.superview as! OptionView), presenter:self))
     }
     
-    private func messages() { update { $0.messages(self.workshop.game.messages) } }
+    private func update() { update { $0.messages(self.workshop.game.messages) } }
     private func title() { update { $0.title(self.workshop.game.title) } }
     private func status(_ status:Status) { update { $0.status(status) } }
     private func renaming(_ possible:Bool) { update { $0.renaming(possible) } }

@@ -1,10 +1,9 @@
 import Cocoa
-import Editor
 
 class NextView:NSPanel {
-    private weak var option:Option!
-    private weak var workshop:Workshop!
     private weak var save:NSButton!
+    private weak var option:OptionView!
+    private weak var presenter:Presenter!
     private weak var item:NextItemView? {
         willSet {
             item?.selected = false
@@ -13,11 +12,11 @@ class NextView:NSPanel {
         }
     }
     
-    init(_ option:Option, workshop:Workshop) {
+    init(_ option:OptionView, presenter:Presenter) {
         super.init(contentRect:NSRect(x:0, y:0, width:200, height:300), styleMask:
             [.hudWindow, .utilityWindow], backing:.buffered, defer:false)
         self.option = option
-        self.workshop = workshop
+        self.presenter = presenter
         makeOutlets()
     }
     
@@ -63,7 +62,8 @@ class NextView:NSPanel {
         self.save = save
         
         var top = list.documentView!.topAnchor
-        workshop.game.messages.keys.sorted().forEach { id in
+        presenter.messages.keys.sorted().forEach { id in
+            guard !id.isEmpty else { return }
             let item = NextItemView(id)
             item.target = self
             item.action = #selector(select(item:))
@@ -73,6 +73,13 @@ class NextView:NSPanel {
             item.leftAnchor.constraint(equalTo:list.leftAnchor).isActive = true
             item.rightAnchor.constraint(equalTo:list.rightAnchor).isActive = true
             top = item.bottomAnchor
+            
+            if option.option.next == id {
+                self.item = item
+                DispatchQueue.main.asyncAfter(deadline:.now() + 0.2) {
+                    list.contentView.scrollToVisible(item.frame)
+                }
+            }
         }
         list.documentView!.bottomAnchor.constraint(equalTo:top).isActive = true
         
@@ -112,6 +119,9 @@ class NextView:NSPanel {
     }
     
     @objc private func confirm() {
+        option.show.title = item!.id
+        option.show.isHidden = false
+        presenter.update(option.option, next:item!.id)
         close()
         NSApp.stopModal()
     }

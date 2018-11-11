@@ -4,6 +4,7 @@ import Editor
 class OptionView:NSView {
     private(set) weak var option:Option!
     private(set) weak var edit:NSButton!
+    private(set) weak var show:NSButton!
     private weak var list:NSScrollView!
     override var intrinsicContentSize:NSSize { return NSSize(width:NSView.noIntrinsicMetric, height:150) }
     
@@ -39,6 +40,12 @@ class OptionView:NSView {
         next.stringValue = .local("OptionView.next")
         addSubview(next)
         
+        let show = NSButton(title:option.next, target:nil, action:nil)
+        show.translatesAutoresizingMaskIntoConstraints = false
+        show.isHidden = option.next.isEmpty
+        addSubview(show)
+        self.show = show
+        
         let list = NSScrollView(frame:.zero)
         list.translatesAutoresizingMaskIntoConstraints = false
         list.hasVerticalScroller = true
@@ -62,6 +69,9 @@ class OptionView:NSView {
         
         next.centerYAnchor.constraint(equalTo:edit.centerYAnchor).isActive = true
         next.leftAnchor.constraint(equalTo:edit.rightAnchor, constant:10).isActive = true
+        
+        show.centerYAnchor.constraint(equalTo:edit.centerYAnchor).isActive = true
+        show.leftAnchor.constraint(equalTo:next.rightAnchor, constant:10).isActive = true
         
         list.topAnchor.constraint(equalTo:text.topAnchor).isActive = true
         list.leftAnchor.constraint(equalTo:text.rightAnchor, constant:10).isActive = true
