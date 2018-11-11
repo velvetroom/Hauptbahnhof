@@ -56,4 +56,12 @@ class TestRename:XCTestCase {
         XCTAssertEqual("c", optionB1.next)
         XCTAssertEqual("z", optionC0.next)
     }
+    
+    func testNotNextWhenOriginallyEmpty() {
+        workshop.game.messages[""] = Message()
+        workshop.game.messages["a"]!.options = [Option()]
+        XCTAssertEqual("", workshop.game.messages["a"]!.options.first!.next)
+        workshop.rename("", to:"b")
+        XCTAssertEqual("", workshop.game.messages["a"]!.options.first!.next)
+    }
 }

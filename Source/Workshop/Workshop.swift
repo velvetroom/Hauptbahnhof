@@ -34,8 +34,10 @@ public class Workshop {
     
     public func rename(_ id:String, to:String) {
         game.messages[to] = game.messages[id]
-        game.messages.values.forEach { $0.options.forEach { if $0.next == id { $0.next = to } } }
         game.messages.removeValue(forKey:id)
+        if !id.isEmpty {
+            game.messages.values.forEach { $0.options.forEach { if $0.next == id { $0.next = to } } }
+        }
         save()
     }
     
