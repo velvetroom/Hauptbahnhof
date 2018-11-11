@@ -81,18 +81,18 @@ class View:NSView, NSTextViewDelegate {
         bar.addSubview(chapter)
         self.chapter = chapter
         
-        let addMessage = NSButton(title:.local("EditorView.addMessage"),
+        let addMessage = NSButton(title:.local("View.addMessage"),
                                   target:presenter, action:#selector(presenter.addMessage))
         addMessage.translatesAutoresizingMaskIntoConstraints = false
         bar.addSubview(addMessage)
         
-        let rename = NSButton(title:.local("EditorView.rename"), target:presenter, action:#selector(presenter.rename))
+        let rename = NSButton(title:.local("View.rename"), target:presenter, action:#selector(presenter.rename))
         rename.translatesAutoresizingMaskIntoConstraints = false
         rename.isEnabled = false
         bar.addSubview(rename)
         self.rename = rename
         
-        let delete = NSButton(title:.local("EditorView.delete"), target:presenter, action:#selector(presenter.delete))
+        let delete = NSButton(title:.local("View.delete"), target:presenter, action:#selector(presenter.delete))
         delete.translatesAutoresizingMaskIntoConstraints = false
         delete.isEnabled = false
         bar.addSubview(delete)
@@ -227,6 +227,8 @@ class View:NSView, NSTextViewDelegate {
         var top = options.documentView!.topAnchor
         message.options.forEach { item in
             let option = OptionView(item)
+            option.edit.target = presenter
+            option.edit.action = #selector(presenter.edit(next:))
             options.documentView!.addSubview(option)
             
             option.topAnchor.constraint(equalTo:top).isActive = true

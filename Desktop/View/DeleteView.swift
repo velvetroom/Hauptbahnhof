@@ -18,11 +18,11 @@ class DeleteView:NSWindow {
         title.stringValue = .local("DeleteView.title")
         contentView!.addSubview(title)
 
-        let cancel = NSButton(title:.local("DeleteView.cancel"), target:self, action:#selector(stop))
+        let cancel = NSButton(title:.local("DeleteView.cancel"), target:self, action:#selector(self.cancel))
         cancel.translatesAutoresizingMaskIntoConstraints = false
         contentView!.addSubview(cancel)
 
-        let delete = NSButton(title:.local("DeleteView.delete"), target:self, action:#selector(confirm))
+        let delete = NSButton(title:.local("DeleteView.delete"), target:self, action:#selector(self.delete))
         delete.translatesAutoresizingMaskIntoConstraints = false
         contentView!.addSubview(delete)
 
@@ -36,11 +36,11 @@ class DeleteView:NSWindow {
         delete.rightAnchor.constraint(equalTo:contentView!.rightAnchor, constant:-10).isActive = true
     }
     
-    @objc private func stop() {
+    @objc private func cancel() {
         Application.window.endSheet(Application.window.attachedSheet!, returnCode:.cancel)
     }
     
-    @objc private func confirm() {
+    @objc private func delete() {
         Application.window.endSheet(Application.window.attachedSheet!, returnCode:.continue)
     }
 }

@@ -98,6 +98,11 @@ class Presenter {
         }
     }
     
+    @objc func edit(next:NSButton) {
+        let option = (next.superview as! OptionView).option!
+        NSApp.runModal(for:NextView(option, workshop:workshop))
+    }
+    
     private func messages() { update { $0.messages(self.workshop.game.messages) } }
     private func title() { update { $0.title(self.workshop.game.title) } }
     private func status(_ status:Status) { update { $0.status(status) } }

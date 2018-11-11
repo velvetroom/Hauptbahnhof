@@ -75,7 +75,7 @@ class RenameView:NSWindow, NSTextViewDelegate {
         contentView!.addSubview(statusText)
         self.statusText = statusText
         
-        let cancel = NSButton(title:.local("RenameView.cancel"), target:self, action:#selector(stop))
+        let cancel = NSButton(title:.local("RenameView.cancel"), target:self, action:#selector(self.cancel))
         cancel.translatesAutoresizingMaskIntoConstraints = false
         contentView!.addSubview(cancel)
         
@@ -109,7 +109,7 @@ class RenameView:NSWindow, NSTextViewDelegate {
     
     private func stopEditing() { DispatchQueue.main.async { [weak self] in self?.makeFirstResponder(nil) } }
     
-    @objc private func stop() {
+    @objc private func cancel() {
         Application.window.endSheet(Application.window.attachedSheet!, returnCode:.cancel)
     }
     

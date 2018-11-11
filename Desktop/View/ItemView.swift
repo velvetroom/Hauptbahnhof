@@ -5,7 +5,6 @@ class ItemView:NSControl {
     weak var message:Message!
     var id = String() { didSet { name.stringValue = id } }
     private weak var name:NSTextField!
-    
     override var intrinsicContentSize:NSSize { return NSSize(width:200, height:50) }
     var selected = false { didSet {
         if selected {
@@ -15,9 +14,7 @@ class ItemView:NSControl {
         }
     } }
     
-    override func mouseDown(with:NSEvent) {
-        sendAction(action, to:target)
-    }
+    override func mouseDown(with:NSEvent) { sendAction(action, to:target) }
     
     init(_ message:Message) {
         self.message = message

@@ -2,10 +2,13 @@ import Cocoa
 import Editor
 
 class OptionView:NSView {
+    private(set) weak var option:Option!
+    private(set) weak var edit:NSButton!
     private weak var list:NSScrollView!
     override var intrinsicContentSize:NSSize { return NSSize(width:NSView.noIntrinsicMetric, height:150) }
     
     init(_ option:Option) {
+        self.option = option
         super.init(frame:.zero)
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -21,15 +24,20 @@ class OptionView:NSView {
         text.string = option.text
         addSubview(text)
         
-        let nextTitle = NSTextField()
-        nextTitle.translatesAutoresizingMaskIntoConstraints = false
-        nextTitle.font = .systemFont(ofSize:12, weight:.medium)
-        nextTitle.backgroundColor = .clear
-        nextTitle.lineBreakMode = .byTruncatingTail
-        nextTitle.isBezeled = false
-        nextTitle.isEditable = false
-        nextTitle.stringValue = .local("EditorOptionView.next")
-        addSubview(nextTitle)
+        let edit = NSButton(title:.local("OptionView.edit"), target:nil, action:nil)
+        edit.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(edit)
+        self.edit = edit
+        
+        let next = NSTextField()
+        next.translatesAutoresizingMaskIntoConstraints = false
+        next.font = .systemFont(ofSize:12, weight:.medium)
+        next.backgroundColor = .clear
+        next.lineBreakMode = .byTruncatingTail
+        next.isBezeled = false
+        next.isEditable = false
+        next.stringValue = .local("OptionView.next")
+        addSubview(next)
         
         let list = NSScrollView(frame:.zero)
         list.translatesAutoresizingMaskIntoConstraints = false
@@ -49,8 +57,11 @@ class OptionView:NSView {
         text.widthAnchor.constraint(equalToConstant:350).isActive = true
         text.heightAnchor.constraint(equalToConstant:52).isActive = true
         
-        nextTitle.topAnchor.constraint(equalTo:text.bottomAnchor, constant:10).isActive = true
-        nextTitle.leftAnchor.constraint(equalTo:leftAnchor, constant:10).isActive = true
+        edit.topAnchor.constraint(equalTo:text.bottomAnchor, constant:10).isActive = true
+        edit.leftAnchor.constraint(equalTo:leftAnchor, constant:10).isActive = true
+        
+        next.centerYAnchor.constraint(equalTo:edit.centerYAnchor).isActive = true
+        next.leftAnchor.constraint(equalTo:edit.rightAnchor, constant:10).isActive = true
         
         list.topAnchor.constraint(equalTo:text.topAnchor).isActive = true
         list.leftAnchor.constraint(equalTo:text.rightAnchor, constant:10).isActive = true
