@@ -22,6 +22,11 @@ public class Workshop {
         }
     }
     
+    public func addOption(_ id:String) {
+        game.messages[id]!.options.append(Option())
+        save()
+    }
+    
     public func validRename(_ id:String, to:String) throws {
         if to.isEmpty { throw Exception.emptyName }
         let to = to.lowercased()

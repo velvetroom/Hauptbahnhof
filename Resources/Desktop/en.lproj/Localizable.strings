@@ -1,6 +1,7 @@
 Application.quit="Quit";
 View.addMessage="Add Message";
 View.rename="Rename";
+View.addOption="Add option";
 View.delete="Delete";
 RenameView.title="Rename Message";
 RenameView.cancel="Cancel";

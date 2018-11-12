@@ -9,6 +9,7 @@ class View:NSView, NSTextViewDelegate {
     private weak var status:NSImageView!
     private weak var statusText:NSTextField!
     private weak var rename:NSButton!
+    private weak var addOption:NSButton!
     private weak var delete:NSButton!
     private weak var editionArea:NSView!
     private let presenter = Presenter()
@@ -52,10 +53,12 @@ class View:NSView, NSTextViewDelegate {
                 self.reloadOptions(item.message)
                 self.editionArea.isHidden = false
                 self.rename.isEnabled = true
+                self.addOption.isEnabled = true
                 self.delete.isEnabled = true
             } else {
                 self.editionArea.isHidden = true
                 self.rename.isEnabled = false
+                self.addOption.isEnabled = false
                 self.delete.isEnabled = false
             }
         }
@@ -91,6 +94,13 @@ class View:NSView, NSTextViewDelegate {
         rename.isEnabled = false
         bar.addSubview(rename)
         self.rename = rename
+        
+        let addOption = NSButton(title:.local("View.addOption"), target:presenter, action:
+            #selector(presenter.addOption))
+        addOption.translatesAutoresizingMaskIntoConstraints = false
+        addOption.isEnabled = false
+        bar.addSubview(addOption)
+        self.addOption = addOption
         
         let delete = NSButton(title:.local("View.delete"), target:presenter, action:#selector(presenter.delete))
         delete.translatesAutoresizingMaskIntoConstraints = false
@@ -178,8 +188,11 @@ class View:NSView, NSTextViewDelegate {
         rename.centerYAnchor.constraint(equalTo:chapter.centerYAnchor).isActive = true
         rename.leftAnchor.constraint(equalTo:addMessage.rightAnchor, constant:10).isActive = true
         
+        addOption.centerYAnchor.constraint(equalTo:chapter.centerYAnchor).isActive = true
+        addOption.leftAnchor.constraint(equalTo:rename.rightAnchor, constant:10).isActive = true
+        
         delete.centerYAnchor.constraint(equalTo:chapter.centerYAnchor).isActive = true
-        delete.leftAnchor.constraint(equalTo:rename.rightAnchor, constant:10).isActive = true
+        delete.leftAnchor.constraint(equalTo:addOption.rightAnchor, constant:10).isActive = true
         
         status.centerYAnchor.constraint(equalTo:chapter.centerYAnchor).isActive = true
         status.rightAnchor.constraint(equalTo:bar.rightAnchor, constant:-6).isActive = true

@@ -33,4 +33,10 @@ class TestWorkshop:XCTestCase {
         workshop.addMessage()
         XCTAssertEqual("hello world", workshop.game.messages[""]!.text)
     }
+    
+    func testAddOption() {
+        workshop.game.messages["a"] = Message()
+        workshop.addOption("a")
+        XCTAssertEqual(1, workshop.game.messages["a"]!.options.count)
+    }
 }

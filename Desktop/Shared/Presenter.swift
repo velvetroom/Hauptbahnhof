@@ -74,6 +74,15 @@ class Presenter {
         }
     }
     
+    @objc func addOption() {
+        timer?.fire()
+        workshop.addOption(viewModel.selected!.id)
+        viewModel.shouldSelect(viewModel.selected!.id)
+        DispatchQueue.global(qos:.background).async {
+            self.validate()
+        }
+    }
+    
     @objc func rename() {
         timer?.fire()
         let view = RenameView(presenter:self)
