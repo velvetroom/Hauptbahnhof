@@ -109,6 +109,10 @@ class Presenter {
         NSApp.runModal(for:NextView((next.superview as! OptionView), presenter:self))
     }
     
+    @objc func show(next:NSButton) {
+        viewModel.shouldSelect((next.superview as! OptionView).option.next)
+    }
+    
     private func update() { update { $0.messages(self.workshop.game.messages) } }
     private func title() { update { $0.title(self.workshop.game.title) } }
     private func status(_ status:Status) { update { $0.status(status) } }

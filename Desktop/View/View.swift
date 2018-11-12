@@ -229,6 +229,8 @@ class View:NSView, NSTextViewDelegate {
             let option = OptionView(item)
             option.edit.target = presenter
             option.edit.action = #selector(presenter.edit(next:))
+            option.show.target = presenter
+            option.show.action = #selector(presenter.show(next:))
             options.documentView!.addSubview(option)
             
             option.topAnchor.constraint(equalTo:top).isActive = true
