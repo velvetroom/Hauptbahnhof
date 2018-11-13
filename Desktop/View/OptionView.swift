@@ -5,6 +5,7 @@ class OptionView:NSView {
     private(set) weak var option:Option!
     private(set) weak var edit:NSButton!
     private(set) weak var show:NSButton!
+    private(set) weak var delete:NSButton!
     private weak var list:NSScrollView!
     override var intrinsicContentSize:NSSize { return NSSize(width:NSView.noIntrinsicMetric, height:150) }
     
@@ -46,6 +47,11 @@ class OptionView:NSView {
         addSubview(show)
         self.show = show
         
+        let delete = NSButton(title:.local("OptionView.delete"), target:nil, action:nil)
+        delete.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(delete)
+        self.delete = delete
+        
         let list = NSScrollView(frame:.zero)
         list.translatesAutoresizingMaskIntoConstraints = false
         list.hasVerticalScroller = true
@@ -72,6 +78,9 @@ class OptionView:NSView {
         
         show.centerYAnchor.constraint(equalTo:edit.centerYAnchor).isActive = true
         show.leftAnchor.constraint(equalTo:next.rightAnchor, constant:10).isActive = true
+        
+        delete.topAnchor.constraint(equalTo:edit.bottomAnchor, constant:10).isActive = true
+        delete.leftAnchor.constraint(equalTo:edit.leftAnchor).isActive = true
         
         list.topAnchor.constraint(equalTo:text.topAnchor).isActive = true
         list.leftAnchor.constraint(equalTo:text.rightAnchor, constant:10).isActive = true

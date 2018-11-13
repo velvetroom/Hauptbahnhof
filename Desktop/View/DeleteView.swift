@@ -1,13 +1,9 @@
 import Cocoa
 
 class DeleteView:NSWindow {
-    init() {
+    init(_ subject:String) {
         super.init(contentRect:NSRect(x:0, y:0, width:200, height:100), styleMask:.titled, backing:.buffered,
                    defer:false)
-        makeOutlets()
-    }
-    
-    private func makeOutlets() {
         let title = NSTextField()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.font = .systemFont(ofSize:15, weight:.medium)
@@ -15,7 +11,7 @@ class DeleteView:NSWindow {
         title.isBezeled = false
         title.isEditable = false
         title.alignment = .center
-        title.stringValue = .local("DeleteView.title")
+        title.stringValue = subject
         contentView!.addSubview(title)
 
         let cancel = NSButton(title:.local("DeleteView.cancel"), target:self, action:#selector(self.cancel))

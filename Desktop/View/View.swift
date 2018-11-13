@@ -102,7 +102,7 @@ class View:NSView, NSTextViewDelegate {
         bar.addSubview(addOption)
         self.addOption = addOption
         
-        let delete = NSButton(title:.local("View.delete"), target:presenter, action:#selector(presenter.delete))
+        let delete = NSButton(title:.local("View.delete"), target:presenter, action:#selector(presenter.deleteMessage))
         delete.translatesAutoresizingMaskIntoConstraints = false
         delete.isEnabled = false
         bar.addSubview(delete)
@@ -244,6 +244,8 @@ class View:NSView, NSTextViewDelegate {
             option.edit.action = #selector(presenter.edit(next:))
             option.show.target = presenter
             option.show.action = #selector(presenter.show(next:))
+            option.delete.target = presenter
+            option.delete.action = #selector(presenter.delete(option:))
             options.documentView!.addSubview(option)
             
             option.topAnchor.constraint(equalTo:top).isActive = true

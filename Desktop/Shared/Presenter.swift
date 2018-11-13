@@ -99,9 +99,9 @@ class Presenter {
         }
     }
     
-    @objc func delete() {
+    @objc func deleteMessage() {
         timer?.fire()
-        Application.window.beginSheet(DeleteView()) { response in
+        Application.window.beginSheet(DeleteView(.local("Presenter.deleteMessage"))) { response in
             if response == .continue {
                 let id = self.viewModel.selected!.id
                 self.viewModel.selected = nil
@@ -109,6 +109,22 @@ class Presenter {
                     self.workshop.deleteMessage(id)
                     self.update()
                     self.validate()
+                }
+            }
+        }
+    }
+    
+    @objc func delete(option:NSButton) {
+        timer?.fire()
+        Application.window.beginSheet(DeleteView(.local("Presenter.deleteOption"))) { response in
+            if response == .continue {
+                let option = (option.superview as! OptionView).option!
+                DispatchQueue.global(qos:.background).async {
+                    self.workshop.deleteOption(option)
+                    self.validate()
+                    DispatchQueue.main.async {
+                        self.viewModel.shouldSelect(self.viewModel.selected!.id)
+                    }
                 }
             }
         }
