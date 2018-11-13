@@ -2,8 +2,6 @@ import Foundation
 @testable import Hauptbahnhof
 
 class MockStorage:Storage {
-    static var profile = Player()
-    static var game = Game()
     static var onSavePlayer:(() -> Void)?
     static var onSaveGame:(() -> Void)?
     static var onLoadPlayer:(() -> Void)?
@@ -13,12 +11,12 @@ class MockStorage:Storage {
     
     func loadPlayer() throws -> Player {
         MockStorage.onLoadPlayer?()
-        return MockStorage.profile
+        return Player()
     }
     
     func loadGame(chapter:Chapter) -> Game {
         MockStorage.onLoadGame?()
-        return MockStorage.game
+        return Game()
     }
     
     func save(player:Player) {

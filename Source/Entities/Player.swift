@@ -1,11 +1,11 @@
 import Foundation
 
 public class Player:Codable {
-    var chapter = Chapter.One
-    var state = "initial"
-    var courage = 0
-    var knowledge = 0
-    var diligence = 0
-    var empathty = 0
-    var score = 0
+    public internal(set) var chapter = Chapter.One
+    public internal(set) var state = "initial"
+    public internal(set) var courage = 0
+    public internal(set) var knowledge = 0
+    public internal(set) var diligence = 0
+    public internal(set) var empathty = 0
+    public internal(set) var score = 0
 }

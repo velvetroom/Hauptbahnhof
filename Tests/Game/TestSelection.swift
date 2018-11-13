@@ -6,16 +6,16 @@ class TestSelection:XCTestCase {
     
     override func setUp() {
         Factory.storage = MockStorage.self
-        let data = try! Data(contentsOf:Bundle(for:TestSelection.self).url(forResource:"One", withExtension:"json")!)
-        MockStorage.game = try! JSONDecoder().decode(Game.self, from:data)
         master = GameMaster()
     }
     
-    override func tearDown() {
-        MockStorage.game = Game()
-    }
-    
     func testSelectChangesState() {
-        
+        let message = Message()
+        let option = Option()
+        message.text = "lorem ipsum"
+        option.next = "hello world"
+        master.game.messages = ["hello world":message]
+        master.select(option)
+        XCTAssertEqual("lorem ipsum", master.message.text)
     }
 }

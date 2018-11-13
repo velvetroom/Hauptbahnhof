@@ -6,18 +6,9 @@ class TestWorkshop:XCTestCase {
 
     override func setUp() {
         Factory.storage = MockStorage.self
-        let data = try! Data(contentsOf:Bundle(for:TestParsing.self).url(forResource:"One", withExtension:"json")!)
-        MockStorage.game = try! JSONDecoder().decode(Game.self, from:data)
         workshop = Workshop()
-        workshop.load(chapter:.One)
-    }
-    
-    override func tearDown() {
-        MockStorage.game = Game()
-    }
-    
-    func testLoadedChapter() {
-        XCTAssertEqual("Chapter One", workshop.game.title)
+        let data = try! Data(contentsOf:Bundle(for:TestParsing.self).url(forResource:"One", withExtension:"json")!)
+        workshop.game = try! JSONDecoder().decode(Game.self, from:data)
     }
     
     func testAddMessage() {

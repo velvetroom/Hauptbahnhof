@@ -6,16 +6,15 @@ class TestStorage_GameMaster:XCTestCase {
     
     override func setUp() {
         Factory.storage = MockStorage.self
-        let data = try! Data(contentsOf:Bundle(for:TestStorage_GameMaster.self).url(forResource:"One", withExtension:"json")!)
-        MockStorage.game = try! JSONDecoder().decode(Game.self, from:data)
         master = GameMaster()
+        let data = try! Data(contentsOf:Bundle(for:TestStorage_GameMaster.self).url(forResource:"One", withExtension:"json")!)
+        master.game = try! JSONDecoder().decode(Game.self, from:data)
     }
     
     override func tearDown() {
         MockStorage.onLoadPlayer = nil
         MockStorage.onSavePlayer = nil
         MockStorage.onLoadGame = nil
-        MockStorage.game = Game()
     }
     
     func testLoadsPlayer() {
@@ -29,6 +28,13 @@ class TestStorage_GameMaster:XCTestCase {
         let expect = expectation(description:String())
         MockStorage.onLoadGame = { expect.fulfill() }
         let _ = GameMaster()
+        waitForExpectations(timeout:1)
+    }
+    
+    func testSelectSavesPlayer() {
+        let expect = expectation(description:String())
+        MockStorage.onSavePlayer = { expect.fulfill() }
+        GameMaster().select(Option())
         waitForExpectations(timeout:1)
     }
 }
