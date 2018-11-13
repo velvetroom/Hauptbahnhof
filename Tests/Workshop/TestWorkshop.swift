@@ -52,4 +52,11 @@ class TestWorkshop:XCTestCase {
         workshop.addEffect(option, effect:.increaseScore10)
         XCTAssertEqual(1, option.effects.count)
     }
+    
+    func testRemoveEffect() {
+        let option = Option()
+        option.effects = [.increaseScore2]
+        workshop.removeEffect(option, effect:.increaseScore2)
+        XCTAssertTrue(option.effects.isEmpty)
+    }
 }

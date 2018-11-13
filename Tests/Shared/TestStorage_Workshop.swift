@@ -56,6 +56,13 @@ class TestStorage_Workshop:XCTestCase {
         waitForExpectations(timeout:1)
     }
     
+    func testSavesOnRemoveEffect() {
+        let expect = expectation(description:String())
+        MockStorage.onSaveGame = { expect.fulfill() }
+        workshop.removeEffect(Option(), effect:.increaseDiligence)
+        waitForExpectations(timeout:1)
+    }
+    
     func testSavesOnUpdateText() {
         let expect = expectation(description:String())
         workshop.game.messages["a"] = Message()

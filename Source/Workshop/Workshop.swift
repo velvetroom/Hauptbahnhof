@@ -63,6 +63,11 @@ public class Workshop {
         save()
     }
     
+    public func removeEffect(_ option:Option, effect:Effect) {
+        option.effects.removeAll { $0 == effect }
+        save()
+    }
+    
     public func update(_ id:String, text:String) {
         game.messages[id]!.text = text
         save()
