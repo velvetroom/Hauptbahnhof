@@ -52,6 +52,11 @@ public class Workshop {
         save()
     }
     
+    public func deleteOption(_ option:Option) {
+        game.messages.values.forEach { $0.options.removeAll { $0 === option } }
+        save()
+    }
+    
     public func update(_ id:String, text:String) {
         game.messages[id]!.text = text
         save()

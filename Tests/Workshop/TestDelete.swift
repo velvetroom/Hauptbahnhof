@@ -15,7 +15,7 @@ class TestDelete:XCTestCase {
         XCTAssertNil(workshop.game.messages["a"])
     }
     
-    func testUpdateNext() {
+    func testMessageUpdatesNext() {
         workshop.game.messages["b"] = Message()
         workshop.game.messages["c"] = Message()
         let optionB0 = Option()
@@ -30,5 +30,19 @@ class TestDelete:XCTestCase {
         XCTAssertEqual(String(), optionB0.next)
         XCTAssertEqual("c", optionB1.next)
         XCTAssertEqual(String(), optionC0.next)
+    }
+    
+    func testOption() {
+        workshop.game.messages["a"] = Message()
+        let optionA0 = Option()
+        optionA0.text = "hello"
+        let optionA1 = Option()
+        optionA1.text = "lorem"
+        let optionA2 = Option()
+        optionA2.text = "ipsum"
+        workshop.game.messages["a"]!.options = [optionA0, optionA1, optionA2]
+        workshop.deleteOption(optionA1)
+        XCTAssertEqual("hello", workshop.game.messages["a"]!.options[0].text)
+        XCTAssertEqual("ipsum", workshop.game.messages["a"]!.options[1].text)
     }
 }
