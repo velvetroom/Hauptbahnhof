@@ -5,7 +5,7 @@ public class Player:Codable {
     var state = "initial"
     var courage = 0
     var knowledge = 0
-    var dilligence = 0
+    var diligence = 0
     var empathty = 0
     var score = 0
 }
