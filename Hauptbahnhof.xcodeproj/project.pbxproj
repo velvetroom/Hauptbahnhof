@@ -86,6 +86,7 @@
 		DAFCF243219458D100BEBEEF /* EffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCF242219458D100BEBEEF /* EffectView.swift */; };
 		DAFCF24521945BBD00BEBEEF /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAFCF24421945BBD00BEBEEF /* assets.xcassets */; };
 		DAFCF24721945BCD00BEBEEF /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAFCF24621945BCD00BEBEEF /* assets.xcassets */; };
+		DAFD9956219AF78F0061BF50 /* TestEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFD9955219AF78F0061BF50 /* TestEffects.swift */; };
 		DAFEC3372192411F00DAA671 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFEC3362192411F00DAA671 /* Presenter.swift */; };
 		DAFEC33D2192499100DAA671 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFEC33C2192499100DAA671 /* ItemView.swift */; };
 /* End PBXBuildFile section */
@@ -180,6 +181,7 @@
 		DAFCF242219458D100BEBEEF /* EffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectView.swift; sourceTree = "<group>"; };
 		DAFCF24421945BBD00BEBEEF /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
 		DAFCF24621945BCD00BEBEEF /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
+		DAFD9955219AF78F0061BF50 /* TestEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEffects.swift; sourceTree = "<group>"; };
 		DAFEC3362192411F00DAA671 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		DAFEC33C2192499100DAA671 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -270,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				DA48004A2193103600A72514 /* TestSelection.swift */,
+				DAFD9955219AF78F0061BF50 /* TestEffects.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -733,6 +736,7 @@
 				DA5A295C21971F6D006E5F31 /* TestUpdate.swift in Sources */,
 				DA48004C2193103600A72514 /* TestParsing.swift in Sources */,
 				DA48004B2193103600A72514 /* TestFactory.swift in Sources */,
+				DAFD9956219AF78F0061BF50 /* TestEffects.swift in Sources */,
 				DADE7017219594E0009ADEB7 /* TestWorkshop.swift in Sources */,
 				DADE702021959AD3009ADEB7 /* TestStorage_Workshop.swift in Sources */,
 				DA7AC8E321948968007A7CC6 /* TestValidate.swift in Sources */,

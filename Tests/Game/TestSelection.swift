@@ -9,7 +9,7 @@ class TestSelection:XCTestCase {
         master = GameMaster()
     }
     
-    func testSelectChangesState() {
+    func testChangesState() {
         let message = Message()
         let option = Option()
         message.text = "lorem ipsum"
