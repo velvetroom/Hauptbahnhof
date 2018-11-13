@@ -88,6 +88,7 @@ class Presenter {
     }
     
     @objc func addEffect(add:NSButton) {
+        timer?.fire()
         NSApp.runModal(for:EffectView((add.superview as! OptionView), presenter:self))
     }
     
