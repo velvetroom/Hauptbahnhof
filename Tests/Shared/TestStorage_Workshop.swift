@@ -28,6 +28,13 @@ class TestStorage_Workshop:XCTestCase {
         waitForExpectations(timeout:1)
     }
     
+    func testSavesOnAddEffect() {
+        let expect = expectation(description:String())
+        MockStorage.onSaveGame = { expect.fulfill() }
+        workshop.addEffect(Option(), effect:.increaseCourage)
+        waitForExpectations(timeout:1)
+    }
+    
     func testSavesOnRename() {
         let expect = expectation(description:String())
         MockStorage.onSaveGame = { expect.fulfill() }

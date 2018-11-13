@@ -39,4 +39,17 @@ class TestWorkshop:XCTestCase {
         workshop.addOption("a")
         XCTAssertEqual(1, workshop.game.messages["a"]!.options.count)
     }
+    
+    func testAddEffect() {
+        let option = Option()
+        workshop.addEffect(option, effect:.increaseKnowledge)
+        XCTAssertEqual(option.effects[0], .increaseKnowledge)
+    }
+    
+    func testAddEffectNotRepeating() {
+        let option = Option()
+        option.effects = [.increaseScore10]
+        workshop.addEffect(option, effect:.increaseScore10)
+        XCTAssertEqual(1, option.effects.count)
+    }
 }

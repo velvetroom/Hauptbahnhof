@@ -27,6 +27,12 @@ public class Workshop {
         save()
     }
     
+    public func addEffect(_ option:Option, effect:Effect) {
+        guard !option.effects.contains(effect) else { return }
+        option.effects.append(effect)
+        save()
+    }
+    
     public func validRename(_ id:String, to:String) throws {
         if to.isEmpty { throw Exception.emptyName }
         let to = to.lowercased()
