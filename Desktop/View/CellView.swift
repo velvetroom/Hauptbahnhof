@@ -1,8 +1,15 @@
 import Cocoa
 
-class NextItemView:NSControl {
+class CellView:NSControl {
     let id:String
     override var intrinsicContentSize:NSSize { return NSSize(width:NSView.noIntrinsicMetric, height:30) }
+    override var isEnabled:Bool { didSet {
+        if isEnabled {
+            alphaValue = 1
+        } else {
+            alphaValue = 0.25
+        }
+    } }
     var selected = false { didSet {
         if selected {
             layer!.backgroundColor = NSColor.selectedMenuItemColor.cgColor
@@ -12,7 +19,7 @@ class NextItemView:NSControl {
     } }
     
     override func mouseDown(with:NSEvent) {
-        if !selected {
+        if !selected && isEnabled {
             sendAction(action, to:target)
         }
     }

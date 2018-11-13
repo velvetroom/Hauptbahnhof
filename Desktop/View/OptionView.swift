@@ -2,13 +2,22 @@ import Cocoa
 import Editor
 
 class OptionView:NSView {
-    private(set) weak var text:NSTextView!
+    private(set) weak var buttonAdd:ButtonView!
+    private(set) weak var buttonRemove:ButtonView!
     private(set) weak var option:Option!
+    private(set) weak var text:NSTextView!
     private(set) weak var edit:NSButton!
     private(set) weak var show:NSButton!
     private(set) weak var delete:NSButton!
     private weak var list:NSScrollView!
     override var intrinsicContentSize:NSSize { return NSSize(width:NSView.noIntrinsicMetric, height:150) }
+    private(set) weak var item:CellView? {
+        willSet {
+            item?.selected = false
+        } didSet {
+            item?.selected = true
+        }
+    }
     
     init(_ option:Option) {
         self.option = option
@@ -66,6 +75,26 @@ class OptionView:NSView {
         
         let buttonAdd = ButtonView("add")
         addSubview(buttonAdd)
+        self.buttonAdd = buttonAdd
+        
+        let buttonRemove = ButtonView("remove")
+        buttonRemove.isEnabled = false
+        addSubview(buttonRemove)
+        self.buttonRemove = buttonRemove
+        
+        var top = list.documentView!.topAnchor
+        option.effects.forEach { effect in
+            let item = CellView(effect.rawValue)
+            item.target = self
+            item.action = #selector(select(item:))
+            list.documentView!.addSubview(item)
+            
+            item.topAnchor.constraint(equalTo:top).isActive = true
+            item.leftAnchor.constraint(equalTo:list.leftAnchor).isActive = true
+            item.rightAnchor.constraint(equalTo:list.rightAnchor).isActive = true
+            top = item.bottomAnchor
+        }
+        list.documentView!.bottomAnchor.constraint(equalTo:top).isActive = true
 
         text.topAnchor.constraint(equalTo:topAnchor, constant:6).isActive = true
         text.leftAnchor.constraint(equalTo:leftAnchor, constant:-10).isActive = true
@@ -87,11 +116,19 @@ class OptionView:NSView {
         list.topAnchor.constraint(equalTo:text.topAnchor).isActive = true
         list.leftAnchor.constraint(equalTo:text.rightAnchor, constant:10).isActive = true
         list.widthAnchor.constraint(equalToConstant:300).isActive = true
-        list.heightAnchor.constraint(equalToConstant:90).isActive = true
+        list.heightAnchor.constraint(equalToConstant:78).isActive = true
         
         buttonAdd.topAnchor.constraint(equalTo:list.topAnchor).isActive = true
         buttonAdd.leftAnchor.constraint(equalTo:list.rightAnchor, constant:10).isActive = true
+        
+        buttonRemove.topAnchor.constraint(equalTo:buttonAdd.bottomAnchor, constant:15).isActive = true
+        buttonRemove.leftAnchor.constraint(equalTo:buttonAdd.leftAnchor).isActive = true
     }
     
     required init?(coder:NSCoder) { return nil }
+    
+    @objc private func select(item:CellView) {
+        self.item = item
+        buttonRemove.isEnabled = true
+    }
 }

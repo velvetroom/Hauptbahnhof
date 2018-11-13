@@ -4,6 +4,7 @@ import Editor
 class Presenter {
     var viewModel = ViewModel()
     var messages:[String:Message] { return workshop.game.messages }
+    var effects:[Effect] { return Effect.allCases }
     private weak var timer:Timer?
     private let workshop = Workshop()
     
@@ -59,6 +60,11 @@ class Presenter {
         }
     }
     
+    func addEffect(_ option:Option, id:String) {
+        workshop.addEffect(option, effect:Effect(rawValue:id)!)
+        viewModel.shouldSelect(viewModel.selected!.id)
+    }
+    
     @objc func addMessage() {
         timer?.fire()
         viewModel.selected = nil
@@ -79,6 +85,10 @@ class Presenter {
         DispatchQueue.global(qos:.background).async {
             self.validate()
         }
+    }
+    
+    @objc func addEffect(add:NSButton) {
+        NSApp.runModal(for:EffectView((add.superview as! OptionView), presenter:self))
     }
     
     @objc func rename() {
@@ -126,6 +136,13 @@ class Presenter {
                 }
             }
         }
+    }
+    
+    @objc func removeEffect(remove:NSButton) {
+        timer?.fire()
+        let option = remove.superview as! OptionView
+        workshop.removeEffect(option.option, effect:Effect(rawValue:option.item!.id)!)
+        viewModel.shouldSelect(viewModel.selected!.id)
     }
     
     @objc func edit(next:NSButton) {

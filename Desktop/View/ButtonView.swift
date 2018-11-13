@@ -3,11 +3,16 @@ import Cocoa
 class ButtonView:NSButton {
     override var intrinsicContentSize:NSSize { return image!.size }
     override func mouseDown(with event:NSEvent) {
-        contentTintColor = NSColor.selectedMenuItemColor
+        if isEnabled {
+            contentTintColor = .selectedMenuItemColor
+        }
     }
     
     override func mouseUp(with event:NSEvent) {
-        contentTintColor = NSColor.controlColor
+        if isEnabled {
+            contentTintColor = .controlColor
+            sendAction(action, to:target)
+        }
     }
     
     init(_ image:String) {
@@ -17,7 +22,7 @@ class ButtonView:NSButton {
         translatesAutoresizingMaskIntoConstraints = false
         imageScaling = .scaleNone
         isBordered = false
-        contentTintColor = NSColor.controlColor
+        contentTintColor = .controlColor
     }
     
     required init?(coder:NSCoder) { return nil }

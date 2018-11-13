@@ -4,7 +4,7 @@ class NextView:NSPanel {
     private weak var save:NSButton!
     private weak var option:OptionView!
     private weak var presenter:Presenter!
-    private weak var item:NextItemView? {
+    private weak var item:CellView? {
         willSet {
             item?.selected = false
         } didSet {
@@ -64,7 +64,7 @@ class NextView:NSPanel {
         var top = list.documentView!.topAnchor
         presenter.messages.keys.sorted().forEach { id in
             guard !id.isEmpty else { return }
-            let item = NextItemView(id)
+            let item = CellView(id)
             item.target = self
             item.action = #selector(select(item:))
             list.documentView!.addSubview(item)
@@ -96,7 +96,7 @@ class NextView:NSPanel {
         title.centerYAnchor.constraint(equalTo:header.centerYAnchor).isActive = true
         title.leftAnchor.constraint(equalTo:header.leftAnchor, constant:10).isActive = true
         
-        list.topAnchor.constraint(equalTo:title.bottomAnchor, constant:10).isActive = true
+        list.topAnchor.constraint(equalTo:header.bottomAnchor).isActive = true
         list.leftAnchor.constraint(equalTo:contentView!.leftAnchor).isActive = true
         list.rightAnchor.constraint(equalTo:contentView!.rightAnchor).isActive = true
         list.bottomAnchor.constraint(equalTo:footer.topAnchor).isActive = true
@@ -108,7 +108,7 @@ class NextView:NSPanel {
         save.rightAnchor.constraint(equalTo:footer.rightAnchor, constant:-10).isActive = true
     }
     
-    @objc private func select(item:NextItemView) {
+    @objc private func select(item:CellView) {
         self.item = item
         save.isEnabled = true
     }

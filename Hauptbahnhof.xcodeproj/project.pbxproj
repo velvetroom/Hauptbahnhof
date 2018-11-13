@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		38D505BA45CC16724631C727 /* libPods-Application.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D059CFF090ED42DC2B24425B /* libPods-Application.a */; };
 		DA014D4D21983BDE00347E94 /* NextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA014D4C21983BDE00347E94 /* NextView.swift */; };
-		DA014D4F219848C000347E94 /* NextItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA014D4E219848C000347E94 /* NextItemView.swift */; };
+		DA014D4F219848C000347E94 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA014D4E219848C000347E94 /* CellView.swift */; };
 		DA25F365219331CB0049843E /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA25F364219331CB0049843E /* OptionView.swift */; };
 		DA397BDE218A3E1200C54971 /* libHauptbahnhof.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD7E123218A3A690085F449 /* libHauptbahnhof.a */; };
 		DA48003D21930FF600A72514 /* libHauptbahnhof.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD7E123218A3A690085F449 /* libHauptbahnhof.a */; };
@@ -117,7 +117,7 @@
 		B42174B0A947B9ED86D7EFFA /* Pods-Application.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Application.debug.xcconfig"; path = "Target Support Files/Pods-Application/Pods-Application.debug.xcconfig"; sourceTree = "<group>"; };
 		D059CFF090ED42DC2B24425B /* libPods-Application.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Application.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA014D4C21983BDE00347E94 /* NextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextView.swift; sourceTree = "<group>"; };
-		DA014D4E219848C000347E94 /* NextItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextItemView.swift; sourceTree = "<group>"; };
+		DA014D4E219848C000347E94 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		DA24FE00219061C500031D57 /* Desktop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Desktop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA25F364219331CB0049843E /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
 		DA48003821930FF600A72514 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -313,13 +313,13 @@
 				DACF84F82192270E005B741C /* View.swift */,
 				DAFEC33C2192499100DAA671 /* ItemView.swift */,
 				DA25F364219331CB0049843E /* OptionView.swift */,
-				DAFCF242219458D100BEBEEF /* EffectView.swift */,
 				DA51A267219328F500F7C804 /* DocumentView.swift */,
 				DABA3AE42194635C007B757E /* ButtonView.swift */,
 				DA9024B921960EAD002334DF /* RenameView.swift */,
 				DA9024C2219639E3002334DF /* DeleteView.swift */,
 				DA014D4C21983BDE00347E94 /* NextView.swift */,
-				DA014D4E219848C000347E94 /* NextItemView.swift */,
+				DAFCF242219458D100BEBEEF /* EffectView.swift */,
+				DA014D4E219848C000347E94 /* CellView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -708,7 +708,7 @@
 				DA9024BA21960EAD002334DF /* RenameView.swift in Sources */,
 				DA51A268219328F500F7C804 /* DocumentView.swift in Sources */,
 				DAFCF243219458D100BEBEEF /* EffectView.swift in Sources */,
-				DA014D4F219848C000347E94 /* NextItemView.swift in Sources */,
+				DA014D4F219848C000347E94 /* CellView.swift in Sources */,
 				DA5A29532196ED0E006E5F31 /* ViewModel.swift in Sources */,
 				DAFEC33D2192499100DAA671 /* ItemView.swift in Sources */,
 				DA7DEF572192EBEB00909D9D /* String.swift in Sources */,

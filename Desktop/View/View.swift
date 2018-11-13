@@ -249,6 +249,10 @@ class View:NSView, NSTextViewDelegate {
             option.show.action = #selector(presenter.show(next:))
             option.delete.target = presenter
             option.delete.action = #selector(presenter.delete(option:))
+            option.buttonAdd.target = presenter
+            option.buttonAdd.action = #selector(presenter.addEffect(add:))
+            option.buttonRemove.target = presenter
+            option.buttonRemove.action = #selector(presenter.removeEffect(remove:))
             options.documentView!.addSubview(option)
             
             option.topAnchor.constraint(equalTo:top).isActive = true

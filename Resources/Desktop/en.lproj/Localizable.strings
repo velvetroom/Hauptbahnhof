@@ -16,3 +16,6 @@ OptionView.delete="Delete";
 NextView.title="Next message";
 NextView.cancel="Cancel";
 NextView.save="Save";
+EffectView.title="Add effect";
+EffectView.cancel="Cancel";
+EffectView.add="Add";
