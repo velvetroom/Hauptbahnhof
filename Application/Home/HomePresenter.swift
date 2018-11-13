@@ -1,6 +1,6 @@
-import CleanArchitecture
+import Foundation
 
-class HomePresenter:Presenter {
+class HomePresenter {
     @objc func newGame() {
         Application.navigation.setViewControllers([GameView()], animated:true)
     }

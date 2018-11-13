@@ -1,6 +1,6 @@
-import CleanArchitecture
+import UIKit
 
-class GameView:View<GamePresenter> {
+class GameView:UIViewController{
     private weak var bar:Bar!
     private weak var caret:GameCaretView!
     private weak var text:UITextView!
@@ -19,7 +19,7 @@ class GameView:View<GamePresenter> {
     
     private func makeOutlets() {
         let home = Button(#imageLiteral(resourceName: "home.pdf"))
-        home.addTarget(presenter, action:#selector(presenter.home), for:.touchUpInside)
+//        home.addTarget(presenter, action:#selector(presenter.home), for:.touchUpInside)
         
         let profile = Button(#imageLiteral(resourceName: "profile.pdf"))
         
@@ -71,9 +71,9 @@ class GameView:View<GamePresenter> {
     }
     
     private func viewModel() {
-        presenter.viewModel { [weak self] in self?.bar.label.text = $0 }
-        presenter.viewModel { [weak self] in self?.update(message:$0) }
-        presenter.viewModel { [weak self] in self?.update(options:$0) }
+//        presenter.viewModel { [weak self] in self?.bar.label.text = $0 }
+//        presenter.viewModel { [weak self] in self?.update(message:$0) }
+//        presenter.viewModel { [weak self] in self?.update(options:$0) }
     }
     
     private func update(message:NSAttributedString) {
@@ -101,6 +101,6 @@ class GameView:View<GamePresenter> {
     @objc private func select(option:GameOptionView) {
         menu.isUserInteractionEnabled = false
         option.isSelected = true
-        presenter.select(option:option.viewModel!.0)
+//        presenter.select(option:option.viewModel!.0)
     }
 }

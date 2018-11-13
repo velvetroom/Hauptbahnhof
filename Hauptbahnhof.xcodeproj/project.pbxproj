@@ -45,7 +45,6 @@
 		DA9024BC219624F0002334DF /* TestRename.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9024BB219624F0002334DF /* TestRename.swift */; };
 		DA9024BE219637D8002334DF /* TestDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9024BD219637D8002334DF /* TestDelete.swift */; };
 		DA9024C3219639E3002334DF /* DeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9024C2219639E3002334DF /* DeleteView.swift */; };
-		DAA7FBCF218BB29000F1C0E8 /* SplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7FBCE218BB29000F1C0E8 /* SplashPresenter.swift */; };
 		DAA7FBD1218BB37000F1C0E8 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7FBD0218BB37000F1C0E8 /* SplashView.swift */; };
 		DAB55EFF218B9D1400A9F02A /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB55EFE218B9D1400A9F02A /* Storage.swift */; };
 		DAB55F03218B9E1900A9F02A /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB55F02218B9E1900A9F02A /* Factory.swift */; };
@@ -139,7 +138,6 @@
 		DA9024BB219624F0002334DF /* TestRename.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRename.swift; sourceTree = "<group>"; };
 		DA9024BD219637D8002334DF /* TestDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDelete.swift; sourceTree = "<group>"; };
 		DA9024C2219639E3002334DF /* DeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteView.swift; sourceTree = "<group>"; };
-		DAA7FBCE218BB29000F1C0E8 /* SplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
 		DAA7FBD0218BB37000F1C0E8 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		DAB55EFE218B9D1400A9F02A /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		DAB55F02218B9E1900A9F02A /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
@@ -315,7 +313,6 @@
 		DAA7FBCD218BB27A00F1C0E8 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
-				DAA7FBCE218BB29000F1C0E8 /* SplashPresenter.swift */,
 				DAA7FBD0218BB37000F1C0E8 /* SplashView.swift */,
 			);
 			path = Splash;
@@ -746,7 +743,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAD5B59D218A52D100E1DDA9 /* GamePresenter.swift in Sources */,
-				DAA7FBCF218BB29000F1C0E8 /* SplashPresenter.swift in Sources */,
 				DAA7FBD1218BB37000F1C0E8 /* SplashView.swift in Sources */,
 				DAD5B59A218A51C700E1DDA9 /* ButtonText.swift in Sources */,
 				DAD5B592218A509300E1DDA9 /* HomePresenter.swift in Sources */,

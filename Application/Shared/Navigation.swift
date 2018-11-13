@@ -4,7 +4,7 @@ class Navigation:UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBarHidden(true, animated:false)
-        setViewControllers([HomeView()], animated:false)
+        setViewControllers([SplashView()], animated:false)
     }
     
     override func viewDidAppear(_ animated:Bool) {

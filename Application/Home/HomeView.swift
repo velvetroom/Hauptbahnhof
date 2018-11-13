@@ -1,6 +1,6 @@
-import CleanArchitecture
+import UIKit
 
-class HomeView:View<HomePresenter> {
+class HomeView:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
@@ -9,7 +9,7 @@ class HomeView:View<HomePresenter> {
     
     private func makeOutlets() {
         let newGame = ButtonText(.local("HomeView.newGame"))
-        newGame.addTarget(presenter, action:#selector(presenter.newGame), for:.touchUpInside)
+//        newGame.addTarget(presenter, action:#selector(presenter.newGame), for:.touchUpInside)
         view.addSubview(newGame)
         
         newGame.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true

@@ -1,20 +1,23 @@
-import CodableHero
+import Foundation
 import Hauptbahnhof
 
 class Session:Storage {
-    private let hero = Hero()
+    private let url = FileManager.default.urls(for:.documentDirectory, in:.userDomainMask).last!
+    
     required init() { }
     func save(game:Game) { }
     
     func loadPlayer() throws -> Player {
-        return try hero.load(path:"Player.hauptbahnhof")
+        return try JSONDecoder().decode(Player.self, from:try Data(contentsOf:
+            url.appendingPathComponent("Player.hauptbahnhof")))
     }
     
     func loadGame(chapter:Chapter) -> Game {
-        return try! hero.load(bundle:.main, path:chapter.rawValue + ".json")
+        return try! JSONDecoder().decode(Game.self, from:try Data(contentsOf:
+            Bundle.main.url(forResource:chapter.rawValue, withExtension:".json")!))
     }
     
     func save(player:Player) {
-        try! hero.save(model:player, path:"Player.hauptbahnhof")
+        try! (try! JSONEncoder().encode(player)).write(to:url.appendingPathComponent("Player.hauptbahnhof"))
     }
 }
