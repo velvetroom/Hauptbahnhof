@@ -2,6 +2,7 @@ import Cocoa
 import Editor
 
 class OptionView:NSView {
+    private(set) weak var text:NSTextView!
     private(set) weak var option:Option!
     private(set) weak var edit:NSButton!
     private(set) weak var show:NSButton!
@@ -25,6 +26,7 @@ class OptionView:NSView {
         text.font = .systemFont(ofSize:16, weight:.light)
         text.string = option.text
         addSubview(text)
+        self.text = text
         
         let edit = NSButton(title:.local("OptionView.edit"), target:nil, action:nil)
         edit.translatesAutoresizingMaskIntoConstraints = false

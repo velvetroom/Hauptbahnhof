@@ -34,6 +34,8 @@ class View:NSView, NSTextViewDelegate {
         let text = notification.object as! NSTextView
         if text === self.text {
             presenter.update(text:text.string)
+        } else if text !== chapter {
+            presenter.update((text.superview as! OptionView).option, text:text.string)
         }
     }
     
@@ -240,6 +242,7 @@ class View:NSView, NSTextViewDelegate {
         var top = options.documentView!.topAnchor
         message.options.forEach { item in
             let option = OptionView(item)
+            option.text.delegate = self
             option.edit.target = presenter
             option.edit.action = #selector(presenter.edit(next:))
             option.show.target = presenter

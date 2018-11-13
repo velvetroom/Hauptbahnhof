@@ -67,6 +67,11 @@ public class Workshop {
         save()
     }
     
+    public func update(_ option:Option, text:String) {
+        option.text = text
+        save()
+    }
+    
     private func save() {
         storage.save(game:game)
     }

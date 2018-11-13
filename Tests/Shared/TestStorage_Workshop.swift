@@ -63,4 +63,11 @@ class TestStorage_Workshop:XCTestCase {
         workshop.update(Option(), next:String())
         waitForExpectations(timeout:1)
     }
+    
+    func testSavesOnUpdateOptionText() {
+        let expect = expectation(description:String())
+        MockStorage.onSaveGame = { expect.fulfill() }
+        workshop.update(Option(), text:String())
+        waitForExpectations(timeout:1)
+    }
 }

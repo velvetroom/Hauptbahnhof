@@ -45,14 +45,12 @@ class Presenter {
     }
     
     func update(text:String) {
-        self.timer?.invalidate()
         let id = viewModel.selected!.id
-        self.timer = Timer.scheduledTimer(withTimeInterval:3, repeats:false) {
-            guard $0.isValid else { return }
-            DispatchQueue.global(qos:.background).async {
-                self.workshop.update(id, text:text)
-            }
-        }
+        schedule { self.workshop.update(id, text:text) }
+    }
+    
+    func update(_ option:Option, text:String) {
+        schedule { self.workshop.update(option, text:text) }
     }
     
     func update(_ option:Option, next:String) {
@@ -136,6 +134,14 @@ class Presenter {
     
     @objc func show(next:NSButton) {
         viewModel.shouldSelect((next.superview as! OptionView).option.next)
+    }
+    
+    private func schedule(timeout:@escaping(() -> Void)) {
+        self.timer?.invalidate()
+        self.timer = Timer.scheduledTimer(withTimeInterval:3, repeats:false) {
+            guard $0.isValid else { return }
+            DispatchQueue.global(qos:.background).async(execute:timeout)
+        }
     }
     
     private func update() { update { $0.messages(self.workshop.game.messages) } }
