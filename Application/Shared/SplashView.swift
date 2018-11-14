@@ -17,7 +17,7 @@ class SplashView:UIViewController {
         DispatchQueue.global(qos:.background).async {
             let _ = Factory.makeMaster()
             DispatchQueue.main.async {
-                Application.navigation.setViewControllers([HomeView()], animated:true)
+                Application.navigation.setViewControllers([HomeView()], animated:false)
             }
         }
     }
