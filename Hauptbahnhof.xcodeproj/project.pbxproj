@@ -46,6 +46,7 @@
 		DA9024BE219637D8002334DF /* TestDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9024BD219637D8002334DF /* TestDelete.swift */; };
 		DA9024C3219639E3002334DF /* DeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9024C2219639E3002334DF /* DeleteView.swift */; };
 		DAA7FBD1218BB37000F1C0E8 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA7FBD0218BB37000F1C0E8 /* SplashView.swift */; };
+		DAB35348219C285900C9C119 /* brand.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAB35347219C285900C9C119 /* brand.xcassets */; };
 		DAB55EFF218B9D1400A9F02A /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB55EFE218B9D1400A9F02A /* Storage.swift */; };
 		DAB55F03218B9E1900A9F02A /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB55F02218B9E1900A9F02A /* Factory.swift */; };
 		DAB55F07218BAF9300A9F02A /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB55F06218BAF9300A9F02A /* Session.swift */; };
@@ -138,6 +139,7 @@
 		DA9024BD219637D8002334DF /* TestDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDelete.swift; sourceTree = "<group>"; };
 		DA9024C2219639E3002334DF /* DeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteView.swift; sourceTree = "<group>"; };
 		DAA7FBD0218BB37000F1C0E8 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		DAB35347219C285900C9C119 /* brand.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = brand.xcassets; sourceTree = "<group>"; };
 		DAB55EFE218B9D1400A9F02A /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		DAB55F02218B9E1900A9F02A /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		DAB55F06218BAF9300A9F02A /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -322,7 +324,9 @@
 			isa = PBXGroup;
 			children = (
 				DAFCF24421945BBD00BEBEEF /* assets.xcassets */,
+				DAB35347219C285900C9C119 /* brand.xcassets */,
 				DACF07BF219079B200F907AB /* Localizable.strings */,
+				DAD7E12B218A3B480085F449 /* LaunchScreen.storyboard */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -396,7 +400,6 @@
 			children = (
 				DACF07BE219079B200F907AB /* Application */,
 				DACF07C2219079BD00F907AB /* Desktop */,
-				DAD7E12B218A3B480085F449 /* LaunchScreen.storyboard */,
 				DACF07C6219079CA00F907AB /* One.json */,
 			);
 			path = Resources;
@@ -636,6 +639,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAD7E12D218A3B480085F449 /* LaunchScreen.storyboard in Resources */,
+				DAB35348219C285900C9C119 /* brand.xcassets in Resources */,
 				DACF07C1219079B200F907AB /* Localizable.strings in Resources */,
 				DAFCF24521945BBD00BEBEEF /* assets.xcassets in Resources */,
 				DACF07C8219079CB00F907AB /* One.json in Resources */,
@@ -1030,6 +1034,7 @@
 		DAD7E120218A35760085F449 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Configuration/Application.plist;
@@ -1046,6 +1051,7 @@
 		DAD7E121218A35760085F449 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7AMWG3RLHN;
 				INFOPLIST_FILE = Configuration/Application.plist;
