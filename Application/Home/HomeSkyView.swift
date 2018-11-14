@@ -43,6 +43,24 @@ class HomeSkyView:UIView {
         layerB.add(animation, forKey:"animation")
         layer.insertSublayer(layerB, above:skyline.layer)
         
+        let cell = CAEmitterCell()
+        cell.birthRate = 3
+        cell.lifetime = 250
+        cell.velocity = 5
+        cell.velocityRange = 3
+        cell.scaleRange = 0.9
+        cell.alphaRange = 0.9
+        cell.alphaSpeed = -0.005
+        cell.contents = #imageLiteral(resourceName: "snow.pdf").cgImage
+        cell.emissionRange = .pi
+        
+        let emitter = CAEmitterLayer()
+        emitter.emitterPosition = CGPoint(x:UIScreen.main.bounds.midX, y:-40)
+        emitter.emitterShape = .line
+        emitter.emitterSize = CGSize(width:UIScreen.main.bounds.width + 200, height:1)
+        emitter.emitterCells = [cell]
+        layer.addSublayer(emitter)
+        
         skyline.topAnchor.constraint(equalTo:topAnchor).isActive = true
         skyline.centerXAnchor.constraint(equalTo:centerXAnchor, constant:50).isActive = true
     }
