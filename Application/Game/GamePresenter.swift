@@ -2,23 +2,28 @@ import Foundation
 import Hauptbahnhof
 
 class GamePresenter {
+    var text:((String) -> Void)?
+    var options:(([(Int, String)]) -> Void)?
     private let master = Factory.makeMaster()
     
     func select(option:Int) {
         
     }
     
-    @objc func home() {
-        Application.navigation.setViewControllers([HomeView()], animated:true)
+    func load() {
+        DispatchQueue.global(qos:.background).async { [weak self] in
+            self?.next()
+        }
     }
     
-    func didLoad() {
-//        update(viewModel:master.game.title)
-//        update()
-    }
+    @objc func home() { Application.navigation.setViewControllers([HomeView()], animated:true) }
     
-    private func update() {
-//        update(viewModel:parser.parse(string:master.message.text))
-//        update(viewModel:master.message.options.enumerated().map { ($0, $1.text) })
+    private func next() {
+        let text = master.message.text
+        let options = master.message.options.enumerated().map { ($0, $1.text) }
+        DispatchQueue.main.async { [weak self] in
+            self?.text?(text)
+            self?.options?(options)
+        }
     }
 }

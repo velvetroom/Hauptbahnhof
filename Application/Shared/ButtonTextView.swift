@@ -1,6 +1,6 @@
 import UIKit
 
-class ButtonText:UIButton {
+class ButtonTextView:UIButton {
     init(_ title:String) {
         super.init(frame:.zero)
         translatesAutoresizingMaskIntoConstraints = false
@@ -10,7 +10,7 @@ class ButtonText:UIButton {
         setTitleColor(.black, for:.normal)
         setTitleColor(UIColor(white:0, alpha:0.2), for:.highlighted)
         setTitle(title, for:[])
-        titleLabel!.font = .systemFont(ofSize:15, weight:.bold)
+        titleLabel!.font = .systemFont(ofSize:14, weight:.bold)
     }
     
     required init?(coder:NSCoder) { return nil }

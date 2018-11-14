@@ -1,7 +1,7 @@
 import UIKit
 
-class Button:UIControl {
-    override var intrinsicContentSize:CGSize { return CGSize(width:52, height:52) }
+class ButtonView:UIControl {
+    override var intrinsicContentSize:CGSize { return CGSize(width:44, height:44) }
     
     init(_ image:UIImage) {
         super.init(frame:.zero)

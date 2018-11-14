@@ -22,14 +22,14 @@ class GameOptionView:UIControl {
         label.isUserInteractionEnabled = false
         label.textColor = .white
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize:15, weight:.bold)
+        label.font = .systemFont(ofSize:14, weight:.bold)
         addSubview(label)
         self.label = label
         
         label.topAnchor.constraint(equalTo:topAnchor, constant:20).isActive = true
         label.bottomAnchor.constraint(equalTo:bottomAnchor, constant:-20).isActive = true
-        label.leftAnchor.constraint(equalTo:leftAnchor, constant:15).isActive = true
-        label.rightAnchor.constraint(equalTo:rightAnchor, constant:-30).isActive = true
+        label.leftAnchor.constraint(equalTo:leftAnchor, constant:18).isActive = true
+        label.rightAnchor.constraint(equalTo:rightAnchor, constant:-35).isActive = true
     }
     
     private func update() {
