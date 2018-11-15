@@ -11,6 +11,8 @@
 		DA014D4F219848C000347E94 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA014D4E219848C000347E94 /* CellView.swift */; };
 		DA065C96219D5BCF00DA075F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA065C95219D5BCF00DA075F /* HomeViewModel.swift */; };
 		DA065C98219D67C500DA075F /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA065C97219D67C500DA075F /* TitleView.swift */; };
+		DA065C9B219D963D00DA075F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA065C9A219D963D00DA075F /* ProfileView.swift */; };
+		DA065C9D219D966100DA075F /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA065C9C219D966100DA075F /* ProfilePresenter.swift */; };
 		DA101BD8219C42F8000DB4BA /* HomeSkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA101BD7219C42F8000DB4BA /* HomeSkyView.swift */; };
 		DA25F365219331CB0049843E /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA25F364219331CB0049843E /* OptionView.swift */; };
 		DA397BDE218A3E1200C54971 /* libHauptbahnhof.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD7E123218A3A690085F449 /* libHauptbahnhof.a */; };
@@ -62,7 +64,6 @@
 		DACF84FA2192270E005B741C /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACF84F82192270E005B741C /* View.swift */; };
 		DACF84FB2192270E005B741C /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACF84F92192270E005B741C /* Application.swift */; };
 		DACF850B2192286A005B741C /* libEditor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DACF84DB219223B4005B741C /* libEditor.a */; };
-		DAD5B58F218A4ABC00E1DDA9 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B58E218A4ABC00E1DDA9 /* Navigation.swift */; };
 		DAD5B592218A509300E1DDA9 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B591218A509300E1DDA9 /* HomePresenter.swift */; };
 		DAD5B594218A50A600E1DDA9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B593218A50A600E1DDA9 /* HomeView.swift */; };
 		DAD5B59A218A51C700E1DDA9 /* ButtonTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B599218A51C700E1DDA9 /* ButtonTextView.swift */; };
@@ -119,6 +120,8 @@
 		DA014D4E219848C000347E94 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		DA065C95219D5BCF00DA075F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		DA065C97219D67C500DA075F /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		DA065C9A219D963D00DA075F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		DA065C9C219D966100DA075F /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		DA101BD7219C42F8000DB4BA /* HomeSkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSkyView.swift; sourceTree = "<group>"; };
 		DA24FE00219061C500031D57 /* Desktop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Desktop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA25F364219331CB0049843E /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
@@ -157,7 +160,6 @@
 		DACF84DB219223B4005B741C /* libEditor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libEditor.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DACF84F82192270E005B741C /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		DACF84F92192270E005B741C /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
-		DAD5B58E218A4ABC00E1DDA9 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		DAD5B591218A509300E1DDA9 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		DAD5B593218A50A600E1DDA9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DAD5B599218A51C700E1DDA9 /* ButtonTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTextView.swift; sourceTree = "<group>"; };
@@ -233,6 +235,15 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA065C99219D962300DA075F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				DA065C9C219D966100DA075F /* ProfilePresenter.swift */,
+				DA065C9A219D963D00DA075F /* ProfileView.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		DA4800432193103600A72514 /* Tests */ = {
@@ -419,6 +430,7 @@
 				DAD7E12F218A3B530085F449 /* Shared */,
 				DAD5B590218A506200E1DDA9 /* Home */,
 				DAD5B59B218A52BE00E1DDA9 /* Game */,
+				DA065C99219D962300DA075F /* Profile */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -427,7 +439,6 @@
 			isa = PBXGroup;
 			children = (
 				DAD7E130218A3B530085F449 /* Application.swift */,
-				DAD5B58E218A4ABC00E1DDA9 /* Navigation.swift */,
 				DAD5B5A4218A6D5400E1DDA9 /* ButtonView.swift */,
 				DAD5B599218A51C700E1DDA9 /* ButtonTextView.swift */,
 				DAB55F06218BAF9300A9F02A /* Session.swift */,
@@ -754,8 +765,9 @@
 				DAD5B594218A50A600E1DDA9 /* HomeView.swift in Sources */,
 				DAB55F07218BAF9300A9F02A /* Session.swift in Sources */,
 				DAD7E131218A3B530085F449 /* Application.swift in Sources */,
+				DA065C9B219D963D00DA075F /* ProfileView.swift in Sources */,
+				DA065C9D219D966100DA075F /* ProfilePresenter.swift in Sources */,
 				DA101BD8219C42F8000DB4BA /* HomeSkyView.swift in Sources */,
-				DAD5B58F218A4ABC00E1DDA9 /* Navigation.swift in Sources */,
 				DA065C98219D67C500DA075F /* TitleView.swift in Sources */,
 				DAE6AA8A218F3B2D00E7BBC1 /* GameOptionView.swift in Sources */,
 				DAD5B5B3218B234700E1DDA9 /* GameCaretView.swift in Sources */,
