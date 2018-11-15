@@ -1,12 +1,25 @@
 import UIKit
 
 class HomeView:UIViewController {
+    private weak var newGameBottom:NSLayoutConstraint!
     private let presenter = HomePresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
+        view.alpha = 0
         makeOutlets()
+    }
+    
+    override func viewDidAppear(_ animated:Bool) {
+        super.viewDidAppear(animated)
+        UIView.animate(withDuration:2, animations: { [weak self] in
+            self?.view.alpha = 1
+        }) { [weak self] _ in
+            self?.newGameBottom.constant = -100
+            UIView.animate(withDuration:1) { [weak self] in
+                self?.view.layoutIfNeeded()
+            }
+        }
     }
     
     private func makeOutlets() {
@@ -23,6 +36,7 @@ class HomeView:UIViewController {
         sky.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
         
         newGame.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
-        newGame.bottomAnchor.constraint(equalTo:view.bottomAnchor, constant:-100).isActive = true
+        newGameBottom = newGame.bottomAnchor.constraint(equalTo:view.bottomAnchor, constant:40)
+        newGameBottom.isActive = true
     }
 }
