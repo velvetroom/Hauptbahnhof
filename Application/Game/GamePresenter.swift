@@ -2,7 +2,7 @@ import Foundation
 import Hauptbahnhof
 
 class GamePresenter {
-    var text:((String) -> Void)?
+    var message:((String) -> Void)?
     var options:(([(Int, String)]) -> Void)?
     private let master = Factory.makeMaster()
     
@@ -10,20 +10,25 @@ class GamePresenter {
         
     }
     
-    func load() {
-        DispatchQueue.global(qos:.background).async { [weak self] in
-            self?.next()
-        }
-    }
+    func load() { next() }
     
     @objc func home() { Application.navigation.setViewControllers([HomeView()], animated:true) }
     
     private func next() {
-        let text = master.message.text
-        let options = master.message.options.enumerated().map { ($0, $1.text) }
-        DispatchQueue.main.async { [weak self] in
-            self?.text?(text)
-            self?.options?(options)
+        recursivePrint(text:String(), pile:master.message.text.components(separatedBy:"\n"))
+    }
+    
+    private func recursivePrint(text:String, pile:[String]) {
+        guard !pile.isEmpty else { return updateOptions() }
+        var pile = pile
+        let text = text + "\n" + pile.removeFirst()
+        DispatchQueue.main.asyncAfter(deadline:.now() + 0.4) { [weak self] in
+            self?.message?(text)
+            self?.recursivePrint(text:text, pile:pile)
         }
+    }
+    
+    private func updateOptions() {
+        options?(master.message.options.enumerated().map { ($0, $1.text) })
     }
 }

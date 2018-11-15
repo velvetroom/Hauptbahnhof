@@ -4,19 +4,20 @@ class GameView:UIViewController{
     private weak var caret:GameCaretView!
     private weak var text:UITextView!
     private weak var menu:UIView!
+    private weak var menuLeft:NSLayoutConstraint!
     private let presenter = GamePresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
         makeOutlets()
-        presenter.text = { [weak self] in self?.text.text = $0 }
+        presenter.message = { [weak self] in self?.update(message:$0) }
         presenter.options = { [weak self] in self?.update(options:$0) }
-        presenter.load()
     }
     
-    override func viewDidLayoutSubviews() {
-        caret.update(rect:text.caretRect(for:text.endOfDocument))
+    override func viewDidAppear(_ animated:Bool) {
+        super.viewDidAppear(animated)
+        presenter.load()
     }
     
     private func makeOutlets() {
@@ -60,9 +61,10 @@ class GameView:UIViewController{
         text.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
         text.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
         
-        menu.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
-        menu.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
+        menu.widthAnchor.constraint(equalToConstant:UIScreen.main.bounds.width).isActive = true
         menu.bottomAnchor.constraint(equalTo:home.topAnchor, constant:-10).isActive = true
+        menuLeft = menu.leftAnchor.constraint(equalTo:view.leftAnchor, constant:UIScreen.main.bounds.width)
+        menuLeft.isActive = true
         
         if #available(iOS 11.0, *) {
             home.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor, constant:-15).isActive = true
@@ -72,6 +74,16 @@ class GameView:UIViewController{
             home.bottomAnchor.constraint(equalTo:view.bottomAnchor, constant:-15).isActive = true
             text.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
         }
+    }
+    
+    private func update(message:String) {
+        text.text = message
+        DispatchQueue.main.async { [weak self] in self?.updateCaret() }
+    }
+    
+    private func updateCaret() {
+        caret.update(rect:text.caretRect(for:text.endOfDocument))
+        text.scrollRangeToVisible(NSMakeRange(text.text.count - 1, 1))
     }
     
     private func update(options:[(Int, String)]) {
@@ -89,6 +101,14 @@ class GameView:UIViewController{
         }
         menu.bottomAnchor.constraint(equalTo:top, constant:5).isActive = true
         menu.isUserInteractionEnabled = true
+        UIView.animate(withDuration:0.6, animations: { [weak self] in
+            self?.view.layoutIfNeeded()
+        }) { [weak self] _ in
+            self?.menuLeft.constant = 0
+            UIView.animate(withDuration:0.2) { [weak self] in
+                self?.view.layoutIfNeeded()
+            }
+        }
     }
     
     @objc private func select(option:GameOptionView) {
