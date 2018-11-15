@@ -18,4 +18,11 @@ class TestSelection:XCTestCase {
         master.select(option)
         XCTAssertEqual("lorem ipsum", master.message.text)
     }
+    
+    func testUpdatesTimeStamp() {
+        XCTAssertEqual(0, master.player.syncstamp)
+        let date = Date().timeIntervalSince1970
+        master.select(Option())
+        XCTAssertLessThanOrEqual(date, master.player.syncstamp)
+    }
 }

@@ -16,6 +16,7 @@ public class GameMaster {
     public func select(_ option:Option) {
         player.state = option.next
         option.effects.forEach { apply($0) }
+        player.syncstamp = Date().timeIntervalSince1970
         storage.save(player:player)
     }
     
