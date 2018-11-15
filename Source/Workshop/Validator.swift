@@ -3,7 +3,7 @@ import Foundation
 class Validator {
     private let validations:[((Validator) -> (Game) throws -> Void)] = [
         titleEmpty, messagesEmpty, idEmpty, noInitial, textEmpty, textEndsNewLine, optionsEmpty, optionsLessThanTwo,
-        nextInvalid, optionTextEmpty]
+        optionEndsNewLine, nextInvalid, optionTextEmpty]
     
     func validate(_ game:Game) throws {
         try validations.forEach { try $0(self)(game) }
@@ -30,7 +30,7 @@ class Validator {
     }
     
     private func textEndsNewLine(_ game:Game) throws {
-        try game.messages.forEach { if $0.value.text.last! == "\n" { throw Invalid(.textEndsNewLine, id:$0.key) } }
+        try game.messages.forEach { if $0.value.text.last == "\n" { throw Invalid(.textEndsNewLine, id:$0.key) } }
     }
     
     private func optionsEmpty(_ game:Game) throws {
@@ -39,6 +39,13 @@ class Validator {
     
     private func optionsLessThanTwo(_ game:Game) throws {
         try game.messages.forEach { if $0.value.options.count < 2 { throw Invalid(.optionsLessThanTwo, id:$0.key) } }
+    }
+    
+    private func optionEndsNewLine(_ game:Game) throws {
+        try game.messages.forEach { id, message in
+            try message.options.forEach { option in
+                if option.text.last == "\n" { throw Invalid(.optionEndsNewLine, id:id) }
+        } }
     }
     
     private func nextInvalid(_ game:Game) throws {

@@ -10,6 +10,7 @@ struct Invalid:LocalizedError {
         case textEndsNewLine
         case optionsEmpty
         case optionsLessThanTwo
+        case optionEndsNewLine
         case nextInvalid
         case optionTextEmpty
     }
