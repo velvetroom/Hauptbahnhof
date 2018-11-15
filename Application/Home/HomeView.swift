@@ -1,6 +1,7 @@
 import UIKit
 
 class HomeView:UIViewController {
+    private weak var newGame:ButtonTextView!
     private weak var newGameBottom:NSLayoutConstraint!
     private let presenter = HomePresenter()
     
@@ -8,6 +9,13 @@ class HomeView:UIViewController {
         super.viewDidLoad()
         view.alpha = 0
         makeOutlets()
+        presenter.viewModel = { [weak self] viewModel, completion in
+            self?.newGame.isEnabled = false
+            self?.newGame.alpha = viewModel.newGameAlpha
+            UIView.animate(withDuration:1, animations: { [weak self] in
+                self?.view.alpha = 0
+            }) { _ in completion() }
+        }
     }
     
     override func viewDidAppear(_ animated:Bool) {
@@ -29,6 +37,7 @@ class HomeView:UIViewController {
         let newGame = ButtonTextView(.local("HomeView.newGame"))
         newGame.addTarget(presenter, action:#selector(presenter.newGame), for:.touchUpInside)
         view.addSubview(newGame)
+        self.newGame = newGame
         
         sky.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
         sky.bottomAnchor.constraint(equalTo:view.bottomAnchor).isActive = true

@@ -3,6 +3,7 @@ import Hauptbahnhof
 
 class SplashView:UIViewController {
     override func viewDidLoad() {
+        super.viewDidLoad()
         let logo = UIImageView(image:#imageLiteral(resourceName: "splash.pdf"))
         logo.translatesAutoresizingMaskIntoConstraints = false
         logo.clipsToBounds = true
@@ -14,6 +15,7 @@ class SplashView:UIViewController {
     }
     
     override func viewDidAppear(_ animated:Bool) {
+        super.viewDidAppear(animated)
         DispatchQueue.global(qos:.background).async {
             let _ = Factory.makeMaster()
             DispatchQueue.main.async {
