@@ -22,10 +22,11 @@ class GameView:UIViewController{
     
     private func makeOutlets() {
         let home = ButtonView(#imageLiteral(resourceName: "home.pdf"))
-        home.addTarget(presenter, action:#selector(presenter.home), for:.touchUpInside)
+        home.addTarget(self, action:#selector(self.home), for:.touchUpInside)
         view.addSubview(home)
         
         let profile = ButtonView(#imageLiteral(resourceName: "profile.pdf"))
+        profile.addTarget(self, action:#selector(self.profile), for:.touchUpInside)
         view.addSubview(profile)
         
         let text = UITextView()
@@ -101,7 +102,7 @@ class GameView:UIViewController{
             top = view.bottomAnchor
         }
         menu.bottomAnchor.constraint(equalTo:top, constant:5).isActive = true
-        menu.isUserInteractionEnabled = true
+        view.isUserInteractionEnabled = true
         UIView.animate(withDuration:0.6, animations: { [weak self] in
             self?.view.layoutIfNeeded()
         }) { [weak self] _ in
@@ -133,12 +134,34 @@ class GameView:UIViewController{
         }
     }
     
+    private func fadeOut(completion:@escaping(() -> Void)) {
+        UIView.animate(withDuration:0.6, animations: { [weak self] in
+            self?.view.alpha = 0
+        }) { _ in
+            completion()
+        }
+    }
+    
     @objc private func select(option:GameOptionView) {
-        menu.isUserInteractionEnabled = false
+        view.isUserInteractionEnabled = false
         option.isSelected = true
         presenter.select(option:option.viewModel!.0)
         DispatchQueue.main.asyncAfter(deadline:.now() + 0.3) { [weak self] in
             self?.animateOut()
+        }
+    }
+    
+    @objc private func home() {
+        view.isUserInteractionEnabled = false
+        fadeOut {
+            Application.navigation.setViewControllers([HomeView()], animated:true)
+        }
+    }
+    
+    @objc private func profile() {
+        view.isUserInteractionEnabled = false
+        fadeOut {
+            Application.navigation.setViewControllers([ProfileView()], animated:true)
         }
     }
 }

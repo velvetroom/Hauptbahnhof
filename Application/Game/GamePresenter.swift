@@ -14,8 +14,6 @@ class GamePresenter {
         master.select(master.message.options[option])
     }
     
-    @objc func home() { Application.navigation.setViewControllers([HomeView()], animated:true) }
-    
     private func recursivePrint(text:String, pile:String) {
         guard !pile.isEmpty else { return updateOptions() }
         var pile = pile
