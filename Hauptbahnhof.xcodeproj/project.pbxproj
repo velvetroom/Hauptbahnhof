@@ -14,6 +14,7 @@
 		DA065C9B219D963D00DA075F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA065C9A219D963D00DA075F /* ProfileView.swift */; };
 		DA065C9D219D966100DA075F /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA065C9C219D966100DA075F /* ProfilePresenter.swift */; };
 		DA101BD8219C42F8000DB4BA /* HomeSkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA101BD7219C42F8000DB4BA /* HomeSkyView.swift */; };
+		DA1805F9219DD94B00897E7C /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1805F8219DD94B00897E7C /* AlertView.swift */; };
 		DA25F365219331CB0049843E /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA25F364219331CB0049843E /* OptionView.swift */; };
 		DA397BDE218A3E1200C54971 /* libHauptbahnhof.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD7E123218A3A690085F449 /* libHauptbahnhof.a */; };
 		DA48003D21930FF600A72514 /* libHauptbahnhof.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD7E123218A3A690085F449 /* libHauptbahnhof.a */; };
@@ -123,6 +124,7 @@
 		DA065C9A219D963D00DA075F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		DA065C9C219D966100DA075F /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		DA101BD7219C42F8000DB4BA /* HomeSkyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSkyView.swift; sourceTree = "<group>"; };
+		DA1805F8219DD94B00897E7C /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		DA24FE00219061C500031D57 /* Desktop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Desktop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA25F364219331CB0049843E /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
 		DA48003821930FF600A72514 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -445,6 +447,7 @@
 				DACF07D121907A8700F907AB /* UIColor.swift */,
 				DAA7FBD0218BB37000F1C0E8 /* SplashView.swift */,
 				DA065C97219D67C500DA075F /* TitleView.swift */,
+				DA1805F8219DD94B00897E7C /* AlertView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -756,6 +759,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAD5B59D218A52D100E1DDA9 /* GamePresenter.swift in Sources */,
+				DA1805F9219DD94B00897E7C /* AlertView.swift in Sources */,
 				DAA7FBD1218BB37000F1C0E8 /* SplashView.swift in Sources */,
 				DAD5B59A218A51C700E1DDA9 /* ButtonTextView.swift in Sources */,
 				DA065C96219D5BCF00DA075F /* HomeViewModel.swift in Sources */,
