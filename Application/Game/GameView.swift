@@ -17,7 +17,7 @@ class GameView:UIViewController{
     
     override func viewDidAppear(_ animated:Bool) {
         super.viewDidAppear(animated)
-        presenter.load()
+        presenter.next()
     }
     
     private func makeOutlets() {
@@ -87,6 +87,7 @@ class GameView:UIViewController{
     }
     
     private func update(options:[(Int, String)]) {
+        menu.subviews.forEach { $0.removeFromSuperview() }
         var top = menu.topAnchor
         options.forEach { option in
             let view = GameOptionView()
@@ -105,8 +106,29 @@ class GameView:UIViewController{
             self?.view.layoutIfNeeded()
         }) { [weak self] _ in
             self?.menuLeft.constant = 0
-            UIView.animate(withDuration:0.2) { [weak self] in
+            UIView.animate(withDuration:0.4) { [weak self] in
                 self?.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    private func animateOut() {
+        menuLeft.constant = UIScreen.main.bounds.width
+        UIView.animate(withDuration:0.3, animations: { [weak self] in
+            self?.view.layoutIfNeeded()
+        }) { _ in
+            UIView.animate(withDuration:0.5, animations: { [weak self] in
+                self?.text.alpha = 0
+            }) { [weak self] _ in
+                self?.update(message:String())
+                UIView.animate(withDuration:0.4, animations: { [weak self] in
+                    self?.text.alpha = 1
+                }) { _ in
+                    DispatchQueue.main.asyncAfter(deadline:.now() + 0.5) { [weak self] in
+                        self?.text.alpha = 1
+                        self?.presenter.next()
+                    }
+                }
             }
         }
     }
@@ -115,5 +137,8 @@ class GameView:UIViewController{
         menu.isUserInteractionEnabled = false
         option.isSelected = true
         presenter.select(option:option.viewModel!.0)
+        DispatchQueue.main.asyncAfter(deadline:.now() + 0.3) { [weak self] in
+            self?.animateOut()
+        }
     }
 }
