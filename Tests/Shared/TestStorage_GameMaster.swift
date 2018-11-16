@@ -37,4 +37,11 @@ class TestStorage_GameMaster:XCTestCase {
         GameMaster().select(Option())
         waitForExpectations(timeout:1)
     }
+    
+    func testRestartSavesPlayer() {
+        let expect = expectation(description:String())
+        MockStorage.onSavePlayer = { expect.fulfill() }
+        GameMaster().restart()
+        waitForExpectations(timeout:1)
+    }
 }

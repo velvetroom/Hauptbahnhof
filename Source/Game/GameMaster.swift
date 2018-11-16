@@ -20,6 +20,11 @@ public class GameMaster {
         storage.save(player:player)
     }
     
+    public func restart() {
+        player = Player()
+        storage.save(player:player)
+    }
+    
     private func apply(_ effect:Effect) {
         switch effect {
         case .increaseScore2: player.score += 2
