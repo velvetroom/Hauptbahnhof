@@ -25,6 +25,7 @@ class TestParsing:XCTestCase {
     
     func testPlayer() {
         XCTAssertEqual("One", master.player.chapter.rawValue)
+        XCTAssertEqual("Miranda", master.player.persona.rawValue)
         XCTAssertFalse(master.player.state.isEmpty)
     }
 }
