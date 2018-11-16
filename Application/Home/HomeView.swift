@@ -10,11 +10,13 @@ class HomeView:UIViewController {
         view.alpha = 0
         makeOutlets()
         presenter.viewModel = { [weak self] viewModel, completion in
-            self?.newGame.isEnabled = false
+            self?.view.isUserInteractionEnabled = viewModel.enabled
             self?.newGame.alpha = viewModel.newGameAlpha
+            self?.newGameBottom.constant = 40
             UIView.animate(withDuration:1, animations: { [weak self] in
                 self?.view.alpha = 0
-            }) { _ in completion() }
+                self?.view.layoutIfNeeded()
+            }) { _ in completion?() }
         }
     }
     
@@ -34,7 +36,7 @@ class HomeView:UIViewController {
         let sky = HomeSkyView()
         view.addSubview(sky)
         
-        let newGame = ButtonTextView(.local("HomeView.newGame"))
+        let newGame = ButtonTextView(.local("HomeView.newGame"), color:.spreeBlue)
         newGame.addTarget(presenter, action:#selector(presenter.newGame), for:.touchUpInside)
         view.addSubview(newGame)
         self.newGame = newGame

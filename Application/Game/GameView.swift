@@ -2,6 +2,8 @@ import UIKit
 
 class GameView:UIViewController{
     private weak var caret:GameCaretView!
+    private weak var homeButton:ButtonView!
+    private weak var profileButton:ButtonView!
     private weak var text:UITextView!
     private weak var menu:UIView!
     private weak var menuLeft:NSLayoutConstraint!
@@ -11,6 +13,7 @@ class GameView:UIViewController{
         super.viewDidLoad()
         view.backgroundColor = .black
         makeOutlets()
+        deactivateControls()
         presenter.message = { [weak self] in self?.update(message:$0) }
         presenter.options = { [weak self] in self?.update(options:$0) }
     }
@@ -21,13 +24,15 @@ class GameView:UIViewController{
     }
     
     private func makeOutlets() {
-        let home = ButtonView(#imageLiteral(resourceName: "home.pdf"))
-        home.addTarget(self, action:#selector(self.home), for:.touchUpInside)
-        view.addSubview(home)
+        let homeButton = ButtonView(#imageLiteral(resourceName: "home.pdf"))
+        homeButton.addTarget(self, action:#selector(home), for:.touchUpInside)
+        view.addSubview(homeButton)
+        self.homeButton = homeButton
         
-        let profile = ButtonView(#imageLiteral(resourceName: "profile.pdf"))
-        profile.addTarget(self, action:#selector(self.profile), for:.touchUpInside)
-        view.addSubview(profile)
+        let profileButton = ButtonView(#imageLiteral(resourceName: "profile.pdf"))
+        profileButton.addTarget(self, action:#selector(profile), for:.touchUpInside)
+        view.addSubview(profileButton)
+        self.profileButton = profileButton
         
         let text = UITextView()
         text.translatesAutoresizingMaskIntoConstraints = false
@@ -53,26 +58,27 @@ class GameView:UIViewController{
         caret.left = caret.leftAnchor.constraint(equalTo:text.leftAnchor)
         caret.height = caret.heightAnchor.constraint(equalToConstant:0)
         
-        home.rightAnchor.constraint(equalTo:view.centerXAnchor, constant:-15).isActive = true
+        homeButton.rightAnchor.constraint(equalTo:view.centerXAnchor, constant:-15).isActive = true
         
-        profile.bottomAnchor.constraint(equalTo:home.bottomAnchor).isActive = true
-        profile.leftAnchor.constraint(equalTo:view.centerXAnchor, constant:15).isActive = true
+        profileButton.bottomAnchor.constraint(equalTo:homeButton.bottomAnchor).isActive = true
+        profileButton.leftAnchor.constraint(equalTo:view.centerXAnchor, constant:15).isActive = true
         
         text.bottomAnchor.constraint(equalTo:menu.topAnchor).isActive = true
         text.leftAnchor.constraint(equalTo:view.leftAnchor).isActive = true
         text.rightAnchor.constraint(equalTo:view.rightAnchor).isActive = true
         
         menu.widthAnchor.constraint(equalToConstant:UIScreen.main.bounds.width).isActive = true
-        menu.bottomAnchor.constraint(equalTo:home.topAnchor, constant:-10).isActive = true
+        menu.bottomAnchor.constraint(equalTo:homeButton.topAnchor, constant:-10).isActive = true
         menuLeft = menu.leftAnchor.constraint(equalTo:view.leftAnchor, constant:UIScreen.main.bounds.width)
         menuLeft.isActive = true
         
         if #available(iOS 11.0, *) {
-            home.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor, constant:-15).isActive = true
+            homeButton.bottomAnchor.constraint(
+                equalTo:view.safeAreaLayoutGuide.bottomAnchor, constant:-15).isActive = true
             text.contentInsetAdjustmentBehavior = .never
             text.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
         } else {
-            home.bottomAnchor.constraint(equalTo:view.bottomAnchor, constant:-15).isActive = true
+            homeButton.bottomAnchor.constraint(equalTo:view.bottomAnchor, constant:-15).isActive = true
             text.topAnchor.constraint(equalTo:view.topAnchor).isActive = true
         }
     }
@@ -102,7 +108,7 @@ class GameView:UIViewController{
             top = view.bottomAnchor
         }
         menu.bottomAnchor.constraint(equalTo:top, constant:5).isActive = true
-        view.isUserInteractionEnabled = true
+        activateControls()
         UIView.animate(withDuration:0.6, animations: { [weak self] in
             self?.view.layoutIfNeeded()
         }) { [weak self] _ in
@@ -142,8 +148,20 @@ class GameView:UIViewController{
         }
     }
     
-    @objc private func select(option:GameOptionView) {
+    private func deactivateControls() {
         view.isUserInteractionEnabled = false
+        homeButton.alpha = 0.3
+        profileButton.alpha = 0.3
+    }
+    
+    private func activateControls() {
+        view.isUserInteractionEnabled = true
+        homeButton.alpha = 1
+        profileButton.alpha = 1
+    }
+    
+    @objc private func select(option:GameOptionView) {
+        deactivateControls()
         option.isSelected = true
         presenter.select(option:option.viewModel!.0)
         DispatchQueue.main.asyncAfter(deadline:.now() + 0.3) { [weak self] in
@@ -152,14 +170,14 @@ class GameView:UIViewController{
     }
     
     @objc private func home() {
-        view.isUserInteractionEnabled = false
+        deactivateControls()
         fadeOut {
             Application.navigation.setViewControllers([HomeView()], animated:true)
         }
     }
     
     @objc private func profile() {
-        view.isUserInteractionEnabled = false
+        deactivateControls()
         fadeOut {
             Application.navigation.setViewControllers([ProfileView()], animated:true)
         }

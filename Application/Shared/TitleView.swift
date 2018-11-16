@@ -35,7 +35,7 @@ class TitleView:UIViewController {
     }
     
     private func moveOut() {
-        UIView.animate(withDuration:1, animations: { [weak self] in
+        UIView.animate(withDuration:1.5, animations: { [weak self] in
             self?.view.alpha = 0
         }) { _ in
             Application.navigation.setViewControllers([GameView()], animated:false)
