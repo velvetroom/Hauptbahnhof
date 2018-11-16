@@ -150,14 +150,18 @@ class GameView:UIViewController{
     
     private func deactivateControls() {
         view.isUserInteractionEnabled = false
-        homeButton.alpha = 0.3
-        profileButton.alpha = 0.3
+        UIView.animate(withDuration:0.4) { [weak self] in
+            self?.homeButton.alpha = 0.3
+            self?.profileButton.alpha = 0.3
+        }
     }
     
     private func activateControls() {
         view.isUserInteractionEnabled = true
-        homeButton.alpha = 1
-        profileButton.alpha = 1
+        UIView.animate(withDuration:0.4) { [weak self] in
+            self?.homeButton.alpha = 1
+            self?.profileButton.alpha = 1
+        }
     }
     
     @objc private func select(option:GameOptionView) {

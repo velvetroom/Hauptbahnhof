@@ -2,11 +2,18 @@ import Foundation
 import Hauptbahnhof
 
 class HomePresenter {
-    var viewModel:((HomeViewModel, (() -> Void)?) -> Void)!
+    var viewModel:((HomeViewModel) -> Void)! { didSet { restore() } }
+    var fadeOut:((@escaping() -> Void) -> Void)!
     private let master = Factory.makeMaster()
     
-    @objc func newGame() {
-        viewModel(newGameOnly()) { [weak self] in self?.validateNewGame() }
+    @objc func new() {
+        viewModel(newOnly())
+        fadeOut { [weak self] in self?.validateNewGame() }
+    }
+    
+    @objc func resume() {
+        viewModel(resumeOnly())
+        fadeOut { [weak self] in self?.openGame() }
     }
     
     private func validateNewGame() {
@@ -29,9 +36,13 @@ class HomePresenter {
     
     private func restore() {
         var viewModel = HomeViewModel()
-        viewModel.enabled = true
-        viewModel.newGameAlpha = 1
-        self.viewModel(viewModel, nil)
+        viewModel.newEnabled = true
+        viewModel.newAlpha = 1
+        if master.player.syncstamp > 0 {
+            viewModel.resumeEnabled = true
+            viewModel.resumeAlpha = 1
+        }
+        self.viewModel(viewModel)
     }
     
     private func restart() {
@@ -47,9 +58,15 @@ class HomePresenter {
         Application.navigation.setViewControllers([TitleView()], animated:false)
     }
     
-    private func newGameOnly() -> HomeViewModel {
+    private func newOnly() -> HomeViewModel {
         var viewModel = HomeViewModel()
-        viewModel.newGameAlpha = 1
+        viewModel.newAlpha = 1
+        return viewModel
+    }
+    
+    private func resumeOnly() -> HomeViewModel {
+        var viewModel = HomeViewModel()
+        viewModel.resumeAlpha = 1
         return viewModel
     }
 }

@@ -1,4 +1,5 @@
 HomePresenter.newGameMessage="You are about to start a new game, but you will lose your previous progress.\n\nDo you want to continue?";
-HomePresenter.newGameAccept="Continue";
+HomePresenter.newGameAccept="New Game";
 HomePresenter.newGameCancel="Cancel";
-HomeView.newGame="New Game";
+HomeView.new="New Game";
+HomeView.resume="Continue";
