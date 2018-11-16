@@ -39,16 +39,24 @@ class ProfileView:UIViewController {
         title.attributedText = presenter.title
         view.addSubview(title)
         
+        let chart = ProfileChartView()
+        view.addSubview(chart)
+        
         let resume = ButtonTextView(.local("ProfileView.resume"), color:.spreeBlue)
         resume.addTarget(self, action:#selector(self.resume), for:.touchUpInside)
         view.addSubview(resume)
         
         icon.leftAnchor.constraint(equalTo:view.leftAnchor, constant:20).isActive = true
         
-        resume.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
-        
         title.centerYAnchor.constraint(equalTo:icon.centerYAnchor).isActive = true
         title.leftAnchor.constraint(equalTo:icon.rightAnchor, constant:5).isActive = true
+        
+        chart.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
+        chart.centerYAnchor.constraint(equalTo:view.centerYAnchor).isActive = true
+        chart.widthAnchor.constraint(equalToConstant:200).isActive = true
+        chart.heightAnchor.constraint(equalToConstant:200).isActive = true
+        
+        resume.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
         
         if #available(iOS 11.0, *) {
             icon.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant:20).isActive = true

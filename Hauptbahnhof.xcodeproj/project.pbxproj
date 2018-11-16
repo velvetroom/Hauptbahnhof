@@ -60,6 +60,7 @@
 		DAB55F03218B9E1900A9F02A /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB55F02218B9E1900A9F02A /* Factory.swift */; };
 		DAB55F07218BAF9300A9F02A /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB55F06218BAF9300A9F02A /* Session.swift */; };
 		DABA3AE52194635C007B757E /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABA3AE42194635C007B757E /* ButtonView.swift */; };
+		DAC7D6A5219F29320095BBE9 /* ProfileChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC7D6A4219F29320095BBE9 /* ProfileChartView.swift */; };
 		DACF07C1219079B200F907AB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DACF07BF219079B200F907AB /* Localizable.strings */; };
 		DACF07C5219079BD00F907AB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DACF07C3219079BD00F907AB /* Localizable.strings */; };
 		DACF07C8219079CB00F907AB /* One.json in Resources */ = {isa = PBXBuildFile; fileRef = DACF07C6219079CA00F907AB /* One.json */; };
@@ -160,6 +161,7 @@
 		DAB55F02218B9E1900A9F02A /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		DAB55F06218BAF9300A9F02A /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		DABA3AE42194635C007B757E /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		DAC7D6A4219F29320095BBE9 /* ProfileChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileChartView.swift; sourceTree = "<group>"; };
 		DACF07C0219079B200F907AB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DACF07C4219079BD00F907AB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DACF07C6219079CA00F907AB /* One.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = One.json; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 			children = (
 				DA065C9C219D966100DA075F /* ProfilePresenter.swift */,
 				DA065C9A219D963D00DA075F /* ProfileView.swift */,
+				DAC7D6A4219F29320095BBE9 /* ProfileChartView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -771,6 +774,7 @@
 				DAD5B59D218A52D100E1DDA9 /* GamePresenter.swift in Sources */,
 				DA1805F9219DD94B00897E7C /* AlertView.swift in Sources */,
 				DAA7FBD1218BB37000F1C0E8 /* SplashView.swift in Sources */,
+				DAC7D6A5219F29320095BBE9 /* ProfileChartView.swift in Sources */,
 				DAD5B59A218A51C700E1DDA9 /* ButtonTextView.swift in Sources */,
 				DA065C96219D5BCF00DA075F /* HomeViewModel.swift in Sources */,
 				DAD5B592218A509300E1DDA9 /* HomePresenter.swift in Sources */,
