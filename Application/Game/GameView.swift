@@ -20,17 +20,21 @@ class GameView:UIViewController{
     
     override func viewDidAppear(_ animated:Bool) {
         super.viewDidAppear(animated)
-        presenter.next()
+        if menu.subviews.isEmpty {
+            presenter.next()
+        }
     }
     
     private func makeOutlets() {
         let homeButton = ButtonView(#imageLiteral(resourceName: "home.pdf"))
         homeButton.addTarget(self, action:#selector(home), for:.touchUpInside)
+        homeButton.alpha = 0
         view.addSubview(homeButton)
         self.homeButton = homeButton
         
         let profileButton = ButtonView(#imageLiteral(resourceName: "profile.pdf"))
         profileButton.addTarget(self, action:#selector(profile), for:.touchUpInside)
+        profileButton.alpha = 0
         view.addSubview(profileButton)
         self.profileButton = profileButton
         
@@ -140,14 +144,6 @@ class GameView:UIViewController{
         }
     }
     
-    private func fadeOut(completion:@escaping(() -> Void)) {
-        UIView.animate(withDuration:0.6, animations: { [weak self] in
-            self?.view.alpha = 0
-        }) { _ in
-            completion()
-        }
-    }
-    
     private func deactivateControls() {
         view.isUserInteractionEnabled = false
         UIView.animate(withDuration:0.4) { [weak self] in
@@ -175,15 +171,14 @@ class GameView:UIViewController{
     
     @objc private func home() {
         deactivateControls()
-        fadeOut {
-            Application.navigation.setViewControllers([HomeView()], animated:true)
+        UIView.animate(withDuration:0.6, animations: { [weak self] in
+            self?.view.alpha = 0
+        }) { _ in
+            Application.navigation.setViewControllers([HomeView()], animated:false)
         }
     }
     
     @objc private func profile() {
-        deactivateControls()
-        fadeOut {
-            Application.navigation.setViewControllers([ProfileView()], animated:true)
-        }
+        Application.navigation.present(ProfileView(), animated:false)
     }
 }

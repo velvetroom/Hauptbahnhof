@@ -3,3 +3,4 @@ HomePresenter.newGameAccept="New Game";
 HomePresenter.newGameCancel="Cancel";
 HomeView.new="New Game";
 HomeView.resume="Continue";
+ProfileView.resume="Resume";
