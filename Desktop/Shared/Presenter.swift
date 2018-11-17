@@ -156,7 +156,7 @@ class Presenter {
     
     private func schedule(timeout:@escaping(() -> Void)) {
         self.timer?.invalidate()
-        self.timer = Timer.scheduledTimer(withTimeInterval:1.5, repeats:false) {
+        self.timer = Timer.scheduledTimer(withTimeInterval:1, repeats:false) {
             guard $0.isValid else { return }
             DispatchQueue.global(qos:.background).async(execute:timeout)
         }
