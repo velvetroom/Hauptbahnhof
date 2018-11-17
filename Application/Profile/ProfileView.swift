@@ -40,6 +40,10 @@ class ProfileView:UIViewController {
         view.addSubview(title)
         
         let chart = ProfileChartView()
+        chart.knowledge = presenter.knowledge
+        chart.courage = presenter.courage
+        chart.empathy = presenter.empathy
+        chart.diligence = presenter.diligence
         view.addSubview(chart)
         
         let knowledge = UILabel()
