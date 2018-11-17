@@ -4,3 +4,7 @@ HomePresenter.newGameCancel="Cancel";
 HomeView.new="New Game";
 HomeView.resume="Continue";
 ProfileView.resume="Resume";
+ProfileView.knowledge="Knowledge";
+ProfileView.courage="Courage";
+ProfileView.empathy="Empathy";
+ProfileView.diligence="Diligence";
