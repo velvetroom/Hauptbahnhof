@@ -1,4 +1,5 @@
 Application.quit="Quit";
+Application.edit="Edit";
 Presenter.deleteMessage="Delete Message?";
 Presenter.deleteOption="Delete Option?";
 View.addMessage="Add Message";

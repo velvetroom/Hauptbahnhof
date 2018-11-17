@@ -157,6 +157,7 @@ class View:NSView, NSTextViewDelegate {
         text.isContinuousSpellCheckingEnabled = true
         text.font = .systemFont(ofSize:16, weight:.light)
         text.delegate = self
+        text.allowsUndo = true
         scrollText.documentView = text
         self.text = text
         

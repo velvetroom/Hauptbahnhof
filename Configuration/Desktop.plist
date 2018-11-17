@@ -24,7 +24,9 @@
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2018 iturbide. All rights reserved.</string>
+	<key>NSMainStoryboardFile</key>
+	<string>Desktop</string>
 	<key>NSPrincipalClass</key>
-	<string>Desktop.Application</string>
+	<string>NSApplication</string>
 </dict>
 </plist>

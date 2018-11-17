@@ -34,6 +34,7 @@ class OptionView:NSView {
         text.textContainer!.lineBreakMode = .byTruncatingTail
         text.font = .systemFont(ofSize:16, weight:.light)
         text.string = option.text
+        text.allowsUndo = true
         addSubview(text)
         self.text = text
         
