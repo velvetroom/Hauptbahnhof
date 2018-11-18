@@ -57,6 +57,7 @@ class Presenter {
     func update(_ option:Option, next:String) {
         DispatchQueue.global(qos:.background).async {
             self.workshop.update(option, next:next)
+            self.validate()
         }
     }
     
@@ -158,7 +159,10 @@ class Presenter {
         self.timer?.invalidate()
         self.timer = Timer.scheduledTimer(withTimeInterval:1, repeats:false) {
             guard $0.isValid else { return }
-            DispatchQueue.global(qos:.background).async(execute:timeout)
+            DispatchQueue.global(qos:.background).async {
+                timeout()
+                self.validate()
+            }
         }
     }
     
