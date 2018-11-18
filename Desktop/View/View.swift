@@ -83,6 +83,7 @@ class View:NSView, NSTextViewDelegate {
         chapter.textContainer!.size = NSSize(width:600, height:30)
         chapter.font = .systemFont(ofSize:14, weight:.light)
         chapter.delegate = self
+        chapter.isEditable = false
         bar.addSubview(chapter)
         self.chapter = chapter
         
