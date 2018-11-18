@@ -30,7 +30,7 @@ class OptionView:NSView {
         text.layer!.cornerRadius = 12
         text.textContainerInset = NSSize(width:20, height:7)
         text.isContinuousSpellCheckingEnabled = true
-        text.textContainer!.size = NSSize(width:350, height:52)
+        text.textContainer!.size = NSSize(width:550, height:52)
         text.textContainer!.lineBreakMode = .byTruncatingTail
         text.font = .systemFont(ofSize:16, weight:.light)
         text.string = option.text
@@ -99,7 +99,7 @@ class OptionView:NSView {
 
         text.topAnchor.constraint(equalTo:topAnchor, constant:6).isActive = true
         text.leftAnchor.constraint(equalTo:leftAnchor, constant:-10).isActive = true
-        text.widthAnchor.constraint(equalToConstant:350).isActive = true
+        text.widthAnchor.constraint(equalToConstant:550).isActive = true
         text.heightAnchor.constraint(equalToConstant:52).isActive = true
         
         edit.topAnchor.constraint(equalTo:text.bottomAnchor, constant:10).isActive = true
