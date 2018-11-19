@@ -78,6 +78,12 @@ class TestValidate:XCTestCase {
         XCTAssertThrowsError(try validator.validate(game))
     }
     
+    func testNextEmpty() {
+        game.messages[""] = Message()
+        game.messages["initial"]!.options.first!.next = ""
+        XCTAssertThrowsError(try validator.validate(game))
+    }
+    
     func testOptionTextEmpty() {
         game.messages["initial"]!.options.first!.text = ""
         XCTAssertThrowsError(try validator.validate(game))

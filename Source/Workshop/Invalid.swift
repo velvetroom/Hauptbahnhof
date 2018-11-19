@@ -12,6 +12,7 @@ struct Invalid:LocalizedError {
         case optionsLessThanTwo
         case optionEndsNewLine
         case nextInvalid
+        case nextEmpty
         case optionTextEmpty
     }
     
