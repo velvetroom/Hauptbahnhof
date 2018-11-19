@@ -1,9 +1,9 @@
 import Foundation
 
 public class GameMaster {
+    public var message:Message { return game.messages[player.state]! }
     public internal(set) var game = Game()
     public internal(set) var player = Player()
-    public var message:Message { return game.messages[player.state]! }
     private let storage = Factory.makeStorage()
     
     public init() {
