@@ -155,6 +155,10 @@ class Presenter {
         viewModel.shouldSelect((next.superview as! OptionView).option.next)
     }
     
+    @objc func history(button:NSButton) {
+        viewModel.shouldSelect(button.title)
+    }
+    
     private func schedule(timeout:@escaping(() -> Void)) {
         self.timer?.invalidate()
         self.timer = Timer.scheduledTimer(withTimeInterval:0.8, repeats:false) {

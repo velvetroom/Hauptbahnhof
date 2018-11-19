@@ -2,6 +2,7 @@ import Cocoa
 import Editor
 
 class View:NSView, NSTextViewDelegate {
+    private weak var history:HistoryView!
     private weak var list:NSScrollView!
     private weak var options:NSScrollView!
     private weak var text:NSTextView!
@@ -73,6 +74,11 @@ class View:NSView, NSTextViewDelegate {
         bar.wantsLayer = true
         bar.layer!.backgroundColor = NSColor.windowBackgroundColor.cgColor
         addSubview(bar)
+        
+        let history = HistoryView()
+        history.presenter = presenter
+        bar.addSubview(history)
+        self.history = history
         
         let chapter = NSTextView(frame:.zero)
         chapter.translatesAutoresizingMaskIntoConstraints = false
@@ -174,7 +180,7 @@ class View:NSView, NSTextViewDelegate {
         bar.topAnchor.constraint(equalTo:topAnchor).isActive = true
         bar.leftAnchor.constraint(equalTo:leftAnchor).isActive = true
         bar.rightAnchor.constraint(equalTo:rightAnchor).isActive = true
-        bar.heightAnchor.constraint(equalToConstant:60).isActive = true
+        bar.heightAnchor.constraint(equalToConstant:100).isActive = true
         
         list.topAnchor.constraint(equalTo:bar.bottomAnchor).isActive = true
         list.leftAnchor.constraint(equalTo:leftAnchor).isActive = true
@@ -183,8 +189,13 @@ class View:NSView, NSTextViewDelegate {
         
         chapter.topAnchor.constraint(equalTo:bar.topAnchor, constant:20).isActive = true
         chapter.leftAnchor.constraint(equalTo:bar.leftAnchor).isActive = true
-        chapter.bottomAnchor.constraint(equalTo:bar.bottomAnchor).isActive = true
+        chapter.heightAnchor.constraint(equalToConstant:60).isActive = true
         chapter.widthAnchor.constraint(equalToConstant:220).isActive = true
+        
+        history.topAnchor.constraint(equalTo:addMessage.bottomAnchor).isActive = true
+        history.bottomAnchor.constraint(equalTo:bar.bottomAnchor).isActive = true
+        history.leftAnchor.constraint(equalTo:bar.leftAnchor).isActive = true
+        history.rightAnchor.constraint(equalTo:bar.rightAnchor).isActive = true
         
         addMessage.centerYAnchor.constraint(equalTo:chapter.centerYAnchor).isActive = true
         addMessage.leftAnchor.constraint(equalTo:chapter.rightAnchor, constant:10).isActive = true
@@ -278,5 +289,6 @@ class View:NSView, NSTextViewDelegate {
     
     @objc private func select(item:ItemView) {
         presenter.viewModel.selected = item
+        history.add(item.id)
     }
 }
