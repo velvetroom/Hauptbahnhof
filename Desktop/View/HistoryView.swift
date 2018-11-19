@@ -12,6 +12,10 @@ class HistoryView:NSView {
     required init?(coder:NSCoder) { return nil }
     
     func add(_ item:String) {
+        guard
+            item.isEmpty == false,
+            !items.contains(item)
+        else { return }
         if items.count > 7 {
             items.removeFirst()
         }
@@ -25,6 +29,7 @@ class HistoryView:NSView {
         items.forEach { item in
             let button = NSButton(title:item, target:presenter, action:#selector(presenter.history(button:)))
             button.translatesAutoresizingMaskIntoConstraints = false
+            button.isBordered = false
             addSubview(button)
             
             button.centerYAnchor.constraint(equalTo:centerYAnchor).isActive = true
