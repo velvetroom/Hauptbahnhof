@@ -9,16 +9,26 @@ class TestValidate:XCTestCase {
         validator = Validator()
         game = Game()
         game.title = "Lorem ipsum"
-        let message = Message()
-        message.text = "hello world"
+        let messageA = Message()
+        messageA.text = "hello world"
         let optionA = Option()
         optionA.text = "hello"
-        optionA.next = "initial"
+        optionA.next = "final"
         let optionB = Option()
         optionB.text = "world"
-        optionB.next = "initial"
-        message.options = [optionA, optionB]
-        game.messages["initial"] = message
+        optionB.next = "final"
+        messageA.options = [optionA, optionB]
+        let messageB = Message()
+        messageB.text = "hello world"
+        let optionC = Option()
+        optionC.text = "hello"
+        optionC.next = "initial"
+        let optionD = Option()
+        optionD.text = "world"
+        optionD.next = "initial"
+        messageB.options = [optionC, optionD]
+        game.messages["initial"] = messageA
+        game.messages["final"] = messageB
     }
     
     func testSuccess() {
@@ -81,6 +91,11 @@ class TestValidate:XCTestCase {
     func testNextEmpty() {
         game.messages[""] = Message()
         game.messages["initial"]!.options.first!.next = ""
+        XCTAssertThrowsError(try validator.validate(game))
+    }
+    
+    func testNextRecursive() {
+        game.messages["initial"]!.options.first!.next = "initial"
         XCTAssertThrowsError(try validator.validate(game))
     }
     

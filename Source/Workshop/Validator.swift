@@ -3,7 +3,7 @@ import Foundation
 class Validator {
     private let validations:[((Validator) -> (Game) throws -> Void)] = [
         titleEmpty, messagesEmpty, idEmpty, noInitial, textEmpty, textEndsNewLine, optionsEmpty, optionsLessThanTwo,
-        optionEndsNewLine, nextInvalid, nextEmpty, optionTextEmpty]
+        optionEndsNewLine, nextInvalid, nextEmpty, nextRecursive, optionTextEmpty]
     
     func validate(_ game:Game) throws {
         try validations.forEach { try $0(self)(game) }
@@ -59,6 +59,13 @@ class Validator {
         try game.messages.forEach { id, message in
             try message.options.forEach { option in
                 if option.next.isEmpty { throw Invalid(.nextEmpty, id:id) }
+        } }
+    }
+    
+    private func nextRecursive(_ game:Game) throws {
+        try game.messages.forEach { id, message in
+            try message.options.forEach { option in
+                if option.next == id { throw Invalid(.nextRecursive, id:id) }
         } }
     }
     

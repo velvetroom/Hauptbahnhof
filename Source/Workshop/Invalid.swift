@@ -13,6 +13,7 @@ struct Invalid:LocalizedError {
         case optionEndsNewLine
         case nextInvalid
         case nextEmpty
+        case nextRecursive
         case optionTextEmpty
     }
     
