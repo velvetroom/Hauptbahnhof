@@ -19,14 +19,7 @@ class TestValidate:XCTestCase {
         optionB.next = "final"
         messageA.options = [optionA, optionB]
         let messageB = Message()
-        messageB.text = "hello world"
-        let optionC = Option()
-        optionC.text = "hello"
-        optionC.next = "initial"
-        let optionD = Option()
-        optionD.text = "world"
-        optionD.next = "initial"
-        messageB.options = [optionC, optionD]
+        messageB.text = "lorem ipsum"
         game.messages["initial"] = messageA
         game.messages["final"] = messageB
     }

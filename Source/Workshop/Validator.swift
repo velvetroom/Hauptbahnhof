@@ -32,8 +32,8 @@ class Validator {
                 messages.removeValue(forKey:option.next)
             }
         }
-        if !messages.isEmpty {
-            throw Invalid(.orphanMessage)
+        if let first = messages.first(where: { $0.key != "initial" }) {
+            throw Invalid(.orphanMessage, id:first.key)
         }
     }
     
@@ -46,11 +46,19 @@ class Validator {
     }
     
     private func optionsEmpty(_ game:Game) throws {
-        try game.messages.forEach { if $0.value.options.isEmpty { throw Invalid(.optionsEmpty, id:$0.key) } }
+        try game.messages.forEach { id, message in
+            if id != "final" && message.options.isEmpty {
+                throw Invalid(.optionsEmpty, id:id)
+            }
+        }
     }
     
     private func optionsLessThanTwo(_ game:Game) throws {
-        try game.messages.forEach { if $0.value.options.count < 2 { throw Invalid(.optionsLessThanTwo, id:$0.key) } }
+        try game.messages.forEach { id, message in
+            if id != "final" && message.options.count < 2 {
+                throw Invalid(.optionsLessThanTwo, id:id)
+            }
+        }
     }
     
     private func optionEndsNewLine(_ game:Game) throws {
