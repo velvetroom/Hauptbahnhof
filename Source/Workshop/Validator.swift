@@ -4,7 +4,7 @@ class Validator {
     private let validations:[((Validator) -> (Game) throws -> Void)] = [
         titleEmpty, messagesEmpty, idEmpty, noInitial, orphanMessage, messageNotOnline, textEmpty, textEndsNewLine,
         optionsEmpty, optionsLessThanTwo, optionEndsNewLine, nextInvalid, nextEmpty, nextRecursive, optionTextEmpty,
-        graphToFinal]
+        finalWithOptions, graphToFinal]
     
     func validate(_ game:Game) throws {
         try validations.forEach { try $0(self)(game) }
@@ -123,6 +123,14 @@ class Validator {
         try map.forEach { id, completed in
             if !completed {
                 throw Invalid(.graphToFinal, id:id)
+            }
+        }
+    }
+    
+    private func finalWithOptions(_ game:Game) throws {
+        if let message = game.messages["final"] {
+            if !message.options.isEmpty {
+                throw Invalid(.finalWithOptions)
             }
         }
     }

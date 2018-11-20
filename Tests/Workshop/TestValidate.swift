@@ -126,6 +126,24 @@ class TestValidate:XCTestCase {
         XCTAssertThrowsError(try validator.validate(game))
     }
     
+    func testFinalWithOptions() {
+        let messageA = Message()
+        messageA.text = "hello world"
+        let optionA = Option()
+        optionA.text = "hello"
+        optionA.next = "final"
+        let optionB = Option()
+        optionB.text = "world"
+        optionB.next = "final"
+        messageA.options = [optionA, optionB]
+        let option = Option()
+        option.text = "hello"
+        option.next = "messageA"
+        game.messages["messageA"] = messageA
+        game.messages["final"]!.options = [option]
+        XCTAssertThrowsError(try validator.validate(game))
+    }
+    
     func testGraphToFinal() {
         let messageA = Message()
         messageA.text = "hello world"
