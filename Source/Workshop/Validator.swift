@@ -2,8 +2,8 @@ import Foundation
 
 class Validator {
     private let validations:[((Validator) -> (Game) throws -> Void)] = [
-        titleEmpty, messagesEmpty, idEmpty, noInitial, textEmpty, textEndsNewLine, optionsEmpty, optionsLessThanTwo,
-        optionEndsNewLine, nextInvalid, nextEmpty, nextRecursive, optionTextEmpty]
+        titleEmpty, messagesEmpty, idEmpty, noInitial, orphanMessage, textEmpty, textEndsNewLine, optionsEmpty,
+        optionsLessThanTwo, optionEndsNewLine, nextInvalid, nextEmpty, nextRecursive, optionTextEmpty]
     
     func validate(_ game:Game) throws {
         try validations.forEach { try $0(self)(game) }
@@ -23,6 +23,18 @@ class Validator {
     
     private func noInitial(_ game:Game) throws {
         if game.messages["initial"] == nil { throw Invalid(.noInitial) }
+    }
+    
+    private func orphanMessage(_ game:Game) throws {
+        var messages = game.messages
+        game.messages.values.forEach { message in
+            message.options.forEach { option in
+                messages.removeValue(forKey:option.next)
+            }
+        }
+        if !messages.isEmpty {
+            throw Invalid(.orphanMessage)
+        }
     }
     
     private func textEmpty(_ game:Game) throws {
