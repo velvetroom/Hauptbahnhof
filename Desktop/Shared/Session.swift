@@ -35,8 +35,8 @@ class Session:Storage {
     }
     
     private func missingBookmarks() {
-        if bookmarks[Chapter.One.rawValue] == nil {
-            showPanel(chapter:.One)
+        if bookmarks[Chapter.Prologue.rawValue] == nil {
+            showPanel(chapter:.Prologue)
         }
     }
     

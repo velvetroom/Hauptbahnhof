@@ -8,16 +8,6 @@ class Presenter {
     private weak var timer:Timer?
     private let workshop = Workshop()
     
-    func load() {
-        status(.loading())
-        DispatchQueue.global(qos:.background).async {
-            self.workshop.load(chapter:.One)
-            self.title()
-            self.update()
-            self.validate()
-        }
-    }
-    
     func validate() {
         status(.loading())
         DispatchQueue.global(qos:.background).async {
@@ -64,6 +54,20 @@ class Presenter {
     func addEffect(_ option:Option, id:String) {
         workshop.addEffect(option, effect:Effect(rawValue:id)!)
         viewModel.shouldSelect(viewModel.selected!.id)
+    }
+    
+    @objc func load(_ chapter:NSPopUpButton) {
+        let chapter = Chapter(rawValue:chapter.titleOfSelectedItem!)!
+        if chapter == .Unknown {
+//            update { $0.messages([:]) }
+        } else {
+            status(.loading())
+            DispatchQueue.global(qos:.background).async {
+                self.workshop.load(chapter:chapter)
+                self.update()
+                self.validate()
+            }
+        }
     }
     
     @objc func addMessage() {
@@ -170,8 +174,7 @@ class Presenter {
         }
     }
     
-    private func update() { update { $0.messages(self.workshop.game.messages) } }
-    private func title() { update { $0.title(self.workshop.game.title) } }
+    private func update() { update { $0.messages(self.messages) } }
     private func status(_ status:Status) { update { $0.status(status) } }
     private func renaming(_ possible:Bool) { update { $0.renaming(possible) } }
     private func renameStatus(_ status:Status) { update { $0.renameStatus(status) } }

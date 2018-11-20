@@ -6,7 +6,7 @@ class View:NSView, NSTextViewDelegate {
     private weak var list:NSScrollView!
     private weak var options:NSScrollView!
     private weak var text:NSTextView!
-    private weak var chapter:NSTextView!
+    private weak var chapter:NSPopUpButton!
     private weak var status:NSImageView!
     private weak var statusText:NSTextField!
     private weak var rename:NSButton!
@@ -43,7 +43,6 @@ class View:NSView, NSTextViewDelegate {
     override func viewDidMoveToWindow() {
         super.viewDidMoveToWindow()
         makeOutlets()
-        presenter.viewModel.title = { self.chapter.string = $0 }
         presenter.viewModel.messages = { self.reload($0) }
         presenter.viewModel.shouldSelect = { self.select(id:$0) }
         presenter.viewModel.status = {
@@ -65,7 +64,6 @@ class View:NSView, NSTextViewDelegate {
                 self.delete.isEnabled = false
             }
         }
-        presenter.load()
     }
     
     private func makeOutlets() {
@@ -80,16 +78,12 @@ class View:NSView, NSTextViewDelegate {
         bar.addSubview(history)
         self.history = history
         
-        let chapter = NSTextView(frame:.zero)
+        let chapter = NSPopUpButton(frame:.zero)
         chapter.translatesAutoresizingMaskIntoConstraints = false
-        chapter.drawsBackground = false
-        chapter.textContainer!.lineBreakMode = .byTruncatingHead
-        chapter.textContainerInset = NSSize(width:10, height:10)
-        chapter.isContinuousSpellCheckingEnabled = true
-        chapter.textContainer!.size = NSSize(width:600, height:30)
-        chapter.font = .systemFont(ofSize:14, weight:.light)
-        chapter.delegate = self
-        chapter.isEditable = false
+        chapter.addItems(withTitles:Chapter.allCases.map { $0.rawValue })
+        chapter.selectItem(withTitle:Chapter.Unknown.rawValue)
+        chapter.target = presenter
+        chapter.action = #selector(presenter.load(_:))
         bar.addSubview(chapter)
         self.chapter = chapter
         
@@ -187,10 +181,8 @@ class View:NSView, NSTextViewDelegate {
         list.bottomAnchor.constraint(equalTo:bottomAnchor).isActive = true
         list.widthAnchor.constraint(equalToConstant:200).isActive = true
         
-        chapter.topAnchor.constraint(equalTo:bar.topAnchor, constant:20).isActive = true
-        chapter.leftAnchor.constraint(equalTo:bar.leftAnchor).isActive = true
-        chapter.heightAnchor.constraint(equalToConstant:60).isActive = true
-        chapter.widthAnchor.constraint(equalToConstant:220).isActive = true
+        chapter.topAnchor.constraint(equalTo:bar.topAnchor, constant:40).isActive = true
+        chapter.leftAnchor.constraint(equalTo:bar.leftAnchor, constant:10).isActive = true
         
         history.topAnchor.constraint(equalTo:addMessage.bottomAnchor).isActive = true
         history.bottomAnchor.constraint(equalTo:bar.bottomAnchor).isActive = true

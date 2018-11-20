@@ -2,7 +2,6 @@ import Cocoa
 import Editor
 
 struct ViewModel {
-    var title:((String) -> Void)!
     var status:((Status) -> Void)!
     var renaming:((Bool) -> Void)!
     var renameStatus:((Status) -> Void)!
