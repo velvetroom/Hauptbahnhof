@@ -2,8 +2,8 @@ import Foundation
 
 class Validator {
     private let validations:[((Validator) -> (Game) throws -> Void)] = [
-        titleEmpty, messagesEmpty, idEmpty, noInitial, orphanMessage, textEmpty, textEndsNewLine, optionsEmpty,
-        optionsLessThanTwo, optionEndsNewLine, nextInvalid, nextEmpty, nextRecursive, optionTextEmpty]
+        titleEmpty, messagesEmpty, idEmpty, noInitial, orphanMessage, messageNotOnline, textEmpty, textEndsNewLine,
+        optionsEmpty, optionsLessThanTwo, optionEndsNewLine, nextInvalid, nextEmpty, nextRecursive, optionTextEmpty]
     
     func validate(_ game:Game) throws {
         try validations.forEach { try $0(self)(game) }
@@ -34,6 +34,26 @@ class Validator {
         }
         if let first = messages.first(where: { $0.key != "initial" }) {
             throw Invalid(.orphanMessage, id:first.key)
+        }
+    }
+    
+    private func messageNotOnline(_ game:Game) throws {
+        var messages = game.messages
+        var pile = ["initial"]
+        var counter = 0
+        while counter < pile.count {
+            if let message = game.messages[pile[counter]] {
+                message.options.forEach { option in
+                    if !pile.contains(option.next) {
+                        pile.append(option.next)
+                        messages.removeValue(forKey:option.next)
+                    }
+                }
+            }
+            counter += 1
+        }
+        if let first = messages.first(where: { $0.key != "initial" }) {
+            throw Invalid(.messageNotOnLine, id:first.key)
         }
     }
     

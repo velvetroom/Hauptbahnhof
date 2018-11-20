@@ -56,6 +56,30 @@ class TestValidate:XCTestCase {
         XCTAssertThrowsError(try validator.validate(game))
     }
     
+    func testMessageIsInMainLine() {
+        let messageA = Message()
+        messageA.text = "hello world"
+        let optionA = Option()
+        optionA.text = "hello"
+        optionA.next = "loopB"
+        let optionB = Option()
+        optionB.text = "world"
+        optionB.next = "loopB"
+        messageA.options = [optionA, optionB]
+        let messageB = Message()
+        messageB.text = "hello world"
+        let optionC = Option()
+        optionC.text = "hello"
+        optionC.next = "loopA"
+        let optionD = Option()
+        optionD.text = "world"
+        optionD.next = "loopA"
+        messageB.options = [optionC, optionD]
+        game.messages["loopA"] = messageA
+        game.messages["loopB"] = messageB
+        XCTAssertThrowsError(try validator.validate(game))
+    }
+    
     func testTextEmpty() {
         game.messages["initial"]!.text = ""
         XCTAssertThrowsError(try validator.validate(game))

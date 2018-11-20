@@ -7,6 +7,7 @@ struct Invalid:LocalizedError {
         case idEmpty
         case noInitial
         case orphanMessage
+        case messageNotOnLine
         case textEmpty
         case textEndsNewLine
         case optionsEmpty
