@@ -126,6 +126,24 @@ class TestValidate:XCTestCase {
         XCTAssertThrowsError(try validator.validate(game))
     }
     
+    func testNextInitial() {
+        let messageA = Message()
+        messageA.text = "hello world"
+        let optionA = Option()
+        optionA.text = "hello"
+        optionA.next = "initial"
+        let optionB = Option()
+        optionB.text = "world"
+        optionB.next = "final"
+        messageA.options = [optionA, optionB]
+        let optionE = Option()
+        optionE.text = "loop"
+        optionE.next = "messageA"
+        game.messages["messageA"] = messageA
+        game.messages["initial"]!.options.append(optionE)
+        XCTAssertThrowsError(try validator.validate(game))
+    }
+    
     func testFinalWithOptions() {
         let messageA = Message()
         messageA.text = "hello world"
