@@ -7,7 +7,7 @@ class TestStorage_GameMaster:XCTestCase {
     override func setUp() {
         Factory.storage = MockStorage.self
         master = GameMaster()
-        let data = try! Data(contentsOf:Bundle(for:TestStorage_GameMaster.self).url(forResource:"One", withExtension:"json")!)
+        let data = try! Data(contentsOf:Bundle(for:TestStorage_GameMaster.self).url(forResource:"Prologue", withExtension:"json")!)
         master.game = try! JSONDecoder().decode(Game.self, from:data)
     }
     

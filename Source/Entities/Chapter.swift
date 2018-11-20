@@ -1,6 +1,6 @@
 import Foundation
 
-public enum Chapter:String, Codable {
-    case One
+public enum Chapter:String, CaseIterable, Codable {
+    case Prologue
     case Unknown
 }

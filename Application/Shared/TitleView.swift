@@ -14,7 +14,7 @@ class TitleView:UIViewController {
         title.textAlignment = .center
         title.font = .systemFont(ofSize:25, weight:.bold)
         title.textColor = .white
-        title.text = master.game.title
+        title.text = master.game.chapter.rawValue
         view.addSubview(title)
         
         title.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true

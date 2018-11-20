@@ -2,16 +2,12 @@ import Foundation
 
 class Validator {
     private let validations:[((Validator) -> (Game) throws -> Void)] = [
-        titleEmpty, messagesEmpty, idEmpty, noInitial, orphanMessage, messageNotOnline, textEmpty, textEndsNewLine,
-        optionsEmpty, optionsLessThanTwo, optionEndsNewLine, nextInvalid, nextEmpty, nextRecursive, optionTextEmpty,
-        nextInitial, finalWithOptions, graphToFinal]
+        messagesEmpty, idEmpty, noInitial, orphanMessage, messageNotOnline, textEmpty, textEndsNewLine, optionsEmpty,
+        optionsLessThanTwo, optionEndsNewLine, nextInvalid, nextEmpty, nextRecursive, optionTextEmpty, nextInitial,
+        finalWithOptions, graphToFinal]
     
     func validate(_ game:Game) throws {
         try validations.forEach { try $0(self)(game) }
-    }
-    
-    private func titleEmpty(_ game:Game) throws {
-        if game.title.isEmpty { throw Invalid(.titleEmpty) }
     }
     
     private func messagesEmpty(_ game:Game) throws {

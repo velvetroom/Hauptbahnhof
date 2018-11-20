@@ -7,13 +7,12 @@ class TestParsing:XCTestCase {
     override func setUp() {
         Factory.storage = MockStorage.self
         master = GameMaster()
-        let data = try! Data(contentsOf:Bundle(for:TestParsing.self).url(forResource:"One", withExtension:"json")!)
+        let data = try! Data(contentsOf:Bundle(for:TestParsing.self).url(forResource:"Prologue", withExtension:"json")!)
         master.game = try! JSONDecoder().decode(Game.self, from:data)
     }
     
     func testLoadGame() {
-        XCTAssertEqual(Chapter.One, master.game.chapter)
-        XCTAssertEqual("Chapter One", master.game.title)
+        XCTAssertEqual(Chapter.Prologue, master.game.chapter)
         XCTAssertFalse(master.game.messages.isEmpty)
         XCTAssertEqual(master.game.messages["initial"]!.text, master.message.text)
         XCTAssertFalse(master.message.text.isEmpty)
@@ -24,7 +23,7 @@ class TestParsing:XCTestCase {
     }
     
     func testPlayer() {
-        XCTAssertEqual("One", master.player.chapter.rawValue)
+        XCTAssertEqual("Prologue", master.player.chapter.rawValue)
         XCTAssertEqual("Miranda", master.player.persona.rawValue)
         XCTAssertFalse(master.player.state.isEmpty)
     }

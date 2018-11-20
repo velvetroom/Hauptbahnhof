@@ -8,7 +8,6 @@ class TestValidate:XCTestCase {
     override func setUp() {
         validator = Validator()
         game = Game()
-        game.title = "Lorem ipsum"
         let messageA = Message()
         messageA.text = "hello world"
         let optionA = Option()
@@ -26,11 +25,6 @@ class TestValidate:XCTestCase {
     
     func testSuccess() {
         XCTAssertNoThrow(try validator.validate(game))
-    }
-    
-    func testTitleEmpty() {
-        game.title = ""
-        XCTAssertThrowsError(try validator.validate(game))
     }
     
     func testMessagesEmpty() {
