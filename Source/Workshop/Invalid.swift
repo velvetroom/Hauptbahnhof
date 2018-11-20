@@ -17,6 +17,7 @@ struct Invalid:LocalizedError {
         case nextEmpty
         case nextRecursive
         case optionTextEmpty
+        case graphToFinal
     }
     
     var errorDescription:String?

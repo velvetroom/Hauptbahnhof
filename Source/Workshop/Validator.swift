@@ -3,7 +3,8 @@ import Foundation
 class Validator {
     private let validations:[((Validator) -> (Game) throws -> Void)] = [
         titleEmpty, messagesEmpty, idEmpty, noInitial, orphanMessage, messageNotOnline, textEmpty, textEndsNewLine,
-        optionsEmpty, optionsLessThanTwo, optionEndsNewLine, nextInvalid, nextEmpty, nextRecursive, optionTextEmpty]
+        optionsEmpty, optionsLessThanTwo, optionEndsNewLine, nextInvalid, nextEmpty, nextRecursive, optionTextEmpty,
+        graphToFinal]
     
     func validate(_ game:Game) throws {
         try validations.forEach { try $0(self)(game) }
@@ -114,5 +115,35 @@ class Validator {
             try message.options.forEach { option in
                 if option.text.isEmpty { throw Invalid(.optionTextEmpty, id:id) }
         } }
+    }
+    
+    private func graphToFinal(_ game:Game) throws {
+        var map = [String:Bool]()
+        recursiveGraph(check:"initial", game:game, map:&map)
+        try map.forEach { id, completed in
+            if !completed {
+                throw Invalid(.graphToFinal, id:id)
+            }
+        }
+    }
+    
+    private func recursiveGraph(check:String, game:Game, map:inout[String:Bool]) {
+        if check == "final" {
+            map["final"] = true
+        } else if let message = game.messages[check] {
+            message.options.forEach { option in
+                if let finished = map[option.next] {
+                    if finished {
+                        map[check] = true
+                    }
+                } else {
+                    map[option.next] = false
+                    recursiveGraph(check:option.next, game:game, map:&map)
+                    if map[option.next] == true {
+                        map[check] = true
+                    }
+                }
+            }
+        }
     }
 }

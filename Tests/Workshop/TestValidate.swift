@@ -56,7 +56,7 @@ class TestValidate:XCTestCase {
         XCTAssertThrowsError(try validator.validate(game))
     }
     
-    func testMessageIsInMainLine() {
+    func testMessageIsOnMainLine() {
         let messageA = Message()
         messageA.text = "hello world"
         let optionA = Option()
@@ -123,6 +123,34 @@ class TestValidate:XCTestCase {
     
     func testOptionTextEmpty() {
         game.messages["initial"]!.options.first!.text = ""
+        XCTAssertThrowsError(try validator.validate(game))
+    }
+    
+    func testGraphToFinal() {
+        let messageA = Message()
+        messageA.text = "hello world"
+        let optionA = Option()
+        optionA.text = "hello"
+        optionA.next = "loopB"
+        let optionB = Option()
+        optionB.text = "world"
+        optionB.next = "loopB"
+        messageA.options = [optionA, optionB]
+        let messageB = Message()
+        messageB.text = "hello world"
+        let optionC = Option()
+        optionC.text = "hello"
+        optionC.next = "loopA"
+        let optionD = Option()
+        optionD.text = "world"
+        optionD.next = "loopA"
+        messageB.options = [optionC, optionD]
+        let optionE = Option()
+        optionE.text = "loop"
+        optionE.next = "loopA"
+        game.messages["loopA"] = messageA
+        game.messages["loopB"] = messageB
+        game.messages["initial"]!.options.append(optionE)
         XCTAssertThrowsError(try validator.validate(game))
     }
 }
