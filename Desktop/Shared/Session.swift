@@ -10,7 +10,9 @@ class Session:Storage {
     }
     
     func loadPlayer() throws -> Player { throw Exception.unknown }
+    func loadBoard() throws -> Board { throw Exception.unknown }
     func save(player:Player) { }
+    func save(board:Board) { }
     
     func loadGame(chapter:Chapter) -> Game {
         let data = try! Data(contentsOf:Bundle.main.url(forResource:chapter.rawValue, withExtension:"json")!)
