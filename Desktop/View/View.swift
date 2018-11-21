@@ -9,6 +9,7 @@ class View:NSView, NSTextViewDelegate {
     private weak var chapter:NSPopUpButton!
     private weak var status:NSImageView!
     private weak var statusText:NSTextField!
+    private weak var addMessage:NSButton!
     private weak var rename:NSButton!
     private weak var addOption:NSButton!
     private weak var delete:NSButton!
@@ -90,7 +91,9 @@ class View:NSView, NSTextViewDelegate {
         let addMessage = NSButton(title:.local("View.addMessage"),
                                   target:presenter, action:#selector(presenter.addMessage))
         addMessage.translatesAutoresizingMaskIntoConstraints = false
+        addMessage.isEnabled = false
         bar.addSubview(addMessage)
+        self.addMessage = addMessage
         
         let rename = NSButton(title:.local("View.rename"), target:presenter, action:#selector(presenter.rename))
         rename.translatesAutoresizingMaskIntoConstraints = false
@@ -239,7 +242,12 @@ class View:NSView, NSTextViewDelegate {
             item.leftAnchor.constraint(equalTo:list.leftAnchor).isActive = true
             top = item.bottomAnchor
         }
-        list.documentView!.bottomAnchor.constraint(equalTo:top).isActive = true
+        if messages.isEmpty {
+            addMessage.isEnabled = false
+        } else {
+            addMessage.isEnabled = true
+            list.documentView!.bottomAnchor.constraint(equalTo:top).isActive = true
+        }
     }
     
     private func reloadOptions(_ message:Message) {

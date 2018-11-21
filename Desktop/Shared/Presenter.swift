@@ -57,16 +57,13 @@ class Presenter {
     }
     
     @objc func load(_ chapter:NSPopUpButton) {
+        viewModel.selected = nil
+        status(.loading())
         let chapter = Chapter(rawValue:chapter.titleOfSelectedItem!)!
-        if chapter == .Unknown {
-//            update { $0.messages([:]) }
-        } else {
-            status(.loading())
-            DispatchQueue.global(qos:.background).async {
-                self.workshop.load(chapter:chapter)
-                self.update()
-                self.validate()
-            }
+        DispatchQueue.global(qos:.background).async {
+            self.workshop.load(chapter:chapter)
+            self.update()
+            self.validate()
         }
     }
     
