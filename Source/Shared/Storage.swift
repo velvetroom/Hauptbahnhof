@@ -6,5 +6,6 @@ public protocol Storage {
     func loadBoard() throws -> Board
     func save(player:Player)
     func save(game:Game)
+    func save(board:Board)
     init()
 }

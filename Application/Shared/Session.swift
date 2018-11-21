@@ -23,6 +23,16 @@ class Session:Storage {
     }
     
     func save(player:Player) {
-        try! (try! JSONEncoder().encode(player)).write(to:url.appendingPathComponent("Player.hauptbahnhof"))
+        DispatchQueue.global(qos:.background).async { [weak self] in
+            guard let self = self else { return }
+            try! (try! JSONEncoder().encode(player)).write(to:self.url.appendingPathComponent("Player.hauptbahnhof"))
+        }
+    }
+    
+    func save(board:Board) {
+        DispatchQueue.global(qos:.background).async { [weak self] in
+            guard let self = self else { return }
+            try! (try! JSONEncoder().encode(board)).write(to:self.url.appendingPathComponent("Board.hauptbahnhof"))
+        }
     }
 }

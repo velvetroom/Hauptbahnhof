@@ -4,6 +4,7 @@ import Foundation
 class MockStorage:Storage {
     static var onSavePlayer:(() -> Void)?
     static var onSaveGame:(() -> Void)?
+    static var onSaveBoard:(() -> Void)?
     static var onLoadPlayer:(() -> Void)?
     static var onLoadGame:(() -> Void)?
     static var onLoadBoard:(() -> Void)?
@@ -34,5 +35,9 @@ class MockStorage:Storage {
     
     func save(game:Game) {
         MockStorage.onSaveGame?()
+    }
+    
+    func save(board:Board) {
+        MockStorage.onSaveBoard?()
     }
 }

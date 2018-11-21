@@ -43,6 +43,7 @@ public class GameMaster {
         if rating {
             board.rates.append(Date())
         }
+        storage.save(board:board)
         return rating
     }
     

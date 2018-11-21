@@ -13,9 +13,10 @@ class TestStorage_GameMaster:XCTestCase {
     
     override func tearDown() {
         MockStorage.onLoadPlayer = nil
-        MockStorage.onSavePlayer = nil
         MockStorage.onLoadGame = nil
         MockStorage.onLoadBoard = nil
+        MockStorage.onSavePlayer = nil
+        MockStorage.onSaveBoard = nil
     }
     
     func testLoadsPlayer() {
@@ -50,6 +51,13 @@ class TestStorage_GameMaster:XCTestCase {
         let expect = expectation(description:String())
         MockStorage.onLoadBoard = { expect.fulfill() }
         let _ = GameMaster()
+        waitForExpectations(timeout:1)
+    }
+    
+    func testRateSavesBoard() {
+        let expect = expectation(description:String())
+        MockStorage.onSaveBoard = { expect.fulfill() }
+        let _ = GameMaster().rate()
         waitForExpectations(timeout:1)
     }
 }
