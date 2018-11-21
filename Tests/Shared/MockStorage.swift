@@ -6,6 +6,7 @@ class MockStorage:Storage {
     static var onSaveGame:(() -> Void)?
     static var onLoadPlayer:(() -> Void)?
     static var onLoadGame:(() -> Void)?
+    static var onLoadBoard:(() -> Void)?
     
     required init() { }
     
@@ -20,6 +21,11 @@ class MockStorage:Storage {
         game.chapter = .Prologue
         game.messages["initial"] = Message()
         return game
+    }
+    
+    func loadBoard() throws -> Board {
+        MockStorage.onLoadBoard?()
+        return Board()
     }
     
     func save(player:Player) {

@@ -18,6 +18,9 @@
 		DA101BD8219C42F8000DB4BA /* HomeSkyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA101BD7219C42F8000DB4BA /* HomeSkyView.swift */; };
 		DA1805F9219DD94B00897E7C /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1805F8219DD94B00897E7C /* AlertView.swift */; };
 		DA25F365219331CB0049843E /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA25F364219331CB0049843E /* OptionView.swift */; };
+		DA2D916221A5584200A13C11 /* TestBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2D916121A5584200A13C11 /* TestBoard.swift */; };
+		DA2D916421A558CF00A13C11 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2D916321A558CF00A13C11 /* Board.swift */; };
+		DA2D916521A558CF00A13C11 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2D916321A558CF00A13C11 /* Board.swift */; };
 		DA397BDE218A3E1200C54971 /* libHauptbahnhof.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD7E123218A3A690085F449 /* libHauptbahnhof.a */; };
 		DA48003D21930FF600A72514 /* libHauptbahnhof.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD7E123218A3A690085F449 /* libHauptbahnhof.a */; };
 		DA48004B2193103600A72514 /* TestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4800452193103600A72514 /* TestFactory.swift */; };
@@ -134,6 +137,8 @@
 		DA1805F8219DD94B00897E7C /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		DA24FE00219061C500031D57 /* Desktop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Desktop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA25F364219331CB0049843E /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
+		DA2D916121A5584200A13C11 /* TestBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBoard.swift; sourceTree = "<group>"; };
+		DA2D916321A558CF00A13C11 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		DA48003821930FF600A72514 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA4800452193103600A72514 /* TestFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFactory.swift; sourceTree = "<group>"; };
 		DA4800462193103600A72514 /* TestParsing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestParsing.swift; sourceTree = "<group>"; };
@@ -288,6 +293,7 @@
 				DA48004A2193103600A72514 /* TestSelection.swift */,
 				DAFD9955219AF78F0061BF50 /* TestEffects.swift */,
 				DA7E6301219ED9560094A61B /* TestPlayer.swift */,
+				DA2D916121A5584200A13C11 /* TestBoard.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -302,6 +308,7 @@
 				DA7DEF462192EB7900909D9D /* Player.swift */,
 				DADE701821959651009ADEB7 /* Chapter.swift */,
 				DA0A5174219EFD8100A689FA /* Persona.swift */,
+				DA2D916321A558CF00A13C11 /* Board.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -725,6 +732,7 @@
 				DA48004F2193103600A72514 /* TestSelection.swift in Sources */,
 				DA5A295C21971F6D006E5F31 /* TestUpdate.swift in Sources */,
 				DA48004C2193103600A72514 /* TestParsing.swift in Sources */,
+				DA2D916221A5584200A13C11 /* TestBoard.swift in Sources */,
 				DA48004B2193103600A72514 /* TestFactory.swift in Sources */,
 				DAFD9956219AF78F0061BF50 /* TestEffects.swift in Sources */,
 				DADE7017219594E0009ADEB7 /* TestWorkshop.swift in Sources */,
@@ -739,6 +747,7 @@
 			files = (
 				DADE701E21959720009ADEB7 /* Workshop.swift in Sources */,
 				DA7DEF4E2192EB7900909D9D /* Effect.swift in Sources */,
+				DA2D916521A558CF00A13C11 /* Board.swift in Sources */,
 				DA7AC8E721948A2E007A7CC6 /* Validator.swift in Sources */,
 				DA7DEF532192EB8700909D9D /* GameMaster.swift in Sources */,
 				DADE701A21959651009ADEB7 /* Chapter.swift in Sources */,
@@ -760,6 +769,7 @@
 			files = (
 				DADE701D21959720009ADEB7 /* Workshop.swift in Sources */,
 				DAB55F03218B9E1900A9F02A /* Factory.swift in Sources */,
+				DA2D916421A558CF00A13C11 /* Board.swift in Sources */,
 				DA7AC8E621948A2E007A7CC6 /* Validator.swift in Sources */,
 				DA7DEF4D2192EB7900909D9D /* Effect.swift in Sources */,
 				DADE701921959651009ADEB7 /* Chapter.swift in Sources */,

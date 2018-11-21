@@ -4,9 +4,13 @@ public class GameMaster {
     public var message:Message { return game.messages[player.state]! }
     public internal(set) var game = Game()
     public internal(set) var player = Player()
+    public internal(set) var board = Board()
     private let storage = Factory.makeStorage()
     
     public init() {
+        if let board = try? storage.loadBoard() {
+            self.board = board
+        }
         if let player = try? storage.loadPlayer() {
             self.player = player
         }

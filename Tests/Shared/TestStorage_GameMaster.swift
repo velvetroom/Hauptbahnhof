@@ -15,6 +15,7 @@ class TestStorage_GameMaster:XCTestCase {
         MockStorage.onLoadPlayer = nil
         MockStorage.onSavePlayer = nil
         MockStorage.onLoadGame = nil
+        MockStorage.onLoadBoard = nil
     }
     
     func testLoadsPlayer() {
@@ -42,6 +43,13 @@ class TestStorage_GameMaster:XCTestCase {
         let expect = expectation(description:String())
         MockStorage.onSavePlayer = { expect.fulfill() }
         GameMaster().restart()
+        waitForExpectations(timeout:1)
+    }
+    
+    func testLoadsBoard() {
+        let expect = expectation(description:String())
+        MockStorage.onLoadBoard = { expect.fulfill() }
+        let _ = GameMaster()
         waitForExpectations(timeout:1)
     }
 }

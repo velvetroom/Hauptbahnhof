@@ -17,6 +17,11 @@ class Session:Storage {
             Bundle.main.url(forResource:chapter.rawValue, withExtension:".json")!))
     }
     
+    func loadBoard() throws -> Board {
+        return try JSONDecoder().decode(Board.self, from:try Data(contentsOf:
+            url.appendingPathComponent("Board.hauptbahnhof")))
+    }
+    
     func save(player:Player) {
         try! (try! JSONEncoder().encode(player)).write(to:url.appendingPathComponent("Player.hauptbahnhof"))
     }
