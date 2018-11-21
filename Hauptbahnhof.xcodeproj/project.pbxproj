@@ -21,6 +21,8 @@
 		DA2D916221A5584200A13C11 /* TestBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2D916121A5584200A13C11 /* TestBoard.swift */; };
 		DA2D916421A558CF00A13C11 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2D916321A558CF00A13C11 /* Board.swift */; };
 		DA2D916521A558CF00A13C11 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2D916321A558CF00A13C11 /* Board.swift */; };
+		DA2D916721A55CA600A13C11 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2D916621A55CA600A13C11 /* Purchase.swift */; };
+		DA2D916821A55CA600A13C11 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2D916621A55CA600A13C11 /* Purchase.swift */; };
 		DA397BDE218A3E1200C54971 /* libHauptbahnhof.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD7E123218A3A690085F449 /* libHauptbahnhof.a */; };
 		DA48003D21930FF600A72514 /* libHauptbahnhof.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD7E123218A3A690085F449 /* libHauptbahnhof.a */; };
 		DA48004B2193103600A72514 /* TestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4800452193103600A72514 /* TestFactory.swift */; };
@@ -139,6 +141,7 @@
 		DA25F364219331CB0049843E /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
 		DA2D916121A5584200A13C11 /* TestBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBoard.swift; sourceTree = "<group>"; };
 		DA2D916321A558CF00A13C11 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		DA2D916621A55CA600A13C11 /* Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
 		DA48003821930FF600A72514 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA4800452193103600A72514 /* TestFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFactory.swift; sourceTree = "<group>"; };
 		DA4800462193103600A72514 /* TestParsing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestParsing.swift; sourceTree = "<group>"; };
@@ -309,6 +312,7 @@
 				DADE701821959651009ADEB7 /* Chapter.swift */,
 				DA0A5174219EFD8100A689FA /* Persona.swift */,
 				DA2D916321A558CF00A13C11 /* Board.swift */,
+				DA2D916621A55CA600A13C11 /* Purchase.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -749,6 +753,7 @@
 				DA7DEF4E2192EB7900909D9D /* Effect.swift in Sources */,
 				DA2D916521A558CF00A13C11 /* Board.swift in Sources */,
 				DA7AC8E721948A2E007A7CC6 /* Validator.swift in Sources */,
+				DA2D916821A55CA600A13C11 /* Purchase.swift in Sources */,
 				DA7DEF532192EB8700909D9D /* GameMaster.swift in Sources */,
 				DADE701A21959651009ADEB7 /* Chapter.swift in Sources */,
 				DA7DEF4C2192EB7900909D9D /* Message.swift in Sources */,
@@ -771,6 +776,7 @@
 				DAB55F03218B9E1900A9F02A /* Factory.swift in Sources */,
 				DA2D916421A558CF00A13C11 /* Board.swift in Sources */,
 				DA7AC8E621948A2E007A7CC6 /* Validator.swift in Sources */,
+				DA2D916721A55CA600A13C11 /* Purchase.swift in Sources */,
 				DA7DEF4D2192EB7900909D9D /* Effect.swift in Sources */,
 				DADE701921959651009ADEB7 /* Chapter.swift in Sources */,
 				DAD7E137218A3B630085F449 /* GameMaster.swift in Sources */,
