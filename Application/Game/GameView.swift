@@ -136,7 +136,6 @@ class GameView:UIViewController{
                     self?.text.alpha = 1
                 }) { _ in
                     DispatchQueue.main.asyncAfter(deadline:.now() + 0.5) { [weak self] in
-                        self?.text.alpha = 1
                         self?.presenter.next()
                     }
                 }
