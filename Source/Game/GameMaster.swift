@@ -29,6 +29,23 @@ public class GameMaster {
         storage.save(player:player)
     }
     
+    public func rate() -> Bool {
+        var rating = false
+        board.continues += 1
+        if (board.continues % 5) == 0 {
+            if let last = board.rates.last,
+                let months = Calendar.current.dateComponents([.month], from:last, to:Date()).month {
+                rating = months < -1
+            } else {
+                rating = true
+            }
+        }
+        if rating {
+            board.rates.append(Date())
+        }
+        return rating
+    }
+    
     private func apply(_ effect:Effect) {
         switch effect {
         case .increaseScore2: player.score += 2

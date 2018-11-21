@@ -1,5 +1,6 @@
 import Foundation
 import Hauptbahnhof
+import StoreKit
 
 class HomePresenter {
     var viewModel:((HomeViewModel) -> Void)! { didSet { restore() } }
@@ -55,6 +56,7 @@ class HomePresenter {
     }
     
     private func openGame() {
+        if master.rate() { if #available(iOS 10.3, *) { SKStoreReviewController.requestReview() } }
         Application.navigation.setViewControllers([TitleView()], animated:false)
     }
     

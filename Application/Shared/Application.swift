@@ -17,7 +17,7 @@ import Hauptbahnhof
     
     private func makeWindow() {
         Application.navigation.setNavigationBarHidden(true, animated:false)
-        Application.navigation.setViewControllers([GameView()], animated:false)
+        Application.navigation.setViewControllers([SplashView()], animated:false)
         window = UIWindow(frame:UIScreen.main.bounds)
         window!.backgroundColor = .black
         window!.makeKeyAndVisible()

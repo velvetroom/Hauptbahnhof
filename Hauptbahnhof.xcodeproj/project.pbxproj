@@ -23,6 +23,7 @@
 		DA2D916521A558CF00A13C11 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2D916321A558CF00A13C11 /* Board.swift */; };
 		DA2D916721A55CA600A13C11 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2D916621A55CA600A13C11 /* Purchase.swift */; };
 		DA2D916821A55CA600A13C11 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2D916621A55CA600A13C11 /* Purchase.swift */; };
+		DA2D916A21A55EFF00A13C11 /* TestRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2D916921A55EFF00A13C11 /* TestRate.swift */; };
 		DA397BDE218A3E1200C54971 /* libHauptbahnhof.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD7E123218A3A690085F449 /* libHauptbahnhof.a */; };
 		DA48003D21930FF600A72514 /* libHauptbahnhof.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD7E123218A3A690085F449 /* libHauptbahnhof.a */; };
 		DA48004B2193103600A72514 /* TestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4800452193103600A72514 /* TestFactory.swift */; };
@@ -142,6 +143,7 @@
 		DA2D916121A5584200A13C11 /* TestBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBoard.swift; sourceTree = "<group>"; };
 		DA2D916321A558CF00A13C11 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		DA2D916621A55CA600A13C11 /* Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
+		DA2D916921A55EFF00A13C11 /* TestRate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRate.swift; sourceTree = "<group>"; };
 		DA48003821930FF600A72514 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA4800452193103600A72514 /* TestFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestFactory.swift; sourceTree = "<group>"; };
 		DA4800462193103600A72514 /* TestParsing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestParsing.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				DAFD9955219AF78F0061BF50 /* TestEffects.swift */,
 				DA7E6301219ED9560094A61B /* TestPlayer.swift */,
 				DA2D916121A5584200A13C11 /* TestBoard.swift */,
+				DA2D916921A55EFF00A13C11 /* TestRate.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -728,6 +731,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA2D916A21A55EFF00A13C11 /* TestRate.swift in Sources */,
 				DA7E6302219ED9560094A61B /* TestPlayer.swift in Sources */,
 				DA9024BE219637D8002334DF /* TestDelete.swift in Sources */,
 				DA48004D2193103600A72514 /* MockStorage.swift in Sources */,
