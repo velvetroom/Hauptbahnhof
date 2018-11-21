@@ -20,3 +20,4 @@ NextView.save="Save";
 EffectView.title="Add effect";
 EffectView.cancel="Cancel";
 EffectView.add="Add";
+Session.openPanel="Choose json for: ";

@@ -35,8 +35,10 @@ class Session:Storage {
     }
     
     private func missingBookmarks() {
-        if bookmarks[Chapter.Prologue.rawValue] == nil {
-            showPanel(chapter:.Prologue)
+        Chapter.allCases.forEach { chapter in
+            if chapter != .Unknown && bookmarks[chapter.rawValue] == nil {
+                showPanel(chapter:chapter)
+            }
         }
     }
     
@@ -48,6 +50,7 @@ class Session:Storage {
     private func showPanel(chapter:Chapter) {
         DispatchQueue.main.async {
             let panel = NSOpenPanel()
+            panel.message = .local("Session.openPanel") + chapter.rawValue
             panel.allowedFileTypes = ["json"]
             panel.nameFieldStringValue = chapter.rawValue
             panel.begin { [weak self] response in
