@@ -16,7 +16,10 @@ class MockStorage:Storage {
     
     func loadGame(chapter:Chapter) -> Game {
         MockStorage.onLoadGame?()
-        return Game()
+        var game = Game()
+        game.chapter = .Prologue
+        game.messages["initial"] = Message()
+        return game
     }
     
     func save(player:Player) {

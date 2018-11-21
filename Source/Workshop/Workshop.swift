@@ -8,7 +8,11 @@ public class Workshop {
     public init() { }
     
     public func load(chapter:Chapter) {
-        game = storage.loadGame(chapter:chapter)
+        if chapter == .Unknown {
+            game = Game()
+        } else {
+            game = storage.loadGame(chapter:chapter)
+        }
     }
     
     public func validate() throws {

@@ -50,4 +50,11 @@ class TestWorkshop:XCTestCase {
         workshop.removeEffect(option, effect:.increaseScore2)
         XCTAssertTrue(option.effects.isEmpty)
     }
+    
+    func testLoadUnknownChapter() {
+        workshop.game.messages["hello"] = Message()
+        workshop.load(chapter:.Unknown)
+        XCTAssertTrue(workshop.game.messages.isEmpty)
+        XCTAssertEqual(Chapter.Unknown, workshop.game.chapter)
+    }
 }
