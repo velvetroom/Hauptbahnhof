@@ -1,8 +1,11 @@
-HomePresenter.newGameMessage="You are about to start a new game, but you will lose your previous progress.\n\nDo you want to continue?";
+HomePresenter.newGameMessage="You are about to start a new game, but you will lose your progress.\n\nDo you want to continue?";
 HomePresenter.newGameAccept="New Game";
 HomePresenter.newGameCancel="Cancel";
 HomeView.new="New Game";
 HomeView.resume="Continue";
+GamePresenter.tryContinueMessage="This is the end of the chapter, next one will be available shortly.\n\nAdditionally you can start a new game.";
+GamePresenter.tryContinueAccept="Accept";
+GameView.continue="(Continue)";
 ProfileView.resume="Resume";
 ProfileView.knowledge="Knowledge";
 ProfileView.courage="Courage";

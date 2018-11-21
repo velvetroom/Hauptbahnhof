@@ -16,6 +16,7 @@ class GameView:UIViewController{
         deactivateControls()
         presenter.message = { [weak self] in self?.update(message:$0) }
         presenter.options = { [weak self] in self?.update(options:$0) }
+        presenter.chapterEnd = { [weak self] in self?.updateContinue() }
     }
     
     override func viewDidAppear(_ animated:Bool) {
@@ -112,6 +113,29 @@ class GameView:UIViewController{
             top = view.bottomAnchor
         }
         menu.bottomAnchor.constraint(equalTo:top, constant:5).isActive = true
+        activateControls()
+        UIView.animate(withDuration:0.6, animations: { [weak self] in
+            self?.view.layoutIfNeeded()
+        }) { [weak self] _ in
+            self?.menuLeft.constant = 0
+            UIView.animate(withDuration:0.4) { [weak self] in
+                self?.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    private func updateContinue() {
+        menu.subviews.forEach { $0.removeFromSuperview() }
+        let view = GameOptionView()
+        view.viewModel = (0, .local("GameView.continue"))
+        view.addTarget(presenter, action:#selector(presenter.tryContinue), for:.touchUpInside)
+        menu.addSubview(view)
+        
+        view.topAnchor.constraint(equalTo:menu.topAnchor, constant:5).isActive = true
+        view.leftAnchor.constraint(equalTo:menu.leftAnchor, constant:5).isActive = true
+        view.rightAnchor.constraint(equalTo:menu.rightAnchor, constant:20).isActive = true
+        menu.bottomAnchor.constraint(equalTo:view.bottomAnchor, constant:5).isActive = true
+        
         activateControls()
         UIView.animate(withDuration:0.6, animations: { [weak self] in
             self?.view.layoutIfNeeded()

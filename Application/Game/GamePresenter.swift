@@ -4,6 +4,7 @@ import Hauptbahnhof
 class GamePresenter {
     var message:((String) -> Void)?
     var options:(([(Int, String)]) -> Void)?
+    var chapterEnd:(() -> Void)?
     private let master = Factory.makeMaster()
     
     func next() {
@@ -12,6 +13,13 @@ class GamePresenter {
     
     func select(option:Int) {
         master.select(master.message.options[option])
+    }
+    
+    @objc func tryContinue() {
+        let alert = AlertView()
+        alert.message = .local("GamePresenter.tryContinueMessage")
+        alert.accept = .local("GamePresenter.tryContinueAccept")
+        Application.navigation.pushViewController(alert, animated:false)
     }
     
     private func recursivePrint(text:String, pile:String) {
@@ -25,6 +33,10 @@ class GamePresenter {
     }
     
     private func updateOptions() {
-        options?(master.message.options.enumerated().map { ($0, $1.text) })
+        if master.player.state == "final" {
+            chapterEnd?()
+        } else {
+            options?(master.message.options.enumerated().map { ($0, $1.text) })
+        }
     }
 }

@@ -35,7 +35,7 @@ class AlertView:UIViewController {
         message.textAlignment = .center
         message.textColor = .white
         message.numberOfLines = 0
-        message.font = .systemFont(ofSize:20, weight:.regular)
+        message.font = .systemFont(ofSize:18, weight:.light)
         message.text = self.message
         view.addSubview(message)
         
@@ -72,7 +72,7 @@ class AlertView:UIViewController {
         
         message.topAnchor.constraint(equalTo:icon.bottomAnchor, constant:30).isActive = true
         message.centerXAnchor.constraint(equalTo:view.centerXAnchor).isActive = true
-        message.widthAnchor.constraint(lessThanOrEqualToConstant:250).isActive = true
+        message.widthAnchor.constraint(lessThanOrEqualToConstant:300).isActive = true
     }
     
     private func fadeOut(completion:(() -> Void)?) {
